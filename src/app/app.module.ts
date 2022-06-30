@@ -9,7 +9,7 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HeaderModule } from './global/modules/header/header.module';
-import { SidebarModule } from './sidebar/sidebar.module';
+import { SidebarModule } from './modules/sidebar/sidebar.module';
 import { StateModule } from './state/state.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from './global/interceptors/api-key-interceptor';
