@@ -9,6 +9,7 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HeaderModule } from './global/modules/header/header.module';
+import { SidebarModule } from './sidebar/sidebar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { HeaderModule } from './global/modules/header/header.module';
       logOnly: environment.production,
     }),
     HeaderModule,
+    SidebarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
