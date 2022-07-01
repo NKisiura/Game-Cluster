@@ -6,16 +6,10 @@ const platformsFeatureSelector =
   createFeatureSelector<PlatformsStateInterface>(platformsFeatureKey);
 
 export namespace PlatformsSelectors {
-  export const platformsResponseSelector = createSelector(
+  export const platformsLoadingSelector = createSelector(
     platformsFeatureSelector,
     (platformsStateInterface: PlatformsStateInterface) =>
-      platformsStateInterface.data
-  );
-
-  export const platformsListSelector = createSelector(
-    platformsFeatureSelector,
-    (platformsStateInterface: PlatformsStateInterface) =>
-      platformsStateInterface.data?.results || null
+      platformsStateInterface.isLoading
   );
 
   export const platformsErrorSelector = createSelector(
@@ -24,9 +18,15 @@ export namespace PlatformsSelectors {
       platformsStateInterface.error
   );
 
-  export const platformsLoadingSelector = createSelector(
+  export const platformsListSelector = createSelector(
     platformsFeatureSelector,
     (platformsStateInterface: PlatformsStateInterface) =>
-      platformsStateInterface.isLoading
+      platformsStateInterface.data?.results || null
+  );
+
+  export const platformsNextPageSelector = createSelector(
+    platformsFeatureSelector,
+    (platformsStateInterface: PlatformsStateInterface) =>
+      platformsStateInterface.data?.next || null
   );
 }

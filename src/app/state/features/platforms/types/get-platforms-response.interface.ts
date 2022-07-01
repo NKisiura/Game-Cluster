@@ -1,4 +1,4 @@
-import { PlatformInterface } from '../../../../global/types/entities/platforms /platform.interface';
+import { PlatformInterface } from '../../../../global/types/entities/platforms/platform.interface';
 
 export interface GetPlatformsResponseInterface {
   readonly count: number;
