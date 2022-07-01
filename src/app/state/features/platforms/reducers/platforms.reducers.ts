@@ -15,6 +15,7 @@ export const platformsReducer = createReducer(
     (state): PlatformsStateInterface => ({
       ...state,
       isLoading: true,
+      error: false,
     })
   ),
   on(

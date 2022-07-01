@@ -8,25 +8,23 @@ const platformsFeatureSelector =
 export namespace PlatformsSelectors {
   export const platformsLoadingSelector = createSelector(
     platformsFeatureSelector,
-    (platformsStateInterface: PlatformsStateInterface) =>
-      platformsStateInterface.isLoading
+    (platformsState: PlatformsStateInterface) => platformsState.isLoading
   );
 
   export const platformsErrorSelector = createSelector(
     platformsFeatureSelector,
-    (platformsStateInterface: PlatformsStateInterface) =>
-      platformsStateInterface.error
+    (platformsState: PlatformsStateInterface) => platformsState.error
   );
 
   export const platformsListSelector = createSelector(
     platformsFeatureSelector,
-    (platformsStateInterface: PlatformsStateInterface) =>
-      platformsStateInterface.data?.results || null
+    (platformsState: PlatformsStateInterface) =>
+      platformsState.data?.results || null
   );
 
   export const platformsNextPageSelector = createSelector(
     platformsFeatureSelector,
-    (platformsStateInterface: PlatformsStateInterface) =>
-      platformsStateInterface.data?.next || null
+    (platformsState: PlatformsStateInterface) =>
+      platformsState.data?.next || null
   );
 }

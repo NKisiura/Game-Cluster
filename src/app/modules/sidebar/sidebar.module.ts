@@ -5,6 +5,7 @@ import { SidebarEntityListComponent } from './components/sidebar-entity-list/sid
 import { SidebarEntityListTitleComponent } from './components/sidebar-entity-list-title/sidebar-entity-list-title.component';
 import { SidebarEntityListLoadingComponent } from './components/sidebar-entity-list-loading/sidebar-entity-list-loading.component';
 import { SidebarEntityListErrorComponent } from './components/sidebar-entity-list-error/sidebar-entity-list-error.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { SidebarEntityListErrorComponent } from './components/sidebar-entity-lis
     SidebarEntityListLoadingComponent,
     SidebarEntityListErrorComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [SidebarComponent],
 })
 export class SidebarModule {}

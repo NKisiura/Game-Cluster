@@ -13,6 +13,7 @@ import { SidebarModule } from './modules/sidebar/sidebar.module';
 import { StateModule } from './state/state.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from './global/interceptors/api-key-interceptor';
+import { GameListModule } from './modules/game-list/game-list.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { ApiKeyInterceptor } from './global/interceptors/api-key-interceptor';
     }),
     HeaderModule,
     SidebarModule,
+    GameListModule,
     StateModule,
   ],
   providers: [

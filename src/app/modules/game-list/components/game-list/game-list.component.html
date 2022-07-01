@@ -1,0 +1,6 @@
+<ng-container *ngIf="gamesError$ | async">game list error</ng-container>
+<ng-container *ngIf="gamesList$ | async as gameList">
+  <div *ngFor="let game of gameList">
+    <app-game-card [game]="game"></app-game-card>
+  </div>
+</ng-container>
