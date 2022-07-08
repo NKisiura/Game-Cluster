@@ -14,6 +14,8 @@ import { StateModule } from './state/state.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiKeyInterceptor } from './global/interceptors/api-key-interceptor';
 import { GameListModule } from './modules/game-list/game-list.module';
+import { NgProgressModule } from 'ngx-progressbar';
+import { NgProgressHttpModule } from 'ngx-progressbar/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +33,8 @@ import { GameListModule } from './modules/game-list/game-list.module';
     SidebarModule,
     GameListModule,
     StateModule,
+    NgProgressModule,
+    NgProgressHttpModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
