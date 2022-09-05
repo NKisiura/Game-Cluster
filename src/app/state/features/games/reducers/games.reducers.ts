@@ -15,6 +15,7 @@ export const gamesReducer = createReducer(
     (state): GamesStateInterface => ({
       ...state,
       isLoading: true,
+      data: null,
       error: false,
     })
   ),

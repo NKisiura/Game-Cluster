@@ -16,6 +16,7 @@ import { ApiKeyInterceptor } from './global/interceptors/api-key-interceptor';
 import { GameListModule } from './modules/game-list/game-list.module';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
+import { GameDetailsModule } from './modules/game-details/game-details.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http';
     HeaderModule,
     SidebarModule,
     GameListModule,
+    GameDetailsModule,
     StateModule,
     NgProgressModule,
     NgProgressHttpModule,

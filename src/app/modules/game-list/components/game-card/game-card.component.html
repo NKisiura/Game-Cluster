@@ -1,1 +1,3 @@
-<div>{{game.name}}</div>
+<a [routerLink]="[gameRouterLink, game.slug]">
+  {{game.name}}
+</a>
