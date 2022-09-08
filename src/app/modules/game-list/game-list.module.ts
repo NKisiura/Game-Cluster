@@ -6,6 +6,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'games',
+    pathMatch: 'full',
+  },
+  {
     path: 'games',
     component: GameListComponent,
   },
