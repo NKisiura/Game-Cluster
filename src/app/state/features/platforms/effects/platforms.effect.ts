@@ -4,6 +4,7 @@ import { PlatformsService } from '../services/platforms.service';
 import { PlatformsActions } from '../actions/platforms.actions';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { GetPlatformsResponseInterface } from '../types/get-platforms-response.interface';
+import { BackendErrorResponseInterface } from '../../../types/backend-error-response.interface';
 
 @Injectable()
 export class PlatformsEffect {
@@ -15,7 +16,9 @@ export class PlatformsEffect {
           map((getPlatformsResponse: GetPlatformsResponseInterface) =>
             PlatformsActions.getPlatformsSuccess({ getPlatformsResponse })
           ),
-          catchError(() => of(PlatformsActions.getPlatformsFailure()))
+          catchError((error: BackendErrorResponseInterface) =>
+            of(PlatformsActions.getPlatformsFailure({ error }))
+          )
         );
       })
     )

@@ -4,7 +4,7 @@ import { PlatformsActions } from '../actions/platforms.actions';
 
 const initialState: PlatformsStateInterface = {
   isLoading: false,
-  error: false,
+  error: null,
   data: null,
 };
 
@@ -15,7 +15,7 @@ export const platformsReducer = createReducer(
     (state): PlatformsStateInterface => ({
       ...state,
       isLoading: true,
-      error: false,
+      error: null,
     })
   ),
   on(
@@ -28,10 +28,10 @@ export const platformsReducer = createReducer(
   ),
   on(
     PlatformsActions.getPlatformsFailure,
-    (state): PlatformsStateInterface => ({
+    (state, action): PlatformsStateInterface => ({
       ...state,
       isLoading: false,
-      error: true,
+      error: action.error,
     })
   )
 );

@@ -4,6 +4,7 @@ import { GameDetailsService } from '../services/game-details.service';
 import { GameDetailsActions } from '../actions/game-details.actions';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { GameDetailsInterface } from '../../../../global/types/entities/games/game-details.interface';
+import { BackendErrorResponseInterface } from '../../../types/backend-error-response.interface';
 
 @Injectable()
 export class GameDetailsEffect {
@@ -15,7 +16,9 @@ export class GameDetailsEffect {
           map((gameDetails: GameDetailsInterface) =>
             GameDetailsActions.getGameDetailsSuccess({ gameDetails })
           ),
-          catchError(() => of(GameDetailsActions.getGamesDetailsFailure()))
+          catchError((error: BackendErrorResponseInterface) =>
+            of(GameDetailsActions.getGamesDetailsFailure({ error }))
+          )
         );
       })
     )

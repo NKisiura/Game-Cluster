@@ -6,6 +6,7 @@ import { PlatformInterface } from '../../../../global/types/entities/platforms/p
 import { PlatformsSelectors } from '../../../../state/features/platforms/selectors/platforms.selectors';
 import { PlatformsActions } from '../../../../state/features/platforms/actions/platforms.actions';
 import { API_PLATFORMS_URL } from '../../../../global/constants/api-constants';
+import { BackendErrorResponseInterface } from '../../../../state/types/backend-error-response.interface';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,9 +14,9 @@ import { API_PLATFORMS_URL } from '../../../../global/constants/api-constants';
 })
 export class SidebarComponent implements OnInit {
   public platformsLoading$ = new Observable<boolean>();
-  public platformsError$ = new Observable<boolean>();
+  public platformsError$ =
+    new Observable<BackendErrorResponseInterface | null>();
   public platformsList$ = new Observable<PlatformInterface[] | null>();
-  public platformsNextPage$ = new Observable<string | null>();
 
   constructor(private store$: Store<AppStateInterface>) {}
 
@@ -31,6 +32,10 @@ export class SidebarComponent implements OnInit {
   }
 
   private initValues(): void {
+    this.initPlatformsValues();
+  }
+
+  private initPlatformsValues(): void {
     this.platformsLoading$ = this.store$.pipe(
       select(PlatformsSelectors.platformsLoadingSelector)
     );
@@ -39,9 +44,6 @@ export class SidebarComponent implements OnInit {
     );
     this.platformsList$ = this.store$.pipe(
       select(PlatformsSelectors.platformsListSelector)
-    );
-    this.platformsNextPage$ = this.store$.pipe(
-      select(PlatformsSelectors.platformsNextPageSelector)
     );
   }
 }

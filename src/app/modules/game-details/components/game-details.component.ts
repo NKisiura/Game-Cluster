@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GameDetailsInterface } from '../../../global/types/entities/games/game-details.interface';
 import { GameDetailsSelectors } from '../../../state/features/game-details/selectors/game-details.selectors';
+import { BackendErrorResponseInterface } from '../../../state/types/backend-error-response.interface';
 
 @Component({
   selector: 'app-game-details',
@@ -15,6 +16,8 @@ import { GameDetailsSelectors } from '../../../state/features/game-details/selec
 export class GameDetailsComponent implements OnInit {
   public gameDetails$ = new Observable<GameDetailsInterface | null>();
   public gameDetailsLoading$ = new Observable<boolean>();
+  public gameDetailsError$ =
+    new Observable<BackendErrorResponseInterface | null>();
 
   constructor(
     private store$: Store<AppStateInterface>,
@@ -32,6 +35,9 @@ export class GameDetailsComponent implements OnInit {
     );
     this.gameDetailsLoading$ = this.store$.pipe(
       select(GameDetailsSelectors.gameDetailsLoadingSelector)
+    );
+    this.gameDetailsError$ = this.store$.pipe(
+      select(GameDetailsSelectors.gameDetailsErrorSelector)
     );
   }
 

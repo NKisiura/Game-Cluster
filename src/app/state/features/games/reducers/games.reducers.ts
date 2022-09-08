@@ -4,7 +4,7 @@ import { GamesActions } from '../actions/games.actions';
 
 const initialState: GamesStateInterface = {
   isLoading: false,
-  error: false,
+  error: null,
   data: null,
 };
 
@@ -16,7 +16,7 @@ export const gamesReducer = createReducer(
       ...state,
       isLoading: true,
       data: null,
-      error: false,
+      error: null,
     })
   ),
   on(
@@ -29,10 +29,10 @@ export const gamesReducer = createReducer(
   ),
   on(
     GamesActions.getGamesFailure,
-    (state): GamesStateInterface => ({
+    (state, action): GamesStateInterface => ({
       ...state,
       isLoading: false,
-      error: true,
+      error: action.error,
     })
   )
 );

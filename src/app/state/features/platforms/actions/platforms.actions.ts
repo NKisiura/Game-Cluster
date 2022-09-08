@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { PlatformsActionTypes } from './platforms-action-types';
 import { GetPlatformsResponseInterface } from '../types/get-platforms-response.interface';
+import { BackendErrorResponseInterface } from '../../../types/backend-error-response.interface';
 
 export namespace PlatformsActions {
   export const getPlatforms = createAction(
@@ -14,6 +15,7 @@ export namespace PlatformsActions {
   );
 
   export const getPlatformsFailure = createAction(
-    PlatformsActionTypes.GET_PLATFORMS_FAILURE
+    PlatformsActionTypes.GET_PLATFORMS_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
   );
 }

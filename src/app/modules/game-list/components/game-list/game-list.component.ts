@@ -8,6 +8,7 @@ import { GamesActions } from '../../../../state/features/games/actions/games.act
 import { API_GAMES_URL } from '../../../../global/constants/api-constants';
 import { ActivatedRoute, Params } from '@angular/router';
 import { stringify } from 'query-string';
+import { BackendErrorResponseInterface } from '../../../../state/types/backend-error-response.interface';
 
 @Component({
   selector: 'app-game-list',
@@ -16,7 +17,7 @@ import { stringify } from 'query-string';
 export class GameListComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  public gamesError$ = new Observable<boolean>();
+  public gamesError$ = new Observable<BackendErrorResponseInterface | null>();
   public gamesList$ = new Observable<GameInterface[] | null>();
   public gamesNextPage$ = new Observable<string | null>();
 
