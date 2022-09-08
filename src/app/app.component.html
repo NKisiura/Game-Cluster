@@ -1,6 +1,9 @@
-<ng-progress [fixed]="true" [spinner]="false"></ng-progress>
-<app-header></app-header>
-<div class="flex">
-  <app-sidebar></app-sidebar>
-  <router-outlet></router-outlet>
+<ng-progress [fixed]="true" [spinner]="false" [color]="'#33c948'"></ng-progress>
+
+<div class="px-4 lg:px-8">
+  <app-header></app-header>
+  <div class="flex">
+    <app-sidebar></app-sidebar>
+    <router-outlet></router-outlet>
+  </div>
 </div>
