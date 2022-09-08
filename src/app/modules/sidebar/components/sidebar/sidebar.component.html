@@ -4,6 +4,9 @@
 <ng-container [ngTemplateOutlet]="entityListTemplate"
               [ngTemplateOutletContext]="{entityType: 'genres', entityList: genresList$ | async, loading: genresLoading$ | async, error: genresError$ | async}">
 </ng-container>
+<ng-container [ngTemplateOutlet]="entityListTemplate"
+              [ngTemplateOutletContext]="{entityType: 'stores', entityList: storesList$ | async, loading: storesLoading$ | async, error: storesError$ | async}">
+</ng-container>
 
 <ng-template #entityListTemplate let-entityType="entityType" let-entityList="entityList" let-loading="loading" let-error="error">
   <app-sidebar-entity-list-title [entity-list-title]="entityType"></app-sidebar-entity-list-title>

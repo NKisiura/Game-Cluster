@@ -4,6 +4,7 @@ import { PlatformsStateModule } from './features/platforms/platforms-state.modul
 import { GamesStateModule } from './features/games/games-state.module';
 import { GameDetailsStateModule } from './features/game-details/game-details-state.module';
 import { GenresStateModule } from './features/genres/genres-state.module';
+import { StoresStateModule } from './features/stores/stores-state.module';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { GenresStateModule } from './features/genres/genres-state.module';
     GamesStateModule,
     GameDetailsStateModule,
     GenresStateModule,
+    StoresStateModule,
   ],
 })
 export class StateModule {}
