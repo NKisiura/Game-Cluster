@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconService } from '../../global/utils/services/icon.service';
 import { MainEntitiesService } from '../../global/utils/services/main-entities.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,12 @@ import { MainEntitiesService } from '../../global/utils/services/main-entities.s
     SidebarEntityListErrorComponent,
     SidebarEntityListWrapperComponent,
   ],
-  imports: [CommonModule, RouterModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+  ],
   exports: [SidebarComponent],
   providers: [IconService, MainEntitiesService],
 })
