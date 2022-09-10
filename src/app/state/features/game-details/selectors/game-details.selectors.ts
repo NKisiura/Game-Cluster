@@ -21,4 +21,10 @@ export namespace GameDetailsSelectors {
     gameDetailsFeatureSelector,
     (gameDetailsState: GameDetailsStateInterface) => gameDetailsState.isLoading
   );
+
+  export const gameDetailsBgImageSelector = createSelector(
+    gameDetailsFeatureSelector,
+    (gameDetailsState: GameDetailsStateInterface) =>
+      gameDetailsState.data?.background_image || null
+  );
 }

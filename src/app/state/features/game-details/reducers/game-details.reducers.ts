@@ -1,6 +1,7 @@
 import { GameDetailsStateInterface } from '../types/game-details-state.interface';
 import { Action, createReducer, on } from '@ngrx/store';
 import { GameDetailsActions } from '../actions/game-details.actions';
+import { routerNavigationAction } from '@ngrx/router-store';
 
 const initialState: GameDetailsStateInterface = {
   isLoading: false,
@@ -34,7 +35,8 @@ export const gameDetailsReducer = createReducer(
       isLoading: false,
       error: action.error,
     })
-  )
+  ),
+  on(routerNavigationAction, () => initialState)
 );
 
 export function gameDetailsReducers(
