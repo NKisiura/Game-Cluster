@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { AppStateInterface } from '../../../../state/types/app-state.interface';
-import { Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { PlatformInterface } from '../../../../global/types/entities/platforms/platform.interface';
 import { PlatformsSelectors } from '../../../../state/features/platforms/selectors/platforms.selectors';
 import { PlatformsActions } from '../../../../state/features/platforms/actions/platforms.actions';
@@ -17,10 +17,12 @@ import { GenresActions } from '../../../../state/features/genres/actions/genres.
 import { StoresActions } from '../../../../state/features/stores/actions/stores.actions';
 import { StoreInterface } from '../../../../global/types/entities/stores/store.interface';
 import { StoresSelectors } from '../../../../state/features/stores/selectors/stores.selectors';
+import { MainEntitiesService } from '../../../../global/utils/services/main-entities.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
   public platformsLoading$ = new Observable<boolean>();
@@ -36,7 +38,10 @@ export class SidebarComponent implements OnInit {
   public storesError$ = new Observable<BackendErrorResponseInterface | null>();
   public storesList$ = new Observable<StoreInterface[] | null>();
 
-  constructor(private store$: Store<AppStateInterface>) {}
+  constructor(
+    private store$: Store<AppStateInterface>,
+    private mainEntitiesService: MainEntitiesService
+  ) {}
 
   ngOnInit(): void {
     this.initActions();
@@ -65,7 +70,15 @@ export class SidebarComponent implements OnInit {
       select(PlatformsSelectors.platformsErrorSelector)
     );
     this.platformsList$ = this.store$.pipe(
-      select(PlatformsSelectors.platformsListSelector)
+      select(PlatformsSelectors.platformsListSelector),
+      filter(Boolean),
+      map((platformList: PlatformInterface[]) =>
+        platformList.filter((platform: PlatformInterface) =>
+          this.mainEntitiesService
+            .getMainPlatformsList()
+            .includes(platform.slug)
+        )
+      )
     );
   }
 
@@ -77,7 +90,13 @@ export class SidebarComponent implements OnInit {
       select(GenresSelectors.genresErrorSelector)
     );
     this.genresList$ = this.store$.pipe(
-      select(GenresSelectors.genresListSelector)
+      select(GenresSelectors.genresListSelector),
+      filter(Boolean),
+      map((genresList: GenreInterface[]) =>
+        genresList.filter((genre: GenreInterface) =>
+          this.mainEntitiesService.getMainGenresList().includes(genre.slug)
+        )
+      )
     );
   }
 
@@ -89,7 +108,13 @@ export class SidebarComponent implements OnInit {
       select(StoresSelectors.storesErrorSelector)
     );
     this.storesList$ = this.store$.pipe(
-      select(StoresSelectors.storesListSelector)
+      select(StoresSelectors.storesListSelector),
+      filter(Boolean),
+      map((storesList: StoreInterface[]) =>
+        storesList.filter((store: StoreInterface) =>
+          this.mainEntitiesService.getMainStoresList().includes(store.slug)
+        )
+      )
     );
   }
 }

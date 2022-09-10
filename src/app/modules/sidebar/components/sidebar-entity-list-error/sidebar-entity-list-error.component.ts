@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
+import { IconService } from '../../../../global/utils/services/icon.service';
 
 @Component({
   selector: 'app-sidebar-entity-list-error',
@@ -6,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class SidebarEntityListErrorComponent {
   @Input('entity-type') public entityType!: string;
+
+  constructor(private iconService: IconService) {}
+
+  public getWarningIcon(): IconDefinition {
+    return this.iconService.getWarningIcon();
+  }
 }

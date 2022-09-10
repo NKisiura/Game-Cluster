@@ -5,7 +5,11 @@ import { SidebarEntityListComponent } from './components/sidebar-entity-list/sid
 import { SidebarEntityListTitleComponent } from './components/sidebar-entity-list-title/sidebar-entity-list-title.component';
 import { SidebarEntityListLoadingComponent } from './components/sidebar-entity-list-loading/sidebar-entity-list-loading.component';
 import { SidebarEntityListErrorComponent } from './components/sidebar-entity-list-error/sidebar-entity-list-error.component';
+import { SidebarEntityListWrapperComponent } from './components/sidebar-entity-list-wrapper/sidebar-entity-list-wrapper.component';
 import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconService } from '../../global/utils/services/icon.service';
+import { MainEntitiesService } from '../../global/utils/services/main-entities.service';
 
 @NgModule({
   declarations: [
@@ -14,8 +18,10 @@ import { RouterModule } from '@angular/router';
     SidebarEntityListTitleComponent,
     SidebarEntityListLoadingComponent,
     SidebarEntityListErrorComponent,
+    SidebarEntityListWrapperComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [SidebarComponent],
+  providers: [IconService, MainEntitiesService],
 })
 export class SidebarModule {}

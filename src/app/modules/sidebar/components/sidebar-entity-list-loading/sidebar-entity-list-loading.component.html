@@ -1,1 +1,4 @@
-<div>Loading {{entityType}}</div>
+<div class="flex text-white font-light mb-2">
+  <fa-icon [icon]="getLoadingIcon()" [spin]="true" class="mr-1"></fa-icon>
+  <span>Loading <span class="capitalize">{{entityType}}</span></span>
+</div>

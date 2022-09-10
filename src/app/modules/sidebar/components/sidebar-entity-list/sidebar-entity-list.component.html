@@ -2,7 +2,16 @@
   <a [routerLink]="gamesRouterLink"
      [routerLinkActive]="'active'"
      [queryParams]="setQueryParams(entity)"
+     class="group flex items-center gap-2 mb-2 text-white font-light"
   >
-    {{entity.name}}
+    <ng-container *ngIf="isCurrentEntityGenre">
+      <img [src]="entity.image_background" [alt]="entity.name" class="w-8 h-8 rounded-lg object-cover">
+    </ng-container>
+    <ng-container *ngIf="!isCurrentEntityGenre">
+      <div class="w-8 h-8 flex items-center justify-center rounded-lg text-white bg-grey-800 group-hover:text-grey-800 group-hover:bg-white transition-colors duration-200">
+        <fa-icon [icon]="getIconBySlug(entity.slug)"></fa-icon>
+      </div>
+    </ng-container>
+    <span>{{entity.name}}</span>
   </a>
 </div>

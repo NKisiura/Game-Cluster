@@ -1,19 +1,23 @@
-<ng-container [ngTemplateOutlet]="entityListTemplate"
-              [ngTemplateOutletContext]="{entityType: 'platforms', entityList: platformsList$ | async, loading: platformsLoading$ | async, error: platformsError$ | async}">
-</ng-container>
-<ng-container [ngTemplateOutlet]="entityListTemplate"
-              [ngTemplateOutletContext]="{entityType: 'genres', entityList: genresList$ | async, loading: genresLoading$ | async, error: genresError$ | async}">
-</ng-container>
-<ng-container [ngTemplateOutlet]="entityListTemplate"
-              [ngTemplateOutletContext]="{entityType: 'stores', entityList: storesList$ | async, loading: storesLoading$ | async, error: storesError$ | async}">
-</ng-container>
+<div class="mr-4 py-4 overflow-y-auto sticky top-0 h-screen w-52 sidebar-scrollbar">
+  <ng-container [ngTemplateOutlet]="entityListTemplate"
+                [ngTemplateOutletContext]="{entityType: 'platforms', entityList: platformsList$ | async, loading: platformsLoading$ | async, error: platformsError$ | async}">
+  </ng-container>
+  <ng-container [ngTemplateOutlet]="entityListTemplate"
+                [ngTemplateOutletContext]="{entityType: 'genres', entityList: genresList$ | async, loading: genresLoading$ | async, error: genresError$ | async}">
+  </ng-container>
+  <ng-container [ngTemplateOutlet]="entityListTemplate"
+                [ngTemplateOutletContext]="{entityType: 'stores', entityList: storesList$ | async, loading: storesLoading$ | async, error: storesError$ | async}">
+  </ng-container>
+</div>
 
 <ng-template #entityListTemplate let-entityType="entityType" let-entityList="entityList" let-loading="loading" let-error="error">
   <app-sidebar-entity-list-title [entity-list-title]="entityType"></app-sidebar-entity-list-title>
-  <app-sidebar-entity-list *ngIf="entityList"
-                           [entity-list]="entityList"
-                           [entity-type]="entityType">
-  </app-sidebar-entity-list>
+  <app-sidebar-entity-list-wrapper>
+    <app-sidebar-entity-list *ngIf="entityList"
+                             [entity-list]="entityList"
+                             [entity-type]="entityType">
+    </app-sidebar-entity-list>
+  </app-sidebar-entity-list-wrapper>
   <app-sidebar-entity-list-loading *ngIf="loading" [entity-type]="entityType"></app-sidebar-entity-list-loading>
   <app-sidebar-entity-list-error *ngIf="error" [entity-type]="entityType"></app-sidebar-entity-list-error>
 </ng-template>
