@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../state/types/app-state.interface';
-import { GameDetailsActions } from '../../../state/features/game-details/actions/game-details.actions';
-import { API_GAMES_URL } from '../../../global/constants/api-constants';
+import { AppStateInterface } from '../../../../state/types/app-state.interface';
+import { GameDetailsActions } from '../../../../state/features/game-details/actions/game-details.actions';
+import { API_GAMES_URL } from '../../../../global/constants/api-constants';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GameDetailsInterface } from '../../../global/types/entities/games/game-details.interface';
-import { GameDetailsSelectors } from '../../../state/features/game-details/selectors/game-details.selectors';
-import { BackendErrorResponseInterface } from '../../../state/types/backend-error-response.interface';
+import { GameDetailsInterface } from '../../../../global/types/entities/games/game-details.interface';
+import { GameDetailsSelectors } from '../../../../state/features/game-details/selectors/game-details.selectors';
+import { BackendErrorResponseInterface } from '../../../../state/types/backend-error-response.interface';
 
 @Component({
   selector: 'app-game-details',
