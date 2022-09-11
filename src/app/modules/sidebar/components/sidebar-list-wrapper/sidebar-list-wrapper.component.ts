@@ -9,7 +9,7 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-sidebar-entity-list-wrapper',
+  selector: 'app-sidebar-list-wrapper',
   animations: [
     trigger('openCloseSidebarList', [
       state(
@@ -27,9 +27,9 @@ import {
       transition('open <=> close', [animate('200ms ease-in-out')]),
     ]),
   ],
-  templateUrl: './sidebar-entity-list-wrapper.component.html',
+  templateUrl: './sidebar-list-wrapper.component.html',
 })
-export class SidebarEntityListWrapperComponent {
+export class SidebarListWrapperComponent {
   public arrowUpIcon = faChevronUp;
   public arrowDownIcon = faChevronDown;
   public isOpen: boolean = false;

@@ -5,7 +5,7 @@ import { SidebarEntityListComponent } from './components/sidebar-entity-list/sid
 import { SidebarEntityListTitleComponent } from './components/sidebar-entity-list-title/sidebar-entity-list-title.component';
 import { SidebarEntityListLoadingComponent } from './components/sidebar-entity-list-loading/sidebar-entity-list-loading.component';
 import { SidebarEntityListErrorComponent } from './components/sidebar-entity-list-error/sidebar-entity-list-error.component';
-import { SidebarEntityListWrapperComponent } from './components/sidebar-entity-list-wrapper/sidebar-entity-list-wrapper.component';
+import { SidebarListWrapperComponent } from './components/sidebar-list-wrapper/sidebar-list-wrapper.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconService } from '../../global/utils/services/icon.service';
@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarEntityListTitleComponent,
     SidebarEntityListLoadingComponent,
     SidebarEntityListErrorComponent,
-    SidebarEntityListWrapperComponent,
+    SidebarListWrapperComponent,
   ],
   imports: [
     CommonModule,

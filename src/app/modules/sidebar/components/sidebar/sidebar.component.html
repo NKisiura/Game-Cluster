@@ -12,11 +12,11 @@
 
 <ng-template #entityListTemplate let-entityType="entityType" let-entityList="entityList" let-loading="loading" let-error="error">
   <app-sidebar-entity-list-title [entity-list-title]="entityType"></app-sidebar-entity-list-title>
-  <app-sidebar-entity-list-wrapper *ngIf="entityList">
+  <app-sidebar-list-wrapper *ngIf="entityList">
     <app-sidebar-entity-list [entity-list]="entityList"
                              [entity-type]="entityType">
     </app-sidebar-entity-list>
-  </app-sidebar-entity-list-wrapper>
+  </app-sidebar-list-wrapper>
   <app-sidebar-entity-list-loading *ngIf="loading" [entity-type]="entityType"></app-sidebar-entity-list-loading>
   <app-sidebar-entity-list-error *ngIf="error" [entity-type]="entityType"></app-sidebar-entity-list-error>
 </ng-template>
