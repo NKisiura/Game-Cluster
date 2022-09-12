@@ -1,5 +1,6 @@
 <div class="mr-4 py-4 overflow-y-auto sticky top-0 h-screen w-52 sidebar-scrollbar">
   <a [routerLink]="gamesRouterLink" class="font-bold capitalize text-2xl text-white block mb-3 hover:text-grey-400 transition-colors duration-200">All Games</a>
+  <ng-container [ngTemplateOutlet]="browseListTemplate"></ng-container>
   <ng-container [ngTemplateOutlet]="entityListTemplate"
                 [ngTemplateOutletContext]="{entityType: 'platforms', entityList: platformsList$ | async, loading: platformsLoading$ | async, error: platformsError$ | async}">
   </ng-container>
@@ -12,7 +13,7 @@
 </div>
 
 <ng-template #entityListTemplate let-entityType="entityType" let-entityList="entityList" let-loading="loading" let-error="error">
-  <app-sidebar-entity-list-title [entity-list-title]="entityType"></app-sidebar-entity-list-title>
+  <app-sidebar-list-title [entity-list-title]="entityType"></app-sidebar-list-title>
   <app-sidebar-list-wrapper *ngIf="entityList">
     <app-sidebar-entity-list [entity-list]="entityList"
                              [entity-type]="entityType">
@@ -20,4 +21,11 @@
   </app-sidebar-list-wrapper>
   <app-sidebar-entity-list-loading *ngIf="loading" [entity-type]="entityType"></app-sidebar-entity-list-loading>
   <app-sidebar-entity-list-error *ngIf="error" [entity-type]="entityType"></app-sidebar-entity-list-error>
+</ng-template>
+
+<ng-template #browseListTemplate>
+  <a [routerLink]="browseRouterLink" class="font-bold capitalize text-2xl text-white block mb-3 hover:text-grey-400 transition-colors duration-200">Browse</a>
+  <app-sidebar-list-wrapper>
+    <app-sidebar-browse-list></app-sidebar-browse-list>
+  </app-sidebar-list-wrapper>
 </ng-template>

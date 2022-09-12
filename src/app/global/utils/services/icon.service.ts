@@ -12,10 +12,16 @@ import {
   IconDefinition,
 } from '@fortawesome/free-brands-svg-icons';
 import {
+  faBookOpen,
   faCircleQuestion,
+  faCode,
   faDiceFive,
+  faDownload,
   faGamepad,
+  faGhost,
+  faHashtag,
   faSpinner,
+  faUser,
   faWarning,
 } from '@fortawesome/free-solid-svg-icons';
 import { MainEntitiesService } from './main-entities.service';
@@ -40,6 +46,14 @@ export class IconService {
   public steamIcon = faSteam;
   public gogIcon = faGoodreads;
   public epicGamesStoreIcon = faDiceFive;
+
+  public gamepadIcon = faGamepad;
+  public downloadIcon = faDownload;
+  public ghostIcon = faGhost;
+  public userIcon = faUser;
+  public hashtagIcon = faHashtag;
+  public codeIcon = faCode;
+  public bookIcon = faBookOpen;
 
   constructor(private mainEntitiesService: MainEntitiesService) {}
 
@@ -77,7 +91,7 @@ export class IconService {
     );
   }
 
-  private getPlatformIconBySlug(platformSlug: string): IconDefinition {
+  public getPlatformIconBySlug(platformSlug: string): IconDefinition {
     switch (platformSlug) {
       case 'pc': {
         return this.windowsIcon;
@@ -139,7 +153,7 @@ export class IconService {
     }
   }
 
-  private getStoreIconBySlug(storeSlug: string): IconDefinition {
+  public getStoreIconBySlug(storeSlug: string): IconDefinition {
     switch (storeSlug) {
       case 'xbox-store': {
         return this.xboxIcon;
@@ -167,6 +181,35 @@ export class IconService {
       }
       case 'epic-games': {
         return this.epicGamesStoreIcon;
+      }
+      default: {
+        return this.getUndefinedIcon();
+      }
+    }
+  }
+
+  public getEntityTypeIconBySlug(entitySlug: string): IconDefinition {
+    switch (entitySlug) {
+      case 'platforms': {
+        return this.gamepadIcon;
+      }
+      case 'genres': {
+        return this.ghostIcon;
+      }
+      case 'stores': {
+        return this.downloadIcon;
+      }
+      case 'creators': {
+        return this.userIcon;
+      }
+      case 'tags': {
+        return this.hashtagIcon;
+      }
+      case 'developers': {
+        return this.codeIcon;
+      }
+      case 'publishers': {
+        return this.bookIcon;
       }
       default: {
         return this.getUndefinedIcon();

@@ -27,6 +27,7 @@ import { RouterLinks } from '../../../../global/constants/router-links';
 })
 export class SidebarComponent implements OnInit {
   public gamesRouterLink: string = RouterLinks.GAMES_ROUTER_LINK;
+  public browseRouterLink: string = RouterLinks.BROWSE_ROUTER_LINK;
 
   public platformsLoading$ = new Observable<boolean>();
   public platformsError$ =
