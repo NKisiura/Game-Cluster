@@ -19,6 +19,8 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { GameDetailsModule } from './modules/game-details/game-details.module';
 import { PageNotFoundModule } from './global/modules/layouts/page-not-found/page-not-found.module';
 import { BrowseModule } from './modules/browse/browse.module';
+import { AppLoaderModule } from './global/modules/layouts/app-loader/app-loader.module';
+import { AppBackgroundModule } from './global/modules/layouts/app-background/app-background.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +42,8 @@ import { BrowseModule } from './modules/browse/browse.module';
     NgProgressModule,
     NgProgressHttpModule,
     BrowseModule,
+    AppLoaderModule,
+    AppBackgroundModule,
     PageNotFoundModule,
   ],
   providers: [
