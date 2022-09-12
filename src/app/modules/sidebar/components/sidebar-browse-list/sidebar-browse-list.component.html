@@ -1,5 +1,6 @@
 <div *ngFor="let entityType of entityTypes">
   <a [routerLink]="[browseRouterLink, entityType]"
+     [routerLinkActive]="'active'"
      class="group flex items-center gap-2 mb-2 text-white font-light"
   >
     <div class="w-8 h-8 flex items-center justify-center rounded-lg text-white bg-grey-800 group-hover:text-grey-800 group-hover:bg-white transition-colors duration-200">

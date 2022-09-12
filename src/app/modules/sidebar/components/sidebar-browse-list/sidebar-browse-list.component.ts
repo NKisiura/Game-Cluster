@@ -7,6 +7,7 @@ import { RouterLinks } from '../../../../global/constants/router-links';
 @Component({
   selector: 'app-sidebar-browse-list',
   templateUrl: 'sidebar-browse-list.component.html',
+  styleUrls: ['./sidebar-browse-list.component.scss'],
 })
 export class SidebarBrowseListComponent {
   public browseRouterLink: string = RouterLinks.BROWSE_ROUTER_LINK;
