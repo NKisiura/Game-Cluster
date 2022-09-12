@@ -1,4 +1,5 @@
 <div class="mr-4 py-4 overflow-y-auto sticky top-0 h-screen w-52 sidebar-scrollbar">
+  <a [routerLink]="gamesRouterLink" class="font-bold capitalize text-2xl text-white block mb-3 hover:text-grey-400 transition-colors duration-200">All Games</a>
   <ng-container [ngTemplateOutlet]="entityListTemplate"
                 [ngTemplateOutletContext]="{entityType: 'platforms', entityList: platformsList$ | async, loading: platformsLoading$ | async, error: platformsError$ | async}">
   </ng-container>

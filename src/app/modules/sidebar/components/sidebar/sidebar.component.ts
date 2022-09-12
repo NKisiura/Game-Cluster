@@ -18,6 +18,7 @@ import { StoresActions } from '../../../../state/features/stores/actions/stores.
 import { StoreInterface } from '../../../../global/types/entities/stores/store.interface';
 import { StoresSelectors } from '../../../../state/features/stores/selectors/stores.selectors';
 import { MainEntitiesService } from '../../../../global/utils/services/main-entities.service';
+import { RouterLinks } from '../../../../global/constants/router-links';
 
 @Component({
   selector: 'app-sidebar',
@@ -25,6 +26,8 @@ import { MainEntitiesService } from '../../../../global/utils/services/main-enti
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  public gamesRouterLink: string = RouterLinks.GAMES_ROUTER_LINK;
+
   public platformsLoading$ = new Observable<boolean>();
   public platformsError$ =
     new Observable<BackendErrorResponseInterface | null>();
