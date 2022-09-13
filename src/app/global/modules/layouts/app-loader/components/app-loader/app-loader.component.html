@@ -1,1 +1,20 @@
-<div *ngIf="loading" [@showHide] class="fixed z-50 top-0 left-0 w-screen h-screen bg-black text-white flex justify-center items-center">Loading...</div>
+<div *ngIf="loading" [@showHide] class="fixed z-50 top-0 left-0 w-screen h-screen bg-grey-900 text-white flex justify-center items-center">
+  <div>
+    <div class="loader">
+      <svg viewBox="0 0 80 80">
+        <circle id="test" cx="40" cy="40" r="32"></circle>
+      </svg>
+    </div>
+    <div class="loader triangle">
+      <svg viewBox="0 0 86 80">
+        <polygon points="43 8 79 72 7 72"></polygon>
+      </svg>
+    </div>
+    <div class="loader">
+      <svg viewBox="0 0 80 80">
+        <rect x="8" y="8" width="64" height="64"></rect>
+      </svg>
+    </div>
+  </div>
+</div>
+
