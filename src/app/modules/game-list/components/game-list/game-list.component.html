@@ -1,6 +1,9 @@
 <ng-container *ngIf="gamesError$ | async">game list error</ng-container>
 <ng-container *ngIf="gamesList$ | async as gameList">
-  <div *ngFor="let game of gameList">
-    <app-game-card [game]="game"></app-game-card>
-  </div>
+  <app-card-list>
+    <app-game-card *ngFor="let game of gameList" [game]="game"></app-game-card>
+  </app-card-list>
+</ng-container>
+<ng-container *ngIf="gamesLoading$ | async">
+  <app-loading-spinner></app-loading-spinner>
 </ng-container>

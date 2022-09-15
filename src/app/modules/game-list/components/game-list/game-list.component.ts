@@ -17,6 +17,7 @@ import { BackendErrorResponseInterface } from '../../../../state/types/backend-e
 export class GameListComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
+  public gamesLoading$ = new Observable<boolean>();
   public gamesError$ = new Observable<BackendErrorResponseInterface | null>();
   public gamesList$ = new Observable<GameInterface[] | null>();
   public gamesNextPage$ = new Observable<string | null>();
@@ -46,6 +47,9 @@ export class GameListComponent implements OnInit, OnDestroy {
   }
 
   private initValues(): void {
+    this.gamesLoading$ = this.store$.pipe(
+      select(GamesSelectors.gamesLoadingSelector)
+    );
     this.gamesError$ = this.store$.pipe(
       select(GamesSelectors.gamesErrorSelector)
     );

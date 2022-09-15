@@ -6,6 +6,11 @@ const gamesFeatureSelector =
   createFeatureSelector<GamesStateInterface>(gamesFeatureKey);
 
 export namespace GamesSelectors {
+  export const gamesLoadingSelector = createSelector(
+    gamesFeatureSelector,
+    (gamesState: GamesStateInterface) => gamesState.isLoading
+  );
+
   export const gamesErrorSelector = createSelector(
     gamesFeatureSelector,
     (gamesState: GamesStateInterface) => gamesState.error
