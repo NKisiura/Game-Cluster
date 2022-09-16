@@ -8,8 +8,6 @@ import { SidebarEntityListErrorComponent } from './components/sidebar-entity-lis
 import { SidebarListWrapperComponent } from './components/sidebar-list-wrapper/sidebar-list-wrapper.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { IconService } from '../../global/utils/services/icon.service';
-import { MainEntitiesService } from '../../global/utils/services/main-entities.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarBrowseListComponent } from './components/sidebar-browse-list/sidebar-browse-list.component';
 
@@ -30,6 +28,5 @@ import { SidebarBrowseListComponent } from './components/sidebar-browse-list/sid
     BrowserAnimationsModule,
   ],
   exports: [SidebarComponent],
-  providers: [IconService, MainEntitiesService],
 })
 export class SidebarModule {}
