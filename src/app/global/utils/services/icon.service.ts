@@ -28,7 +28,9 @@ import { MainEntitiesService } from './main-entities.service';
 import * as _ from 'lodash';
 import { EntityTypes } from '../../types/entities/entity-types.enum';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class IconService {
   public undefinedIcon = faCircleQuestion;
   public loadingIcon = faSpinner;
