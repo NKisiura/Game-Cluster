@@ -13,6 +13,10 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {
   faBookOpen,
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight,
+  faChevronUp,
   faCircleQuestion,
   faCode,
   faDiceFive,
@@ -57,6 +61,11 @@ export class IconService {
   public codeIcon = faCode;
   public bookIcon = faBookOpen;
 
+  public arrowUpIcon = faChevronUp;
+  public arrowRightIcon = faChevronRight;
+  public arrowDownIcon = faChevronDown;
+  public arrowLeftIcon = faChevronLeft;
+
   constructor(private mainEntitiesService: MainEntitiesService) {}
 
   public getLoadingIcon(): IconDefinition {
@@ -69,6 +78,15 @@ export class IconService {
 
   public getWarningIcon(): IconDefinition {
     return this.warningIcon;
+  }
+
+  public getArrowIcons(): ArrowIconsKit {
+    return {
+      up: this.arrowUpIcon,
+      right: this.arrowRightIcon,
+      left: this.arrowLeftIcon,
+      down: this.arrowDownIcon,
+    };
   }
 
   public getIconBySlug(slug: string): IconDefinition {
@@ -218,4 +236,11 @@ export class IconService {
       }
     }
   }
+}
+
+export interface ArrowIconsKit {
+  up: IconDefinition;
+  right: IconDefinition;
+  down: IconDefinition;
+  left: IconDefinition;
 }
