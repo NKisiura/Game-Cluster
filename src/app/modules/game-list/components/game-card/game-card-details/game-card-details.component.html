@@ -1,0 +1,37 @@
+<ng-container [ngTemplateOutlet]="detailsItemTemplate"
+              [ngTemplateOutletContext]="{title: 'Release date', active: false, text: getFormattedReleaseDate()}">
+</ng-container>
+<ng-container [ngTemplateOutlet]="detailsItemTemplate"
+              [ngTemplateOutletContext]="{title: 'Genres', active: true, entityType: 'genres', entityList: genresList, acceptableCountToView: 3}">
+</ng-container>
+<ng-container [ngTemplateOutlet]="detailsItemTemplate"
+              [ngTemplateOutletContext]="{title: 'Tags', active: true, entityType: 'tags', entityList: getOnlyEnglishTagList(), acceptableCountToView: 2}">
+</ng-container>
+
+<ng-template #detailsItemTemplate
+             let-title="title"
+             let-active="active"
+             let-text="text"
+             let-entityType="entityType"
+             let-entityList="entityList"
+             let-acceptableCountToView="acceptableCountToView"
+>
+  <div class="flex items-center justify-between py-2 border-b border-b-grey-600 last:border-b-0">
+    <div class="text-grey-300 font-light text-xs">{{title}}:</div>
+    <div *ngIf="!active" class="text-white font-light text-xs">{{text}}</div>
+    <div *ngIf="active">
+      <a *ngFor="let entity of getAcceptableCountOfEntitiesToView(acceptableCountToView, entityList); let last = last"
+         [routerLink]="gamesRouterLink"
+         [queryParams]="setQueryParams(entityType, entity)"
+         class="text-white font-light text-xs hover:text-grey-300 transition-colors duration-200"
+      >
+        <span class="underline underline-offset-1">{{entity.name}}</span><span *ngIf="!last" class="text-white">, </span>
+      </a>
+      <span *ngIf="getCountOfRestEntities(acceptableCountToView, entityList) as countOfRestEntities"
+            class="text-white font-light text-xs"
+      >
+        +{{countOfRestEntities}}
+      </span>
+    </div>
+  </div>
+</ng-template>

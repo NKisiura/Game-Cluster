@@ -24,6 +24,7 @@ import {
   faGamepad,
   faGhost,
   faHashtag,
+  faPlay,
   faSpinner,
   faUser,
   faWarning,
@@ -65,6 +66,8 @@ export class IconService {
   public arrowRightIcon = faChevronRight;
   public arrowDownIcon = faChevronDown;
   public arrowLeftIcon = faChevronLeft;
+
+  public playIcon = faPlay;
 
   constructor(private mainEntitiesService: MainEntitiesService) {}
 
