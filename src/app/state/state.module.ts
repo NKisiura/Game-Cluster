@@ -5,6 +5,7 @@ import { GamesStateModule } from './features/games/games-state.module';
 import { GameDetailsStateModule } from './features/game-details/game-details-state.module';
 import { GenresStateModule } from './features/genres/genres-state.module';
 import { StoresStateModule } from './features/stores/stores-state.module';
+import { TagsStateModule } from './features/tags/tags-state.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { StoresStateModule } from './features/stores/stores-state.module';
     GameDetailsStateModule,
     GenresStateModule,
     StoresStateModule,
+    TagsStateModule,
   ],
 })
 export class StateModule {}
