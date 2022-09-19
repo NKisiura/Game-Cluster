@@ -22,6 +22,7 @@
     <div *ngIf="active">
       <a *ngFor="let entity of getAcceptableCountOfEntitiesToView(acceptableCountToView, entityList); let last = last"
          [routerLink]="gamesRouterLink"
+         [routerLinkActive]="'text-grey-300 cursor-default'"
          [queryParams]="setQueryParams(entityType, entity)"
          class="text-white font-light text-xs hover:text-grey-300 transition-colors duration-200"
       >
