@@ -7,10 +7,12 @@ import {
 import { IconService } from '../../../../../global/utils/services/icon.service';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-game-card-media',
   templateUrl: './game-card-media.component.html',
+  styleUrls: ['./game-card-media.component.scss'],
   animations: [
     trigger('showHide', [
       transition(':enter', [
@@ -30,6 +32,18 @@ export class GameCardMediaComponent {
   @Input('background-image') public backgroundImage!: string;
   @Input('game-clip') public gameClip!: GameClip | null;
   @Input('screenshots') public screenshots!: GameShortScreenshot[];
+
+  public carouselOptions: OwlOptions = {
+    items: 1,
+    loop: true,
+    dots: true,
+    dotsEach: true,
+    nav: true,
+    navText: [
+      '<i class="fa fa-chevron-left"></i>',
+      '<i class="fa fa-chevron-right"></i>',
+    ],
+  };
 
   constructor(
     private imageService: ImageService,

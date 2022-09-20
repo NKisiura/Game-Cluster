@@ -12,6 +12,7 @@ import { GameCardDetailsComponent } from './components/game-card/game-card-detai
 import { GameCardShowMoreButtonComponent } from './components/game-card/game-card-show-more-button/game-card-show-more-button.component';
 import { GameCardMediaComponent } from './components/game-card/game-card-media/game-card-media.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
     LoadingSpinnerModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    CarouselModule,
   ],
 })
 export class GameListModule {}

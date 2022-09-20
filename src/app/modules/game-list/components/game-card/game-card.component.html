@@ -1,5 +1,5 @@
 <div #gameCard (mouseenter)="mouseEnterGameCard()" (mouseleave)="mouseLeaveGameCard()" class="group relative w-full h-full">
-  <div class="w-full h-full text-white bg-grey-800 rounded-2xl shadow-md scale-100 hover:absolute hover:scale-105 hover:h-auto hover:z-20 transition-transform duration-300">
+  <div class="w-full h-full text-white bg-grey-800 overflow-hidden rounded-2xl shadow-md scale-100 hover:absolute hover:scale-105 hover:h-auto hover:z-20 transition-transform duration-300">
     <app-game-card-media [is-card-hovered]="isCardHovered"
                          [game-name]="game.name"
                          [background-image]="game.background_image"

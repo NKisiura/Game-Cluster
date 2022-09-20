@@ -7,6 +7,10 @@
   </div>
   <div *ngIf="isCardHovered" [@showHide]="" class="absolute w-full">
     <video *ngIf="gameClip" class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" autoplay loop [muted]="true"></video>
-    <img *ngIf="!gameClip" class="rounded-t-2xl w-full h-48 object-cover" [src]="getCroppedImage(screenshots[0].image)" [alt]="gameName + ' image'">
+    <owl-carousel-o *ngIf="!gameClip" [options]="carouselOptions">
+      <ng-template *ngFor="let screenshot of screenshots" carouselSlide>
+        <img class="w-full h-48 object-cover" [src]="getCroppedImage(screenshot.image)" [alt]="gameName + ' image'">
+      </ng-template>
+    </owl-carousel-o>
   </div>
 </div>
