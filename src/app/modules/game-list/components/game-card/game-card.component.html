@@ -1,5 +1,5 @@
 <div #gameCard (mouseenter)="mouseEnterGameCard()" (mouseleave)="mouseLeaveGameCard()" class="group relative w-full h-full">
-  <div class="w-full h-full text-white bg-grey-800 rounded-2xl shadow-md scale-100 hover:absolute hover:scale-105 hover:h-auto hover:z-20 transition-all duration-300">
+  <div class="w-full h-full text-white bg-grey-800 rounded-2xl shadow-md scale-100 hover:absolute hover:scale-105 hover:h-auto hover:z-20 transition-transform duration-300">
     <app-game-card-media [is-card-hovered]="isCardHovered"
                          [game-name]="game.name"
                          [background-image]="game.background_image"
@@ -11,7 +11,7 @@
         <app-game-card-platform-list [parent-platform-list]="game.parent_platforms"></app-game-card-platform-list>
         <app-game-card-metacritic-score *ngIf="game.metacritic" [metacritic-score]="game.metacritic"></app-game-card-metacritic-score>
       </div>
-      <a [routerLink]="[gameRouterLink, game.slug]" class="text-2xl font-semibold hover:text-grey-300 transition-all duration-200">{{game.name}}</a>
+      <a [routerLink]="[gameRouterLink, game.slug]" class="text-2xl font-semibold hover:text-grey-300" [ngClass]="{'duration-200': isCardHovered}">{{game.name}}</a>
       <div class="hidden group-hover:block">
         <app-game-card-details [release-date]="game.released" [genres-list]="game.genres" [tag-list]="game.tags"></app-game-card-details>
         <app-game-card-show-more-button (click)="showMoreButtonClicked()"></app-game-card-show-more-button>
