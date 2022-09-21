@@ -9,6 +9,7 @@ import {
   faSteam,
   faWindows,
   faXbox,
+  faYoutube,
   IconDefinition,
 } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -66,6 +67,8 @@ export class IconService {
   public arrowRightIcon = faChevronRight;
   public arrowDownIcon = faChevronDown;
   public arrowLeftIcon = faChevronLeft;
+
+  public youtubeIcon = faYoutube;
 
   public playIcon = faPlay;
 

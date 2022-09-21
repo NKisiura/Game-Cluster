@@ -8,6 +8,7 @@ import { IconService } from '../../../../../global/utils/services/icon.service';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { YOUTUBE_VIDEO_BASE_URL } from '../../../../../global/constants/api-constants';
 
 @Component({
   selector: 'app-game-card-media',
@@ -33,6 +34,7 @@ export class GameCardMediaComponent {
   @Input('game-clip') public gameClip!: GameClip | null;
   @Input('screenshots') public screenshots!: GameShortScreenshot[];
 
+  public youtubeVideoBaseUrl = YOUTUBE_VIDEO_BASE_URL;
   public carouselOptions: OwlOptions = {
     items: 1,
     loop: true,
@@ -56,5 +58,9 @@ export class GameCardMediaComponent {
 
   public getPlayIcon(): IconDefinition {
     return this.iconService.playIcon;
+  }
+
+  public getYoutubeIcon(): IconDefinition {
+    return this.iconService.youtubeIcon;
   }
 }

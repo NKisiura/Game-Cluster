@@ -6,7 +6,12 @@
     </div>
   </div>
   <div *ngIf="isCardHovered" [@showHide]="" class="absolute w-full">
-    <video *ngIf="gameClip" class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" autoplay loop [muted]="true"></video>
+    <div *ngIf="gameClip">
+      <video class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" autoplay loop [muted]="true"></video>
+      <a [href]="youtubeVideoBaseUrl + gameClip.video" data-fancybox class="flex items-center text-xs font-light py-1 px-2 border border-transparent rounded-md absolute bottom-2 right-2 bg-black bg-opacity-50 transition duration-200 hover:border-grey-300">
+        <fa-icon class="text-sm mr-1.5" [icon]="getYoutubeIcon()"></fa-icon>Play full video
+      </a>
+    </div>
     <owl-carousel-o *ngIf="!gameClip" [options]="carouselOptions">
       <ng-template *ngFor="let screenshot of screenshots" carouselSlide>
         <img class="w-full h-48 object-cover" [src]="getCroppedImage(screenshot.image)" [alt]="gameName + ' image'">
