@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ImageService {
   public getCroppedImage600x400(imageUrl: string): string {
-    const splitedUrl = imageUrl.split('/');
-    splitedUrl.splice(4, 0, 'crop', '600', '400');
-    return splitedUrl.join('/');
+    return _.replace(imageUrl, 'media/', 'media/crop/600/400/');
   }
 }
