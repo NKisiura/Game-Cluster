@@ -13,6 +13,7 @@ import { GameCardShowMoreButtonComponent } from './components/game-card/game-car
 import { GameCardMediaComponent } from './components/game-card/game-card-media/game-card-media.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LoadMoreButtonComponent } from './components/load-more-button/load-more-button.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
     GameCardDetailsComponent,
     GameCardShowMoreButtonComponent,
     GameCardMediaComponent,
+    LoadMoreButtonComponent,
   ],
   imports: [
     CommonModule,

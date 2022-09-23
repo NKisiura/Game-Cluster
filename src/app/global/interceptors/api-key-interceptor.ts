@@ -14,8 +14,22 @@ export class ApiKeyInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const modifiedRequest = req.clone({
-      params: req.params.set('key', API_KEY),
+    if (this.isRequestAlreadyHasApiKey(req)) {
+      return next.handle(req);
+    }
+    return this.getModifiedRequestWithApiKey(req, next);
+  }
+
+  private isRequestAlreadyHasApiKey(request: HttpRequest<any>): boolean {
+    return request.urlWithParams.includes('key');
+  }
+
+  private getModifiedRequestWithApiKey(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    const modifiedRequest = request.clone({
+      params: request.params.set('key', API_KEY),
     });
     return next.handle(modifiedRequest);
   }

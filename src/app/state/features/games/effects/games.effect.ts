@@ -23,5 +23,22 @@ export class GamesEffect {
       })
     )
   );
+
+  public getNextPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(GamesActions.getNextPage),
+      switchMap(({ url }) => {
+        return this.gamesService.getNextPage(url).pipe(
+          map((getNextPageResponse: GetGamesResponseInterface) =>
+            GamesActions.getNextPageSuccess({ getNextPageResponse })
+          ),
+          catchError((error: BackendErrorResponseInterface) =>
+            of(GamesActions.getNextPageFailure({ error }))
+          )
+        );
+      })
+    )
+  );
+
   constructor(private actions$: Actions, private gamesService: GamesService) {}
 }

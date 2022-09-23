@@ -34,7 +34,30 @@ export const gamesReducer = createReducer(
       isLoading: false,
       error: action.error,
     })
-  )
+  ),
+  on(
+    GamesActions.getNextPage,
+    (state): GamesStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(GamesActions.getNextPageSuccess, (state, action) => ({
+    ...state,
+    isLoading: false,
+    data: {
+      ...action.getNextPageResponse,
+      results: [
+        ...(state.data!.results || []),
+        ...(action.getNextPageResponse.results || []),
+      ],
+    },
+  })),
+  on(GamesActions.getNextPageFailure, (state, action) => ({
+    ...state,
+    isLoading: false,
+    error: action.error,
+  }))
 );
 
 export function gamesReducers(state: GamesStateInterface, action: Action) {

@@ -11,4 +11,8 @@ export class GamesService {
   public getGames(url: string): Observable<GetGamesResponseInterface> {
     return this.http.get<GetGamesResponseInterface>(API_BASE_URL + url);
   }
+
+  public getNextPage(url: string): Observable<GetGamesResponseInterface> {
+    return this.http.get<GetGamesResponseInterface>(url);
+  }
 }

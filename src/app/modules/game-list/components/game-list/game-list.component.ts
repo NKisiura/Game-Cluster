@@ -37,6 +37,10 @@ export class GameListComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
+  public loadMoreGames(url: string): void {
+    this.store$.dispatch(GamesActions.getNextPage({ url }));
+  }
+
   private initActions(): void {
     this.activatedRoute.queryParams
       .pipe(takeUntil(this.unsubscribe$))

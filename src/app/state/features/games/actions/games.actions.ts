@@ -18,4 +18,19 @@ export namespace GamesActions {
     GamesActionTypes.GET_GAMES_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getNextPage = createAction(
+    GamesActionTypes.GET_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getNextPageSuccess = createAction(
+    GamesActionTypes.GET_NEXT_PAGE_SUCCESS,
+    props<{ getNextPageResponse: GetGamesResponseInterface }>()
+  );
+
+  export const getNextPageFailure = createAction(
+    GamesActionTypes.GET_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }
