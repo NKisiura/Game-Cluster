@@ -13,6 +13,34 @@ export class GameCardPlatformListComponent {
 
   constructor(private iconService: IconService) {}
 
+  public getAcceptablePlatformsToView(platforms: GameParentPlatform[]) {
+    return this.getGameParentPlatformListWithIcon(platforms);
+  }
+
+  public getGameParentPlatformListWithIcon(
+    platforms: GameParentPlatform[]
+  ): GameParentPlatform[] {
+    return platforms.filter((platform) => {
+      return (
+        this.getPlatformIcon(platform.platform.slug) !== this.getUndefinedIcon()
+      );
+    });
+  }
+
+  public getCountOfPlatformsWithoutIcon(
+    platforms: GameParentPlatform[]
+  ): number {
+    const countOfPlatformsWithoutIcon =
+      platforms.length -
+      this.getGameParentPlatformListWithIcon(platforms).length;
+
+    return countOfPlatformsWithoutIcon < 0 ? 0 : countOfPlatformsWithoutIcon;
+  }
+
+  public getUndefinedIcon(): IconDefinition {
+    return this.iconService.getUndefinedIcon();
+  }
+
   public getPlatformIcon(platformSlug: string): IconDefinition {
     return this.iconService.getPlatformIconBySlug(platformSlug);
   }

@@ -1,5 +1,10 @@
-<div class="flex gap-2">
-  <fa-icon *ngFor="let platform of gameParentPlatformList"
+<div class="flex items-center gap-2">
+  <fa-icon *ngFor="let platform of getAcceptablePlatformsToView(gameParentPlatformList)"
            [icon]="getPlatformIcon(platform.platform.slug)">
   </fa-icon>
+  <span *ngIf="getCountOfPlatformsWithoutIcon(gameParentPlatformList) as countOfPlatformsWithoutIcon"
+        class="text-white font-light text-sm"
+  >
+    +{{countOfPlatformsWithoutIcon}}
+  </span>
 </div>
