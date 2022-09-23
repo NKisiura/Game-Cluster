@@ -1,13 +1,13 @@
 <div class="h-48">
   <div *ngIf="!isCardHovered" [@showHide]="" class="absolute w-full">
-    <img class="rounded-t-2xl w-full h-48 object-cover" [src]="getCroppedImage(backgroundImage)" [alt]="gameName + ' image'">
+    <img class="rounded-t-2xl w-full h-48 object-cover" [src]="getCroppedImage(backgroundImage)" [alt]="gameName + ' image'" loading="lazy">
     <div *ngIf="gameClip" class="absolute left-4 bottom-4 flex justify-center items-center w-12 h-12 text-xl rounded-full bg-black bg-opacity-50">
       <fa-icon [icon]="getPlayIcon()" style="margin-left: 3px"></fa-icon>
     </div>
   </div>
   <div *ngIf="isCardHovered" [@showHide]="" class="absolute w-full">
     <div *ngIf="gameClip">
-      <video class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" autoplay loop [muted]="true"></video>
+      <video class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" preload="metadata" autoplay loop [muted]="true" [poster]="gameClip.preview"></video>
       <a [href]="youtubeVideoBaseUrl + gameClip.video" data-fancybox class="flex items-center text-xs font-light py-1 px-2 border border-transparent rounded-md absolute bottom-2 right-2 bg-black bg-opacity-50 transition duration-200 hover:border-grey-300">
         <fa-icon class="text-sm mr-1.5" [icon]="getYoutubeIcon()"></fa-icon>Play full video
       </a>
