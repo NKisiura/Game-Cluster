@@ -4,7 +4,7 @@
     <app-game-card *ngFor="let game of gameList" [game]="game"></app-game-card>
   </app-card-list>
   <ng-container *ngIf="!(gamesLoading$ | async) && (gamesNextPage$ | async)">
-    <app-load-more-button *ngIf="gamesNextPage$ | async as nextPageUrl"
+    <app-load-more-button #loadMoreButton *ngIf="gamesNextPage$ | async as nextPageUrl"
                           (load-more-button-clicked)="loadMoreGames(nextPageUrl)">
     </app-load-more-button>
   </ng-container>

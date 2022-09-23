@@ -1,7 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { AppStateInterface } from '../../../../state/types/app-state.interface';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { fromEvent, Observable, skip, Subject, takeUntil } from 'rxjs';
 import { GameInterface } from '../../../../global/types/entities/games/game.interface';
 import { GamesSelectors } from '../../../../state/features/games/selectors/games.selectors';
 import { GamesActions } from '../../../../state/features/games/actions/games.actions';
@@ -9,14 +15,17 @@ import { API_GAMES_URL } from '../../../../global/constants/api-constants';
 import { ActivatedRoute, Params } from '@angular/router';
 import { stringify } from 'query-string';
 import { BackendErrorResponseInterface } from '../../../../state/types/backend-error-response.interface';
+import { LoadMoreButtonComponent } from '../load-more-button/load-more-button.component';
 
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
 })
-export class GameListComponent implements OnInit, OnDestroy {
+export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
+  @ViewChild('loadMoreButton')
+  private loadMoreButtonElement!: LoadMoreButtonComponent;
   public gamesLoading$ = new Observable<boolean>();
   public gamesError$ = new Observable<BackendErrorResponseInterface | null>();
   public gamesList$ = new Observable<GameInterface[] | null>();
@@ -32,9 +41,32 @@ export class GameListComponent implements OnInit, OnDestroy {
     this.initValues();
   }
 
+  ngAfterViewInit(): void {
+    fromEvent(window, 'scroll')
+      .pipe(skip(1), takeUntil(this.unsubscribe$))
+      .subscribe(() => this.scrollEvent());
+  }
+
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  private scrollEvent(): void {
+    const scrollHeight = document.scrollingElement!.scrollHeight;
+    const scrollTop = document.scrollingElement!.scrollTop;
+    const clientHeight = document.scrollingElement!.clientHeight;
+
+    if (
+      scrollHeight - (scrollTop + clientHeight) < 35 &&
+      this.loadMoreButtonElement
+    ) {
+      this.loadMoreGamesOnGameListScrollDown();
+    }
+  }
+
+  private loadMoreGamesOnGameListScrollDown(): void {
+    this.loadMoreButtonElement.click();
   }
 
   public loadMoreGames(url: string): void {
