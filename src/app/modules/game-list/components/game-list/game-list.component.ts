@@ -1,13 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { AppStateInterface } from '../../../../state/types/app-state.interface';
-import { fromEvent, Observable, skip, Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { GameInterface } from '../../../../global/types/entities/games/game.interface';
 import { GamesSelectors } from '../../../../state/features/games/selectors/games.selectors';
 import { GamesActions } from '../../../../state/features/games/actions/games.actions';
@@ -21,7 +15,7 @@ import { LoadMoreButtonComponent } from '../load-more-button/load-more-button.co
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
 })
-export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class GameListComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   @ViewChild('loadMoreButton')
@@ -41,36 +35,17 @@ export class GameListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.initValues();
   }
 
-  ngAfterViewInit(): void {
-    fromEvent(window, 'scroll')
-      .pipe(skip(1), takeUntil(this.unsubscribe$))
-      .subscribe(() => this.scrollEvent());
-  }
-
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 
-  private scrollEvent(): void {
-    const scrollHeight = document.scrollingElement!.scrollHeight;
-    const scrollTop = document.scrollingElement!.scrollTop;
-    const clientHeight = document.scrollingElement!.clientHeight;
-
-    if (
-      scrollHeight - (scrollTop + clientHeight) < 35 &&
-      this.loadMoreButtonElement
-    ) {
-      this.loadMoreGamesOnGameListScrollDown();
-    }
-  }
-
-  private loadMoreGamesOnGameListScrollDown(): void {
-    this.loadMoreButtonElement.click();
-  }
-
   public loadMoreGames(url: string): void {
     this.store$.dispatch(GamesActions.getNextPage({ url }));
+  }
+
+  public loadMoreGamesOnScrollDown(): void {
+    if (this.loadMoreButtonElement) this.loadMoreButtonElement.click();
   }
 
   private initActions(): void {

@@ -14,6 +14,7 @@ import { GameCardMediaComponent } from './components/game-card/game-card-media/g
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LoadMoreButtonComponent } from './components/load-more-button/load-more-button.component';
+import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-down-emitter/scroll-down-emitter.module';
 
 const routes: Routes = [
   {
@@ -46,6 +47,7 @@ const routes: Routes = [
     FontAwesomeModule,
     BrowserAnimationsModule,
     CarouselModule,
+    ScrollDownEmitterModule,
   ],
 })
 export class GameListModule {}
