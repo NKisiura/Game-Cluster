@@ -17,9 +17,9 @@
              let-acceptableCountToView="acceptableCountToView"
 >
   <div class="flex items-center justify-between py-2 border-b border-b-grey-600 last:border-b-0">
-    <div class="text-grey-300 font-light text-xs">{{title}}:</div>
+    <div class="text-grey-300 font-light text-xs mr-4">{{title}}:</div>
     <div *ngIf="!active" class="text-white font-light text-xs">{{text}}</div>
-    <div *ngIf="active">
+    <div *ngIf="active" class="whitespace-nowrap overflow-hidden text-ellipsis">
       <a *ngFor="let entity of getAcceptableCountOfEntitiesToView(acceptableCountToView, entityList); let last = last"
          [routerLink]="gamesRouterLink"
          [routerLinkActive]="'text-grey-300 cursor-default'"
