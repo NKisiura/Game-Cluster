@@ -6,6 +6,7 @@ import {
   API_DEVELOPERS_URL,
   API_GENRES_URL,
   API_PLATFORMS_URL,
+  API_PUBLISHERS_URL,
   API_STORES_URL,
   API_TAGS_URL,
 } from './global/constants/api-constants';
@@ -15,6 +16,7 @@ import { Store } from '@ngrx/store';
 import { AppStateInterface } from './state/types/app-state.interface';
 import { TagsActions } from './state/features/tags/actions/tags.actions';
 import { DevelopersActions } from './state/features/developers/actions/developers.actions';
+import { PublishersActions } from './state/features/publishers/actions/publishers.actions';
 
 @Component({
   selector: 'app-root',
@@ -61,6 +63,9 @@ export class AppComponent implements OnInit, AfterViewChecked {
     );
     this.store$.dispatch(
       DevelopersActions.getDevelopers({ url: API_DEVELOPERS_URL })
+    );
+    this.store$.dispatch(
+      PublishersActions.getPublishers({ url: API_PUBLISHERS_URL })
     );
     this.store$.dispatch(GenresActions.getGenres({ url: API_GENRES_URL }));
     this.store$.dispatch(StoresActions.getStores({ url: API_STORES_URL }));

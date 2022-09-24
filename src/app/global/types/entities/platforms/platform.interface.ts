@@ -6,4 +6,5 @@ export interface PlatformInterface extends Entity {
   readonly image: string;
   readonly year_start: number;
   readonly year_end: number;
+  readonly games: Entity[];
 }

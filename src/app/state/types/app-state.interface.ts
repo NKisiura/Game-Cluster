@@ -4,6 +4,7 @@ import { GameDetailsStateInterface } from '../features/game-details/types/game-d
 import { StoresStateInterface } from '../features/stores/types/stores-state.interface';
 import { TagsStateInterface } from '../features/tags/types/tags-state.interface';
 import { DevelopersStateInterface } from '../features/developers/types/developers-state.interface';
+import { PublishersStateInterface } from '../features/publishers/types/publishers-state.interface';
 
 export interface AppStateInterface {
   readonly platforms: PlatformsStateInterface;
@@ -12,4 +13,5 @@ export interface AppStateInterface {
   readonly stores: StoresStateInterface;
   readonly tags: TagsStateInterface;
   readonly developers: DevelopersStateInterface;
+  readonly publishers: PublishersStateInterface;
 }
