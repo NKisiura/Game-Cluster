@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { map, skip, Subject, takeUntil } from 'rxjs';
 import { NgProgressComponent } from 'ngx-progressbar';
 import { PlatformsActions } from './state/features/platforms/actions/platforms.actions';
@@ -23,7 +23,7 @@ import { PublishersActions } from './state/features/publishers/actions/publisher
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewChecked {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('progressComponent')
   public progressComponent!: NgProgressComponent;
   public isFirstInit: boolean = true;
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
     this.dispatchInitialActions();
   }
 
-  ngAfterViewChecked(): void {
+  ngAfterViewInit(): void {
     if (this.isFirstInit) {
       this.isFirstInit = false;
       this.progressComponent.state$
