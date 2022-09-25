@@ -8,6 +8,7 @@ import { RouterLinks } from '../../../../../global/constants/router-links';
 import { Entity } from '../../../../../global/types/entities/entity';
 import { Params } from '@angular/router';
 import { DateService } from '../../../../../global/utils/services/date.service';
+import { NotGamesEntityTypes } from '../../../../../global/types/entities/entity-types.enum';
 
 @Component({
   selector: 'app-game-card-details',
@@ -30,7 +31,10 @@ export class GameCardDetailsComponent {
     return this.tagList.filter((tag) => tag.language === Language.ENGLISH);
   }
 
-  public setQueryParams(entityType: string, entity: Entity): Params {
+  public setQueryParams(
+    entityType: NotGamesEntityTypes,
+    entity: Entity
+  ): Params {
     return { [entityType]: entity.slug };
   }
 

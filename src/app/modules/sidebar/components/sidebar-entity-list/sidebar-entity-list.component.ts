@@ -2,10 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Entity } from '../../../../global/types/entities/entity';
 import { RouterLinks } from '../../../../global/constants/router-links';
 import { Params } from '@angular/router';
-import { EntityTypes } from '../../../../global/types/entities/entity-types.enum';
+import { NotGamesEntityTypes } from '../../../../global/types/entities/entity-types.enum';
 import { IconService } from '../../../../global/utils/services/icon.service';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { ImageService } from '../../../../global/utils/services/image.service';
+import { NotGameEntity } from '../../../../global/types/entities/not-game-entity';
 
 @Component({
   selector: 'app-sidebar-entity-list',
@@ -13,8 +14,8 @@ import { ImageService } from '../../../../global/utils/services/image.service';
   styleUrls: ['./sidebar-entity-list.component.scss'],
 })
 export class SidebarEntityListComponent implements OnInit {
-  @Input('entity-type') public entityType!: string;
-  @Input('entity-list') public entityList!: SidebarEntity[];
+  @Input('entity-type') public entityType!: NotGamesEntityTypes;
+  @Input('entity-list') public entityList!: NotGameEntity[];
 
   public gamesRouterLink: string = RouterLinks.GAMES_ROUTER_LINK;
   public isCurrentEntityGenre!: boolean;
@@ -25,11 +26,14 @@ export class SidebarEntityListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isCurrentEntityGenre = EntityTypes.GENRES === this.entityType;
+    this.isCurrentEntityGenre = NotGamesEntityTypes.GENRES === this.entityType;
   }
 
-  public setQueryParams(entity: Entity): Params {
-    return { [this.entityType]: entity.id };
+  public setQueryParams(
+    entityType: NotGamesEntityTypes,
+    entity: Entity
+  ): Params {
+    return { [entityType]: entity.id };
   }
 
   public getIconBySlug(slug: string): IconDefinition {
@@ -39,8 +43,4 @@ export class SidebarEntityListComponent implements OnInit {
   public getCroppedImage(imageUrl: string) {
     return this.imageService.getCroppedImage600x400(imageUrl);
   }
-}
-
-interface SidebarEntity extends Entity {
-  readonly image_background?: string;
 }
