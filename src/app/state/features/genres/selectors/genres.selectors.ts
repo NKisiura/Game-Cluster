@@ -25,4 +25,16 @@ export namespace GenresSelectors {
     genresFeatureSelector,
     (genresState: GenresStateInterface) => genresState.data?.next || null
   );
+
+  export const genresViewModelSelector = createSelector(
+    genresFeatureSelector,
+    (genresState: GenresStateInterface) => ({
+      isLoading: genresState.isLoading,
+      error: genresState.error,
+      list: genresState.data?.results || null,
+      count: genresState.data?.count || null,
+      nextPage: genresState.data?.next || null,
+      prevPage: genresState.data?.previous || null,
+    })
+  );
 }

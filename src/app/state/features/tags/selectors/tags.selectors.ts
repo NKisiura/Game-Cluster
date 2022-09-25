@@ -25,4 +25,16 @@ export namespace TagsSelectors {
     tagsFeatureSelector,
     (tagsState: TagsStateInterface) => tagsState.data?.next || null
   );
+
+  export const tagsViewModalSelector = createSelector(
+    tagsFeatureSelector,
+    (tagsState: TagsStateInterface) => ({
+      isLoading: tagsState.isLoading,
+      error: tagsState.error,
+      list: tagsState.data?.results || null,
+      count: tagsState.data?.count || null,
+      nextPage: tagsState.data?.next || null,
+      prevPage: tagsState.data?.previous || null,
+    })
+  );
 }

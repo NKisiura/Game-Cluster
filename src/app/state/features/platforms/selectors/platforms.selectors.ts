@@ -27,4 +27,16 @@ export namespace PlatformsSelectors {
     (platformsState: PlatformsStateInterface) =>
       platformsState.data?.next || null
   );
+
+  export const platformsViewModelSelector = createSelector(
+    platformsFeatureSelector,
+    (platformsState: PlatformsStateInterface) => ({
+      isLoading: platformsState.isLoading,
+      error: platformsState.error,
+      list: platformsState.data?.results || null,
+      count: platformsState.data?.count || null,
+      nextPage: platformsState.data?.next || null,
+      prevPage: platformsState.data?.previous || null,
+    })
+  );
 }

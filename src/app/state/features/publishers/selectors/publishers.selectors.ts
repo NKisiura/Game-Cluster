@@ -27,4 +27,16 @@ export namespace PublishersSelectors {
     (publishersState: PublishersStateInterface) =>
       publishersState.data?.next || null
   );
+
+  export const publishersViewModelSelector = createSelector(
+    publishersFeatureSelector,
+    (publishersState: PublishersStateInterface) => ({
+      isLoading: publishersState.isLoading,
+      error: publishersState.error,
+      list: publishersState.data?.results || null,
+      count: publishersState.data?.count || null,
+      nextPage: publishersState.data?.next || null,
+      prevPage: publishersState.data?.previous || null,
+    })
+  );
 }

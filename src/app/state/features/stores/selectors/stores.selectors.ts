@@ -25,4 +25,16 @@ export namespace StoresSelectors {
     storesFeatureSelector,
     (storesState: StoresStateInterface) => storesState.data?.next || null
   );
+
+  export const storesViewModelSelector = createSelector(
+    storesFeatureSelector,
+    (storesState: StoresStateInterface) => ({
+      isLoading: storesState.isLoading,
+      error: storesState.error,
+      list: storesState.data?.results || null,
+      count: storesState.data?.count || null,
+      nextPage: storesState.data?.next || null,
+      prevPage: storesState.data?.previous || null,
+    })
+  );
 }

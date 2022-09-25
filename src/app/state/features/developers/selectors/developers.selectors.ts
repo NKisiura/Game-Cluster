@@ -27,4 +27,16 @@ export namespace DevelopersSelectors {
     (developersState: DevelopersStateInterface) =>
       developersState.data?.next || null
   );
+
+  export const developersViewModelSelector = createSelector(
+    developersFeatureSelector,
+    (developersState: DevelopersStateInterface) => ({
+      isLoading: developersState.isLoading,
+      error: developersState.error,
+      list: developersState.data?.results || null,
+      count: developersState.data?.count || null,
+      nextPage: developersState.data?.next || null,
+      prevPage: developersState.data?.previous || null,
+    })
+  );
 }
