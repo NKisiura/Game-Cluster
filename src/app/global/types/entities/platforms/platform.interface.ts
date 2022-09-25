@@ -1,10 +1,7 @@
-import { Entity } from '../entity';
+import { NotGameEntity } from '../not-game-entity';
 
-export interface PlatformInterface extends Entity {
-  readonly games_count: number;
-  readonly image_background: string;
+export interface PlatformInterface extends NotGameEntity {
   readonly image: string;
   readonly year_start: number;
   readonly year_end: number;
-  readonly games: Entity[];
 }

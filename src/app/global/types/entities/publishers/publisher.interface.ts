@@ -1,7 +1,3 @@
-import { Entity } from '../entity';
+import { NotGameEntity } from '../not-game-entity';
 
-export interface PublisherInterface extends Entity {
-  readonly games_count: number;
-  readonly image_background: string;
-  readonly games: Entity[];
-}
+export interface PublisherInterface extends NotGameEntity {}

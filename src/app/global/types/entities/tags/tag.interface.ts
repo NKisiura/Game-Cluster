@@ -1,10 +1,7 @@
-import { Entity } from '../entity';
+import { NotGameEntity } from '../not-game-entity';
 
-export interface TagInterface extends Entity {
+export interface TagInterface extends NotGameEntity {
   readonly language: Language;
-  readonly games_count: number;
-  readonly image_background: string;
-  readonly games: Entity[];
 }
 
 export enum Language {
