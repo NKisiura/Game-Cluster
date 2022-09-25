@@ -1,1 +1,24 @@
-browse
+<h2 class="text-7xl text-white font-semibold mb-5">Browse</h2>
+
+<ng-container *ngFor="let entityType of entityTypesList">
+  <ng-container [ngTemplateOutlet]="browseEntityListTemplate"
+                [ngTemplateOutletContext]="{entityType: entityType}"
+  ></ng-container>
+</ng-container>
+
+<ng-template #browseEntityListTemplate let-entityType="entityType">
+  <ng-container *ngIf="getEntityViewModelByEntityType(entityType) | async as entityViewModel">
+    <div *ngIf="entityViewModel.list" class="mb-4">
+      <a [routerLink]="[browseRouterLink, entityType]" class="group text-2xl inline-flex items-center mb-4">
+        <span class="text-white capitalize font-bold mr-2 transition-colors duration-200 underline decoration-grey-300 decoration-0 underline-offset-4 group-hover:text-grey-300">{{entityType}}</span>
+        <span class="text-grey-300 font-light flex items-center">
+          {{entityViewModel.count | number}}
+          <fa-icon class="text-xl ml-1" [icon]="getArrowIcons().right"></fa-icon>
+        </span>
+      </a>
+      <app-card-list>
+        <app-entity-card *ngFor="let entity of getFirstFiveEntityFromList(entityViewModel.list)" [entity]="entity" [entityType]="entityType"></app-entity-card>
+      </app-card-list>
+    </div>
+  </ng-container>
+</ng-template>

@@ -1,0 +1,13 @@
+<div class="flex justify-between items-center">
+  <span class="text-white font-semibold">{{entityItemsTitle}}</span>
+  <span class="text-grey-300 text-sm font-light">{{entity.games_count | number}}</span>
+</div>
+<hr class="text-grey-300 my-2">
+<div class="flex flex-col items-start">
+  <a *ngFor="let game of getFirstThreeGamesFromGameList(entity.games)"
+     [routerLink]="[gameRouterLink, game.slug]"
+     class="text-white text-sm font-light mb-1 last:mb-0 duration-200 underline decoration-grey-300 decoration-0 underline-offset-4 hover:text-grey-300 "
+  >
+    {{game.name}}
+  </a>
+</div>
