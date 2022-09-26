@@ -1,0 +1,5 @@
+<div class="flex flex-col items-center text-white">
+  <h1><span><i class="fas fa-ghost"></i></span></h1>
+  <h2 class="text-2xl">Error: {{error.status}} {{error.name}}</h2>
+  <p *ngIf="isErrorTypeOfString()" [innerHTML]="error.error" class="flex gap-2 text-xl font-thin mt-2"></p>
+</div>
