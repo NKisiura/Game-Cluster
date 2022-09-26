@@ -33,6 +33,35 @@ export const genresReducer = createReducer(
       isLoading: false,
       error: action.error,
     })
+  ),
+  on(
+    GenresActions.getGenresNextPage,
+    (state): GenresStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    GenresActions.getGenresNextPageSuccess,
+    (state, action): GenresStateInterface => ({
+      ...state,
+      isLoading: false,
+      data: {
+        ...action.getGenresResponse,
+        results: [
+          ...(state.data!.results || []),
+          ...(action.getGenresResponse.results || []),
+        ],
+      },
+    })
+  ),
+  on(
+    GenresActions.getGenresNextPageFailure,
+    (state, action): GenresStateInterface => ({
+      ...state,
+      isLoading: false,
+      error: action.error,
+    })
   )
 );
 

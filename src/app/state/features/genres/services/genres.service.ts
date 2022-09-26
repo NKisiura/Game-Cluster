@@ -11,4 +11,10 @@ export class GenresService {
   public getGenres(url: string): Observable<GetGenresResponseInterface> {
     return this.http.get<GetGenresResponseInterface>(API_BASE_URL + url);
   }
+
+  public getGenresNextPage(
+    url: string
+  ): Observable<GetGenresResponseInterface> {
+    return this.http.get<GetGenresResponseInterface>(url);
+  }
 }

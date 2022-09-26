@@ -18,4 +18,19 @@ export namespace GenresActions {
     GenresActionTypes.GET_GENRES_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getGenresNextPage = createAction(
+    GenresActionTypes.GET_GENRES_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getGenresNextPageSuccess = createAction(
+    GenresActionTypes.GET_GENRES_NEXT_PAGE_SUCCESS,
+    props<{ getGenresResponse: GetGenresResponseInterface }>()
+  );
+
+  export const getGenresNextPageFailure = createAction(
+    GenresActionTypes.GET_GENRES_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }

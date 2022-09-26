@@ -24,6 +24,22 @@ export class GenresEffect {
     );
   });
 
+  public getGenresNextPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(GenresActions.getGenresNextPage),
+      switchMap(({ url }) => {
+        return this.genresService.getGenresNextPage(url).pipe(
+          map((getGenresResponse: GetGenresResponseInterface) =>
+            GenresActions.getGenresNextPageSuccess({ getGenresResponse })
+          ),
+          catchError((error: BackendErrorResponseInterface) =>
+            of(GenresActions.getGenresNextPageFailure({ error }))
+          )
+        );
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private genresService: GenresService
