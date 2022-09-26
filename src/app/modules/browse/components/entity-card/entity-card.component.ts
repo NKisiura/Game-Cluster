@@ -5,6 +5,7 @@ import { Entity } from '../../../../global/types/entities/entity';
 import { Params } from '@angular/router';
 import { NotGamesEntityTypes } from '../../../../global/types/entities/entity-types.enum';
 import { ImageService } from '../../../../global/utils/services/image.service';
+import { CreatorInterface } from '../../../../global/types/entities/creators/creator.interface';
 import GAMES_ROUTER_LINK = RouterLinks.GAMES_ROUTER_LINK;
 
 @Component({
@@ -32,5 +33,14 @@ export class EntityCardComponent {
 
   public getBackgroundImageStyle(colorRGB: string, imageUrl: string): string {
     return `linear-gradient(rgba(${colorRGB}, 0.5), rgb(${colorRGB}) 70%), url(${imageUrl})`;
+  }
+
+  public isEntityTypeCreator(
+    entityType: NotGamesEntityTypes,
+    entity: NotGameEntity
+  ): CreatorInterface | null {
+    const isCreator = entityType === NotGamesEntityTypes.CREATORS;
+    const creatorEntity = entity as CreatorInterface;
+    return isCreator && creatorEntity.image ? creatorEntity : null;
   }
 }
