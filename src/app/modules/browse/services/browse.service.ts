@@ -14,6 +14,8 @@ import { PublishersActions } from '../../../state/features/publishers/actions/pu
 import { TagsActions } from '../../../state/features/tags/actions/tags.actions';
 import { StoresActions } from '../../../state/features/stores/actions/stores.actions';
 import { GenresActions } from '../../../state/features/genres/actions/genres.actions';
+import { CreatorsSelectors } from '../../../state/features/creators/selectors/creators.selectors';
+import { CreatorsActions } from '../../../state/features/creators/actions/creators.actions';
 
 @Injectable()
 export class BrowseService {
@@ -49,6 +51,11 @@ export class BrowseService {
           select(PublishersSelectors.publishersViewModelSelector)
         );
       }
+      case NotGamesEntityTypes.CREATORS: {
+        return this.store$.pipe(
+          select(CreatorsSelectors.creatorsViewModelSelector)
+        );
+      }
       default: {
         return null;
       }
@@ -82,6 +89,11 @@ export class BrowseService {
       case NotGamesEntityTypes.PUBLISHERS: {
         return this.store$.dispatch(
           PublishersActions.getPublishersNextPage({ url })
+        );
+      }
+      case NotGamesEntityTypes.CREATORS: {
+        return this.store$.dispatch(
+          CreatorsActions.getCreatorsNextPage({ url })
         );
       }
       default: {
