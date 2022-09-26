@@ -13,8 +13,8 @@ import { GameCardShowMoreButtonComponent } from './components/game-card/game-car
 import { GameCardMediaComponent } from './components/game-card/game-card-media/game-card-media.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { LoadMoreButtonComponent } from './components/load-more-button/load-more-button.component';
 import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-down-emitter/scroll-down-emitter.module';
+import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-button/load-more-button.module';
 
 const routes: Routes = [
   {
@@ -37,7 +37,6 @@ const routes: Routes = [
     GameCardDetailsComponent,
     GameCardShowMoreButtonComponent,
     GameCardMediaComponent,
-    LoadMoreButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +47,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     CarouselModule,
     ScrollDownEmitterModule,
+    LoadMoreButtonModule,
   ],
 })
 export class GameListModule {}

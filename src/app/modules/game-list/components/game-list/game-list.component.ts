@@ -9,7 +9,7 @@ import { API_GAMES_URL } from '../../../../global/constants/api-constants';
 import { ActivatedRoute, Params } from '@angular/router';
 import { stringify } from 'query-string';
 import { BackendErrorResponseInterface } from '../../../../state/types/backend-error-response.interface';
-import { LoadMoreButtonComponent } from '../load-more-button/load-more-button.component';
+import { LoadMoreButtonComponent } from '../../../../global/modules/layouts/load-more-button/components/load-more-button/load-more-button.component';
 
 @Component({
   selector: 'app-game-list',
