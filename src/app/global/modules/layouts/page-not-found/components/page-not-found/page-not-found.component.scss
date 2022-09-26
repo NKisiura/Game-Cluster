@@ -1,0 +1,29 @@
+$ghost-color: #33c948;
+
+h1 {
+  font-size: 12.5rem;
+  letter-spacing: .10em;
+  margin: .025em 0;
+  text-shadow: .05em .05em 0 rgba(0,0,0,.25);
+  white-space: nowrap;
+
+  @media(max-width: 30rem) {
+    font-size: 8.5rem;
+  }
+
+  & > span {
+    animation: spooky 1.5s alternate infinite linear;
+    color: $ghost-color;
+    display: inline-block;
+  }
+}
+
+@keyframes spooky {
+  from {
+    transform: translatey(.15em) scaley(.95);
+  }
+
+  to {
+    transform: translatey(-.15em);
+  }
+}
