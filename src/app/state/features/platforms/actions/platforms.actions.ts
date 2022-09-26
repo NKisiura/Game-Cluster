@@ -18,4 +18,19 @@ export namespace PlatformsActions {
     PlatformsActionTypes.GET_PLATFORMS_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getPlatformsNextPage = createAction(
+    PlatformsActionTypes.GET_PLATFORMS_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getPlatformsNextPageSuccess = createAction(
+    PlatformsActionTypes.GET_PLATFORMS_NEXT_PAGE_SUCCESS,
+    props<{ getPlatformsResponse: GetPlatformsResponseInterface }>()
+  );
+
+  export const getPlatformsNextPageFailure = createAction(
+    PlatformsActionTypes.GET_PLATFORMS_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }

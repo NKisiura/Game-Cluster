@@ -11,4 +11,10 @@ export class PlatformsService {
   public getPlatforms(url: string): Observable<GetPlatformsResponseInterface> {
     return this.http.get<GetPlatformsResponseInterface>(API_BASE_URL + url);
   }
+
+  public getPlatformsNextPage(
+    url: string
+  ): Observable<GetPlatformsResponseInterface> {
+    return this.http.get<GetPlatformsResponseInterface>(url);
+  }
 }

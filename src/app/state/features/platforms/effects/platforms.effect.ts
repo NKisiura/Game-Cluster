@@ -24,6 +24,24 @@ export class PlatformsEffect {
     )
   );
 
+  public getPlatformsNextPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PlatformsActions.getPlatformsNextPage),
+      switchMap(({ url }) => {
+        return this.platformsService.getPlatformsNextPage(url).pipe(
+          map((getPlatformsResponse: GetPlatformsResponseInterface) =>
+            PlatformsActions.getPlatformsNextPageSuccess({
+              getPlatformsResponse,
+            })
+          ),
+          catchError((error: BackendErrorResponseInterface) =>
+            of(PlatformsActions.getPlatformsNextPageFailure({ error }))
+          )
+        );
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private platformsService: PlatformsService

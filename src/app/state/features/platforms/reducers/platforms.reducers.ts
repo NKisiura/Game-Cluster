@@ -33,6 +33,35 @@ export const platformsReducer = createReducer(
       isLoading: false,
       error: action.error,
     })
+  ),
+  on(
+    PlatformsActions.getPlatformsNextPage,
+    (state): PlatformsStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    PlatformsActions.getPlatformsNextPageSuccess,
+    (state, action): PlatformsStateInterface => ({
+      ...state,
+      isLoading: false,
+      data: {
+        ...action.getPlatformsResponse,
+        results: [
+          ...(state.data!.results || []),
+          ...(action.getPlatformsResponse.results || []),
+        ],
+      },
+    })
+  ),
+  on(
+    PlatformsActions.getPlatformsNextPageFailure,
+    (state, action): PlatformsStateInterface => ({
+      ...state,
+      isLoading: false,
+      error: action.error,
+    })
   )
 );
 
