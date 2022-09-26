@@ -1,1 +1,8 @@
-browse entity
+<ng-container *ngIf="entityType">
+  <ng-container *ngIf="getEntityViewModelByEntityType(entityType) | async as entityViewModel">
+    <div *ngIf="entityViewModel.list">
+      {{entityType}}
+      {{entityViewModel.count}}
+    </div>
+  </ng-container>
+</ng-container>
