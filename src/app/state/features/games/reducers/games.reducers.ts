@@ -42,17 +42,20 @@ export const gamesReducer = createReducer(
       isLoading: true,
     })
   ),
-  on(GamesActions.getGamesNextPageSuccess, (state, action) => ({
-    ...state,
-    isLoading: false,
-    data: {
-      ...action.getNextPageResponse,
-      results: [
-        ...(state.data!.results || []),
-        ...(action.getNextPageResponse.results || []),
-      ],
-    },
-  })),
+  on(
+    GamesActions.getGamesNextPageSuccess,
+    (state, action): GamesStateInterface => ({
+      ...state,
+      isLoading: false,
+      data: {
+        ...action.getNextPageResponse,
+        results: [
+          ...(state.data!.results || []),
+          ...(action.getNextPageResponse.results || []),
+        ],
+      },
+    })
+  ),
   on(GamesActions.getGamesNextPageFailure, (state, action) => ({
     ...state,
     isLoading: false,
