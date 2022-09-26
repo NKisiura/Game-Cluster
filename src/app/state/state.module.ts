@@ -8,6 +8,7 @@ import { StoresStateModule } from './features/stores/stores-state.module';
 import { TagsStateModule } from './features/tags/tags-state.module';
 import { DevelopersStateModule } from './features/developers/developers.state.module';
 import { PublishersStateModule } from './features/publishers/publishers-state.module';
+import { CreatorsStateModule } from './features/creators/creators.state.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { PublishersStateModule } from './features/publishers/publishers-state.mo
     TagsStateModule,
     DevelopersStateModule,
     PublishersStateModule,
+    CreatorsStateModule,
   ],
 })
 export class StateModule {}

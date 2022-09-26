@@ -3,6 +3,7 @@ import { map, skip, Subject, takeUntil } from 'rxjs';
 import { NgProgressComponent } from 'ngx-progressbar';
 import { PlatformsActions } from './state/features/platforms/actions/platforms.actions';
 import {
+  API_CREATORS_URL,
   API_DEVELOPERS_URL,
   API_GENRES_URL,
   API_PLATFORMS_URL,
@@ -17,6 +18,7 @@ import { AppStateInterface } from './state/types/app-state.interface';
 import { TagsActions } from './state/features/tags/actions/tags.actions';
 import { DevelopersActions } from './state/features/developers/actions/developers.actions';
 import { PublishersActions } from './state/features/publishers/actions/publishers.actions';
+import { CreatorsActions } from './state/features/creators/actions/creators.actions';
 
 @Component({
   selector: 'app-root',
@@ -66,6 +68,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
     this.store$.dispatch(
       PublishersActions.getPublishers({ url: API_PUBLISHERS_URL })
+    );
+    this.store$.dispatch(
+      CreatorsActions.getCreators({ url: API_CREATORS_URL })
     );
     this.store$.dispatch(GenresActions.getGenres({ url: API_GENRES_URL }));
     this.store$.dispatch(StoresActions.getStores({ url: API_STORES_URL }));
