@@ -11,4 +11,10 @@ export class StoresService {
   public getStores(url: string): Observable<GetStoresResponseInterface> {
     return this.http.get<GetStoresResponseInterface>(API_BASE_URL + url);
   }
+
+  public getStoresNextPage(
+    url: string
+  ): Observable<GetStoresResponseInterface> {
+    return this.http.get<GetStoresResponseInterface>(url);
+  }
 }

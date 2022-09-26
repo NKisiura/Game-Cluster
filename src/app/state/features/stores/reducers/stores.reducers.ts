@@ -33,6 +33,36 @@ export const storesReducer = createReducer(
       isLoading: false,
       error: action.error,
     })
+  ),
+  on(
+    StoresActions.getStoresNextPage,
+    (state): StoresStateInterface => ({
+      ...state,
+      isLoading: true,
+      error: null,
+    })
+  ),
+  on(
+    StoresActions.getStoresNextPageSuccess,
+    (state, action): StoresStateInterface => ({
+      ...state,
+      isLoading: false,
+      data: {
+        ...action.getStoresResponse,
+        results: [
+          ...(state.data!.results || []),
+          ...(action.getStoresResponse.results || []),
+        ],
+      },
+    })
+  ),
+  on(
+    StoresActions.getStoresNextPageFailure,
+    (state, action): StoresStateInterface => ({
+      ...state,
+      isLoading: false,
+      error: action.error,
+    })
   )
 );
 

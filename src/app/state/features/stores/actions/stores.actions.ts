@@ -18,4 +18,19 @@ export namespace StoresActions {
     StoresActionTypes.GET_STORES_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getStoresNextPage = createAction(
+    StoresActionTypes.GET_STORES_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getStoresNextPageSuccess = createAction(
+    StoresActionTypes.GET_STORES_NEXT_PAGE_SUCCESS,
+    props<{ getStoresResponse: GetStoresResponseInterface }>()
+  );
+
+  export const getStoresNextPageFailure = createAction(
+    StoresActionTypes.GET_STORES_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }

@@ -23,6 +23,23 @@ export class StoresEffect {
       })
     );
   });
+
+  public getStoresNextPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(StoresActions.getStoresNextPage),
+      switchMap(({ url }) => {
+        return this.storesService.getStoresNextPage(url).pipe(
+          map((getStoresResponse: GetStoresResponseInterface) =>
+            StoresActions.getStoresNextPageSuccess({ getStoresResponse })
+          ),
+          catchError((error: BackendErrorResponseInterface) =>
+            of(StoresActions.getStoresNextPageFailure({ error }))
+          )
+        );
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private storesService: StoresService
