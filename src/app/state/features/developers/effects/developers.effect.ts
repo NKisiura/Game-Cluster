@@ -24,6 +24,24 @@ export class DevelopersEffect {
     )
   );
 
+  public getDevelopersNextPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DevelopersActions.getDevelopersNextPage),
+      switchMap(({ url }) => {
+        return this.developersService.getDevelopersNextPage(url).pipe(
+          map((getDevelopersResponse: GetDevelopersResponseInterface) =>
+            DevelopersActions.getDevelopersNextPageSuccess({
+              getDevelopersResponse,
+            })
+          ),
+          catchError((error: BackendErrorResponseInterface) =>
+            of(DevelopersActions.getDevelopersNextPageFailure({ error }))
+          )
+        );
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private developersService: DevelopersService

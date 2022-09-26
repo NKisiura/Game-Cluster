@@ -18,4 +18,19 @@ export namespace DevelopersActions {
     DevelopersActionTypes.GET_DEVELOPERS_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getDevelopersNextPage = createAction(
+    DevelopersActionTypes.GET_DEVELOPERS_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getDevelopersNextPageSuccess = createAction(
+    DevelopersActionTypes.GET_DEVELOPERS_NEXT_PAGE_SUCCESS,
+    props<{ getDevelopersResponse: GetDevelopersResponseInterface }>()
+  );
+
+  export const getDevelopersNextPageFailure = createAction(
+    DevelopersActionTypes.GET_DEVELOPERS_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }

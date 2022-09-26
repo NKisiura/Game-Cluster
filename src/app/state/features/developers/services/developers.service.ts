@@ -13,4 +13,10 @@ export class DevelopersService {
   ): Observable<GetDevelopersResponseInterface> {
     return this.http.get<GetDevelopersResponseInterface>(API_BASE_URL + url);
   }
+
+  public getDevelopersNextPage(
+    url: string
+  ): Observable<GetDevelopersResponseInterface> {
+    return this.http.get<GetDevelopersResponseInterface>(url);
+  }
 }

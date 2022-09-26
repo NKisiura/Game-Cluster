@@ -32,6 +32,35 @@ export const developersReducer = createReducer(
       isLoading: false,
       error: action.error,
     })
+  ),
+  on(
+    DevelopersActions.getDevelopersNextPage,
+    (state): DevelopersStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    DevelopersActions.getDevelopersNextPageSuccess,
+    (state, action): DevelopersStateInterface => ({
+      ...state,
+      isLoading: false,
+      data: {
+        ...action.getDevelopersResponse,
+        results: [
+          ...(state.data!.results || []),
+          ...(action.getDevelopersResponse.results || []),
+        ],
+      },
+    })
+  ),
+  on(
+    DevelopersActions.getDevelopersNextPageFailure,
+    (state, action): DevelopersStateInterface => ({
+      ...state,
+      isLoading: false,
+      error: action.error,
+    })
   )
 );
 
