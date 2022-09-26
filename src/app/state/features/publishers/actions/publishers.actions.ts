@@ -18,4 +18,19 @@ export namespace PublishersActions {
     PublishersActionTypes.GET_PUBLISHERS_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getPublishersNextPage = createAction(
+    PublishersActionTypes.GET_PUBLISHERS_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getPublishersNextPageSuccess = createAction(
+    PublishersActionTypes.GET_PUBLISHERS_NEXT_PAGE_SUCCESS,
+    props<{ getPublishersResponse: GetPublishersResponseInterface }>()
+  );
+
+  export const getPublishersNextPageFailure = createAction(
+    PublishersActionTypes.GET_PUBLISHERS_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }

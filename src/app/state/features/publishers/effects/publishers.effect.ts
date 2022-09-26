@@ -24,6 +24,24 @@ export class PublishersEffect {
     )
   );
 
+  public getPublishersNextPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PublishersActions.getPublishersNextPage),
+      switchMap(({ url }) => {
+        return this.publishersService.getPublishersNextPage(url).pipe(
+          map((getPublishersResponse: GetPublishersResponseInterface) =>
+            PublishersActions.getPublishersNextPageSuccess({
+              getPublishersResponse,
+            })
+          ),
+          catchError((error: BackendErrorResponseInterface) =>
+            of(PublishersActions.getPublishersNextPageFailure({ error }))
+          )
+        );
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private publishersService: PublishersService

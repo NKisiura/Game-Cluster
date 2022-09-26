@@ -32,6 +32,35 @@ export const publishersReducer = createReducer(
       isLoading: false,
       error: action.error,
     })
+  ),
+  on(
+    PublishersActions.getPublishersNextPage,
+    (state): PublishersStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    PublishersActions.getPublishersNextPageSuccess,
+    (state, action): PublishersStateInterface => ({
+      ...state,
+      isLoading: false,
+      data: {
+        ...action.getPublishersResponse,
+        results: [
+          ...(state.data!.results || []),
+          ...(action.getPublishersResponse.results || []),
+        ],
+      },
+    })
+  ),
+  on(
+    PublishersActions.getPublishersNextPageFailure,
+    (state, action): PublishersStateInterface => ({
+      ...state,
+      isLoading: false,
+      error: action.error,
+    })
   )
 );
 

@@ -13,4 +13,10 @@ export class PublishersService {
   ): Observable<GetPublishersResponseInterface> {
     return this.http.get<GetPublishersResponseInterface>(API_BASE_URL + url);
   }
+
+  public getPublishersNextPage(
+    url: string
+  ): Observable<GetPublishersResponseInterface> {
+    return this.http.get<GetPublishersResponseInterface>(url);
+  }
 }
