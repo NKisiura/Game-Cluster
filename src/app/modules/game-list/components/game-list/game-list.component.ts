@@ -41,7 +41,7 @@ export class GameListComponent implements OnInit, OnDestroy {
   }
 
   public loadMoreGames(url: string): void {
-    this.store$.dispatch(GamesActions.getNextPage({ url }));
+    this.store$.dispatch(GamesActions.getGamesNextPage({ url }));
   }
 
   public loadMoreGamesOnScrollDown(): void {

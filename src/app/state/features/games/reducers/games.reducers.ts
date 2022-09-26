@@ -36,13 +36,13 @@ export const gamesReducer = createReducer(
     })
   ),
   on(
-    GamesActions.getNextPage,
+    GamesActions.getGamesNextPage,
     (state): GamesStateInterface => ({
       ...state,
       isLoading: true,
     })
   ),
-  on(GamesActions.getNextPageSuccess, (state, action) => ({
+  on(GamesActions.getGamesNextPageSuccess, (state, action) => ({
     ...state,
     isLoading: false,
     data: {
@@ -53,7 +53,7 @@ export const gamesReducer = createReducer(
       ],
     },
   })),
-  on(GamesActions.getNextPageFailure, (state, action) => ({
+  on(GamesActions.getGamesNextPageFailure, (state, action) => ({
     ...state,
     isLoading: false,
     error: action.error,

@@ -26,14 +26,14 @@ export class GamesEffect {
 
   public getNextPage$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(GamesActions.getNextPage),
+      ofType(GamesActions.getGamesNextPage),
       switchMap(({ url }) => {
         return this.gamesService.getNextPage(url).pipe(
           map((getNextPageResponse: GetGamesResponseInterface) =>
-            GamesActions.getNextPageSuccess({ getNextPageResponse })
+            GamesActions.getGamesNextPageSuccess({ getNextPageResponse })
           ),
           catchError((error: BackendErrorResponseInterface) =>
-            of(GamesActions.getNextPageFailure({ error }))
+            of(GamesActions.getGamesNextPageFailure({ error }))
           )
         );
       })
