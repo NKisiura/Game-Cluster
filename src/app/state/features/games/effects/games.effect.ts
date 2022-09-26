@@ -24,7 +24,7 @@ export class GamesEffect {
     )
   );
 
-  public getNextPage$ = createEffect(() =>
+  public getGamesNextPage = createEffect(() =>
     this.actions$.pipe(
       ofType(GamesActions.getGamesNextPage),
       switchMap(({ url }) => {
