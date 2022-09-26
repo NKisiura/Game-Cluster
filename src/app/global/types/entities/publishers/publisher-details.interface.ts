@@ -1,6 +1,5 @@
-import { Entity } from '../entity';
 import { PublisherInterface } from './publisher.interface';
 
-export interface PublisherDetailsInterface extends Entity, PublisherInterface {
+export interface PublisherDetailsInterface extends PublisherInterface {
   readonly description: string;
 }

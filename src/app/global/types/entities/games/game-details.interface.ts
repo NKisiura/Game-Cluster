@@ -1,6 +1,5 @@
-import { Entity } from '../entity';
 import { GameInterface } from './game.interface';
 
-export interface GameDetailsInterface extends Entity, GameInterface {
+export interface GameDetailsInterface extends GameInterface {
   readonly description: string;
 }

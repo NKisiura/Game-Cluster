@@ -1,6 +1,5 @@
 import { TagInterface } from './tag.interface';
-import { Entity } from '../entity';
 
-export interface TagDetailsInterface extends Entity, TagInterface {
+export interface TagDetailsInterface extends TagInterface {
   readonly description: string;
 }

@@ -1,6 +1,5 @@
-import { Entity } from '../entity';
 import { DeveloperInterface } from './developer.interface';
 
-export interface DeveloperDetailsInterface extends Entity, DeveloperInterface {
+export interface DeveloperDetailsInterface extends DeveloperInterface {
   readonly description: string;
 }

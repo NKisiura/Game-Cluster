@@ -1,6 +1,5 @@
-import { Entity } from '../entity';
 import { PlatformInterface } from './platform.interface';
 
-export interface PlatformDetailsInterface extends Entity, PlatformInterface {
+export interface PlatformDetailsInterface extends PlatformInterface {
   readonly description: string;
 }
