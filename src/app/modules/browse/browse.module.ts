@@ -12,6 +12,7 @@ import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-but
 import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-down-emitter/scroll-down-emitter.module';
 import { LoadingSpinnerModule } from '../../global/modules/layouts/loading-spinner/loading-spinner.module';
 import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
+import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-error-message/backend-error-message.module';
 
 const routes: Routes = [
   {
@@ -40,6 +41,7 @@ const routes: Routes = [
     ScrollDownEmitterModule,
     LoadingSpinnerModule,
     PageTitleModule,
+    BackendErrorMessageModule,
   ],
   providers: [BrowseService],
 })

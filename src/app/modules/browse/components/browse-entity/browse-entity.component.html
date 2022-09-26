@@ -3,20 +3,17 @@
   <ng-container *ngIf="getEntityViewModelByEntityType(entityType) | async as entityViewModel">
     <div *ngIf="entityViewModel.list">
       <app-scroll-down-emitter (scroll-down)="loadMoreEntitiesOnScrollDown()"></app-scroll-down-emitter>
-      <ng-container *ngIf="entityViewModel.error">entity list error</ng-container>
+      <app-backend-error-message *ngIf="entityViewModel.error" [error]="entityViewModel.error"></app-backend-error-message>
       <ng-container *ngIf="entityViewModel.list">
         <app-card-list>
           <app-entity-card *ngFor="let entity of entityViewModel.list" [entityType]="entityType" [entity]="entity"></app-entity-card>
         </app-card-list>
-        <ng-container *ngIf="!entityViewModel.isLoading && entityViewModel.nextPage">
-          <app-load-more-button #loadMoreButton
-                                (load-more-button-clicked)="loadMoreEntities(entityType, entityViewModel.nextPage)"
-          ></app-load-more-button>
-        </ng-container>
+        <app-load-more-button *ngIf="!entityViewModel.isLoading && entityViewModel.nextPage"
+                              #loadMoreButton
+                              (load-more-button-clicked)="loadMoreEntities(entityType, entityViewModel.nextPage)"
+        ></app-load-more-button>
       </ng-container>
-      <ng-container *ngIf="entityViewModel.isLoading">
-        <app-loading-spinner></app-loading-spinner>
-      </ng-container>
+      <app-loading-spinner *ngIf="entityViewModel.isLoading"></app-loading-spinner>
     </div>
   </ng-container>
 </ng-container>
