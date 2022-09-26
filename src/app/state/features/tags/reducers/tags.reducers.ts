@@ -32,6 +32,35 @@ export const tagsReducer = createReducer(
       isLoading: false,
       error: action.error,
     })
+  ),
+  on(
+    TagsActions.getTagsNextPage,
+    (state): TagsStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    TagsActions.getTagsNextPageSuccess,
+    (state, action): TagsStateInterface => ({
+      ...state,
+      isLoading: false,
+      data: {
+        ...action.getTagsResponse,
+        results: [
+          ...(state.data!.results || []),
+          ...(action.getTagsResponse.results || []),
+        ],
+      },
+    })
+  ),
+  on(
+    TagsActions.getTagsNextPageFailure,
+    (state, action): TagsStateInterface => ({
+      ...state,
+      isLoading: false,
+      error: action.error,
+    })
   )
 );
 

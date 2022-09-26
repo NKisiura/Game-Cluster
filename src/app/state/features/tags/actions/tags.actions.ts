@@ -18,4 +18,19 @@ export namespace TagsActions {
     TagsActionTypes.GET_TAGS_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getTagsNextPage = createAction(
+    TagsActionTypes.GET_TAGS_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getTagsNextPageSuccess = createAction(
+    TagsActionTypes.GET_TAGS_NEXT_PAGE_SUCCESS,
+    props<{ getTagsResponse: GetTagsResponseInterface }>()
+  );
+
+  export const getTagsNextPageFailure = createAction(
+    TagsActionTypes.GET_TAGS_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }

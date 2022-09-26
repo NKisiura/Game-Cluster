@@ -11,4 +11,8 @@ export class TagsService {
   public getTags(url: string): Observable<GetTagsResponseInterface> {
     return this.http.get<GetTagsResponseInterface>(API_BASE_URL + url);
   }
+
+  public getTagsNextPage(url: string): Observable<GetTagsResponseInterface> {
+    return this.http.get<GetTagsResponseInterface>(url);
+  }
 }
