@@ -28,7 +28,7 @@ export class GamesEffect {
     this.actions$.pipe(
       ofType(GamesActions.getGamesNextPage),
       switchMap(({ url }) => {
-        return this.gamesService.getNextPage(url).pipe(
+        return this.gamesService.getGamesNextPage(url).pipe(
           map((getNextPageResponse: GetGamesResponseInterface) =>
             GamesActions.getGamesNextPageSuccess({ getNextPageResponse })
           ),
