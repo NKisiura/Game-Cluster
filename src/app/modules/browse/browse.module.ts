@@ -8,6 +8,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardListModule } from '../../global/modules/layouts/card-list/card-list.module';
 import { BrowseService } from './services/browse.service';
 import { EntityCardItemsComponent } from './components/entity-card/entity-card-item-list/entity-card-items.component';
+import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-button/load-more-button.module';
+import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-down-emitter/scroll-down-emitter.module';
+import { LoadingSpinnerModule } from '../../global/modules/layouts/loading-spinner/loading-spinner.module';
+import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
 
 const routes: Routes = [
   {
@@ -32,6 +36,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FontAwesomeModule,
     CardListModule,
+    LoadMoreButtonModule,
+    ScrollDownEmitterModule,
+    LoadingSpinnerModule,
+    PageTitleModule,
   ],
   providers: [BrowseService],
 })

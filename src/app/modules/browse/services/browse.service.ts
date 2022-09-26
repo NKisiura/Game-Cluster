@@ -8,6 +8,12 @@ import { StoresSelectors } from '../../../state/features/stores/selectors/stores
 import { TagsSelectors } from '../../../state/features/tags/selectors/tags.selectors';
 import { DevelopersSelectors } from '../../../state/features/developers/selectors/developers.selectors';
 import { PublishersSelectors } from '../../../state/features/publishers/selectors/publishers.selectors';
+import { PlatformsActions } from '../../../state/features/platforms/actions/platforms.actions';
+import { DevelopersActions } from '../../../state/features/developers/actions/developers.actions';
+import { PublishersActions } from '../../../state/features/publishers/actions/publishers.actions';
+import { TagsActions } from '../../../state/features/tags/actions/tags.actions';
+import { StoresActions } from '../../../state/features/stores/actions/stores.actions';
+import { GenresActions } from '../../../state/features/genres/actions/genres.actions';
 
 @Injectable()
 export class BrowseService {
@@ -41,6 +47,41 @@ export class BrowseService {
       case NotGamesEntityTypes.PUBLISHERS: {
         return this.store$.pipe(
           select(PublishersSelectors.publishersViewModelSelector)
+        );
+      }
+      default: {
+        return null;
+      }
+    }
+  }
+
+  public getEntityNextPageByEntityType(
+    entityType: NotGamesEntityTypes,
+    url: string
+  ) {
+    switch (entityType) {
+      case NotGamesEntityTypes.TAGS: {
+        return this.store$.dispatch(TagsActions.getTagsNextPage({ url }));
+      }
+      case NotGamesEntityTypes.STORES: {
+        return this.store$.dispatch(StoresActions.getStoresNextPage({ url }));
+      }
+      case NotGamesEntityTypes.GENRES: {
+        return this.store$.dispatch(GenresActions.getGenresNextPage({ url }));
+      }
+      case NotGamesEntityTypes.PLATFORMS: {
+        return this.store$.dispatch(
+          PlatformsActions.getPlatformsNextPage({ url })
+        );
+      }
+      case NotGamesEntityTypes.DEVELOPERS: {
+        return this.store$.dispatch(
+          DevelopersActions.getDevelopersNextPage({ url })
+        );
+      }
+      case NotGamesEntityTypes.PUBLISHERS: {
+        return this.store$.dispatch(
+          PublishersActions.getPublishersNextPage({ url })
         );
       }
       default: {

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BrowseService } from '../../services/browse.service';
 import { NotGamesEntityTypes } from '../../../../global/types/entities/entity-types.enum';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { LoadMoreButtonComponent } from '../../../../global/modules/layouts/load-more-button/components/load-more-button/load-more-button.component';
 
 @Component({
   selector: 'app-browse-entity',
@@ -10,6 +11,9 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class BrowseEntityComponent implements OnInit {
   private unsubscribe$: Subject<void> = new Subject<void>();
+
+  @ViewChild('loadMoreButton')
+  private loadMoreButtonElement!: LoadMoreButtonComponent;
   public entityType!: NotGamesEntityTypes;
 
   constructor(
@@ -23,6 +27,14 @@ export class BrowseEntityComponent implements OnInit {
 
   public getEntityViewModelByEntityType(entityType: NotGamesEntityTypes) {
     return this.browseService.getEntityViewModelByEntityType(entityType);
+  }
+
+  public loadMoreEntitiesOnScrollDown(): void {
+    if (this.loadMoreButtonElement) this.loadMoreButtonElement.click();
+  }
+
+  public loadMoreEntities(entityType: NotGamesEntityTypes, url: string): void {
+    this.browseService.getEntityNextPageByEntityType(entityType, url);
   }
 
   private defineCurrentEntityType(params: Params): void {
