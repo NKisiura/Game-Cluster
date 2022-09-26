@@ -1,4 +1,4 @@
-<h2 class="text-7xl text-white font-semibold mb-5">Browse</h2>
+<app-page-title [title]="'Browse'"></app-page-title>
 
 <ng-container *ngFor="let entityType of entityTypesList">
   <ng-container [ngTemplateOutlet]="browseEntityListTemplate"
