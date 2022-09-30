@@ -36,7 +36,12 @@ export const gameDetailsReducer = createReducer(
       error: action.error,
     })
   ),
-  on(routerNavigationAction, () => initialState)
+  on(routerNavigationAction, (state, action) =>
+    state.data &&
+    action.payload.routerState.url.toString().includes(state.data.slug)
+      ? state
+      : initialState
+  )
 );
 
 export function gameDetailsReducers(
