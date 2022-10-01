@@ -14,6 +14,11 @@ const initialState: GameDetailsStateInterface = {
     error: null,
     data: null,
   },
+  gameAchievements: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
 };
 
 export const gameDetailsReducer = createReducer(
@@ -77,6 +82,38 @@ export const gameDetailsReducer = createReducer(
       ...state,
       gameScreenshots: {
         ...state.gameScreenshots,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    GameDetailsActions.GetGameAchievementsActions.getGameAchievements,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameAchievements: {
+        ...state.gameAchievements,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameDetailsActions.GetGameAchievementsActions.getGameAchievementsSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameAchievements: {
+        ...state.gameAchievements,
+        isLoading: false,
+        data: action.getAchievementsResponse,
+      },
+    })
+  ),
+  on(
+    GameDetailsActions.GetGameAchievementsActions.getGameAchievementsFailure,
+    (state, action) => ({
+      ...state,
+      gameAchievements: {
+        ...state.gameAchievements,
         isLoading: false,
         error: action.error,
       },

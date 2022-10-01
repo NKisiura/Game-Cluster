@@ -2,7 +2,10 @@ import { createAction, props } from '@ngrx/store';
 import { GameDetailsInterface } from '../../../../global/types/entities/games/game-details.interface';
 import { GameDetailsActionTypes } from './game-details-action-types';
 import { BackendErrorResponseInterface } from '../../../types/backend-error-response.interface';
-import { GetGameScreenshotsResponseInterface } from '../types/game-details-state.interface';
+import {
+  GetGameAchievementsResponseInterface,
+  GetGameScreenshotsResponseInterface,
+} from '../types/game-details-state.interface';
 
 export namespace GameDetailsActions {
   export namespace GetGameActions {
@@ -35,6 +38,23 @@ export namespace GameDetailsActions {
 
     export const getGameScreenshotsFailure = createAction(
       GameDetailsActionTypes.GET_GAME_SCREENSHOTS_FAILURE,
+      props<{ error: BackendErrorResponseInterface }>()
+    );
+  }
+
+  export namespace GetGameAchievementsActions {
+    export const getGameAchievements = createAction(
+      GameDetailsActionTypes.GET_GAME_ACHIEVEMENTS,
+      props<{ gameId: number }>()
+    );
+
+    export const getGameAchievementsSuccess = createAction(
+      GameDetailsActionTypes.GET_GAME_ACHIEVEMENTS_SUCCESS,
+      props<{ getAchievementsResponse: GetGameAchievementsResponseInterface }>()
+    );
+
+    export const getGameAchievementsFailure = createAction(
+      GameDetailsActionTypes.GET_GAME_ACHIEVEMENTS_FAILURE,
       props<{ error: BackendErrorResponseInterface }>()
     );
   }

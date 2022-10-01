@@ -51,4 +51,24 @@ export namespace GameDetailsSelectors {
         gameDetailsState.gameScreenshots.data?.previous || null
     );
   }
+
+  export namespace GameAchievementsSelectors {
+    export const gameAchievementsLoadingSelector = createSelector(
+      gameDetailsFeatureSelector,
+      (gameDetailsState: GameDetailsStateInterface) =>
+        gameDetailsState.gameAchievements.isLoading
+    );
+
+    export const gameAchievementsErrorSelector = createSelector(
+      gameDetailsFeatureSelector,
+      (gameDetailsState: GameDetailsStateInterface) =>
+        gameDetailsState.gameAchievements.error
+    );
+
+    export const gameAchievementsSelector = createSelector(
+      gameDetailsFeatureSelector,
+      (gameDetailsState: GameDetailsStateInterface) =>
+        gameDetailsState.gameAchievements.data?.result || null
+    );
+  }
 }

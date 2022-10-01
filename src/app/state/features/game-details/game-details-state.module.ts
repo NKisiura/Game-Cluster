@@ -7,12 +7,17 @@ import { gameDetailsReducers } from './reducers/game-details.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { GameDetailsEffect } from './effects/game-details.effect';
 import { GameScreenshotsEffect } from './effects/game-screenshots.effect';
+import { GameAchievementsEffect } from './effects/game-achievements.effect';
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forFeature(gameDetailsFeatureKey, gameDetailsReducers),
-    EffectsModule.forFeature([GameDetailsEffect, GameScreenshotsEffect]),
+    EffectsModule.forFeature([
+      GameDetailsEffect,
+      GameScreenshotsEffect,
+      GameAchievementsEffect,
+    ]),
   ],
   providers: [GameDetailsService],
 })
