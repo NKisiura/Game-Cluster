@@ -8,10 +8,8 @@ import {
 } from '../../../../global/constants/api-constants';
 import { GameDetailsInterface } from '../../../../global/types/entities/games/game-details.interface';
 import { Observable } from 'rxjs';
-import {
-  GetGameAchievementsResponseInterface,
-  GetGameScreenshotsResponseInterface,
-} from '../types/game-details-state.interface';
+import { GetGameScreenshotsResponseInterface } from '../types/get-game-screenshots-response.interface';
+import { GetGameAchievementsResponseInterface } from '../types/get-game-achievements-response.interface';
 
 @Injectable()
 export class GameDetailsService {

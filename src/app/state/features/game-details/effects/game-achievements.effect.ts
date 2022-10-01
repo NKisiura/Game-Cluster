@@ -5,23 +5,22 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { GameDetailsService } from '../services/game-details.service';
 import { GameDetailsActions } from '../actions/game-details.actions';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
-import { GetGameAchievementsResponseInterface } from '../types/game-details-state.interface';
 import { BackendErrorResponseInterface } from '../../../types/backend-error-response.interface';
+import { GameAchievementsActions } from '../actions/game-achievements.actions';
+import { GetGameAchievementsResponseInterface } from '../types/get-game-achievements-response.interface';
 
 @Injectable()
 export class GameAchievementsEffect {
   public dispatchGetAchievementsAction$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(GameDetailsActions.GetGameActions.getGameSuccess),
+        ofType(GameDetailsActions.getGameSuccess),
         tap(({ game }) => {
           if (game.achievements_count > 0) {
             this.store$.dispatch(
-              GameDetailsActions.GetGameAchievementsActions.getGameAchievements(
-                {
-                  gameId: game.id,
-                }
-              )
+              GameAchievementsActions.getGameAchievements({
+                gameId: game.id,
+              })
             );
           }
         })
@@ -31,20 +30,16 @@ export class GameAchievementsEffect {
 
   public getGameAchievements$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(GameDetailsActions.GetGameAchievementsActions.getGameAchievements),
+      ofType(GameAchievementsActions.getGameAchievements),
       switchMap(({ gameId }) => {
         return this.gameDetailsService.getGameAchievements(gameId).pipe(
           map((getAchievementsResponse: GetGameAchievementsResponseInterface) =>
-            GameDetailsActions.GetGameAchievementsActions.getGameAchievementsSuccess(
-              { getAchievementsResponse }
-            )
+            GameAchievementsActions.getGameAchievementsSuccess({
+              getAchievementsResponse,
+            })
           ),
           catchError((error: BackendErrorResponseInterface) =>
-            of(
-              GameDetailsActions.GetGameAchievementsActions.getGameAchievementsFailure(
-                { error }
-              )
-            )
+            of(GameAchievementsActions.getGameAchievementsFailure({ error }))
           )
         );
       })

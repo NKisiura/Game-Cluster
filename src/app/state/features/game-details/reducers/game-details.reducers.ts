@@ -2,6 +2,8 @@ import { GameDetailsStateInterface } from '../types/game-details-state.interface
 import { Action, createReducer, on } from '@ngrx/store';
 import { GameDetailsActions } from '../actions/game-details.actions';
 import { routerNavigationAction } from '@ngrx/router-store';
+import { GameScreenshotsActions } from '../actions/game-screenshots.actions';
+import { GameAchievementsActions } from '../actions/game-achievements.actions';
 
 const initialState: GameDetailsStateInterface = {
   game: {
@@ -24,7 +26,7 @@ const initialState: GameDetailsStateInterface = {
 export const gameDetailsReducer = createReducer(
   initialState,
   on(
-    GameDetailsActions.GetGameActions.getGame,
+    GameDetailsActions.getGame,
     (state): GameDetailsStateInterface => ({
       ...state,
       game: {
@@ -34,7 +36,7 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
-    GameDetailsActions.GetGameActions.getGameSuccess,
+    GameDetailsActions.getGameSuccess,
     (state, action): GameDetailsStateInterface => ({
       ...state,
       game: {
@@ -45,7 +47,7 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
-    GameDetailsActions.GetGameActions.getGameFailure,
+    GameDetailsActions.getGameFailure,
     (state, action): GameDetailsStateInterface => ({
       ...state,
       game: {
@@ -56,7 +58,7 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
-    GameDetailsActions.GetScreenshotsActions.getGameScreenshots,
+    GameScreenshotsActions.getGameScreenshots,
     (state): GameDetailsStateInterface => ({
       ...state,
       gameScreenshots: {
@@ -66,7 +68,7 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
-    GameDetailsActions.GetScreenshotsActions.getGameScreenshotsSuccess,
+    GameScreenshotsActions.getGameScreenshotsSuccess,
     (state, action): GameDetailsStateInterface => ({
       ...state,
       gameScreenshots: {
@@ -77,7 +79,7 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
-    GameDetailsActions.GetScreenshotsActions.getGameScreenshotsFailure,
+    GameScreenshotsActions.getGameScreenshotsFailure,
     (state, action): GameDetailsStateInterface => ({
       ...state,
       gameScreenshots: {
@@ -88,7 +90,7 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
-    GameDetailsActions.GetGameAchievementsActions.getGameAchievements,
+    GameAchievementsActions.getGameAchievements,
     (state): GameDetailsStateInterface => ({
       ...state,
       gameAchievements: {
@@ -98,7 +100,7 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
-    GameDetailsActions.GetGameAchievementsActions.getGameAchievementsSuccess,
+    GameAchievementsActions.getGameAchievementsSuccess,
     (state, action): GameDetailsStateInterface => ({
       ...state,
       gameAchievements: {
@@ -109,8 +111,8 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
-    GameDetailsActions.GetGameAchievementsActions.getGameAchievementsFailure,
-    (state, action) => ({
+    GameAchievementsActions.getGameAchievementsFailure,
+    (state, action): GameDetailsStateInterface => ({
       ...state,
       gameAchievements: {
         ...state.gameAchievements,
