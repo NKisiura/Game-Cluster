@@ -3,12 +3,12 @@ import { BackendErrorResponseInterface } from '../../../types/backend-error-resp
 import { GameScreenshotInterface } from '../../../../global/types/entities/games/game-screenshot.interface';
 
 export interface GameDetailsStateInterface {
-  game: {
+  readonly game: {
     isLoading: boolean;
     error: BackendErrorResponseInterface | null;
     data: GameDetailsInterface | null;
   };
-  gameScreenshots: {
+  readonly gameScreenshots: {
     isLoading: boolean;
     error: BackendErrorResponseInterface | null;
     data: GetGameScreenshotsResponseInterface | null;

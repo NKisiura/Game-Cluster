@@ -14,13 +14,15 @@ export class GameScreenshotsEffect {
     () =>
       this.actions$.pipe(
         ofType(GameDetailsActions.GetGameActions.getGameSuccess),
-        tap(({ game }) =>
-          this.store$.dispatch(
-            GameDetailsActions.GetScreenshotsActions.getGameScreenshots({
-              gameId: game.id,
-            })
-          )
-        )
+        tap(({ game }) => {
+          if (game.screenshots_count > 0) {
+            this.store$.dispatch(
+              GameDetailsActions.GetScreenshotsActions.getGameScreenshots({
+                gameId: game.id,
+              })
+            );
+          }
+        })
       ),
     { dispatch: false }
   );
