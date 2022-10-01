@@ -9,4 +9,6 @@ export const API_PUBLISHERS_URL = 'publishers';
 export const API_DEVELOPERS_URL = 'developers';
 export const API_CREATORS_URL = 'creators';
 
+export const API_GAME_SCREENSHOTS_URL = 'screenshots';
+
 export const YOUTUBE_VIDEO_BASE_URL = 'https://www.youtube.com/watch?v=';

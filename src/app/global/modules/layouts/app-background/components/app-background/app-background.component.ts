@@ -16,7 +16,7 @@ export class AppBackgroundComponent implements OnInit {
 
   ngOnInit(): void {
     this.appBackgroundImageUrl$ = this.store$.pipe(
-      select(GameDetailsSelectors.gameDetailsBgImageSelector)
+      select(GameDetailsSelectors.GameSelectors.gameDetailsBgImageSelector)
     );
   }
 }

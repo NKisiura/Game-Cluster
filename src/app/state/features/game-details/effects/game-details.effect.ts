@@ -10,14 +10,14 @@ import { BackendErrorResponseInterface } from '../../../types/backend-error-resp
 export class GameDetailsEffect {
   public getGameDetails$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(GameDetailsActions.getGameDetails),
+      ofType(GameDetailsActions.GetGameActions.getGame),
       switchMap(({ url }) => {
-        return this.gameDetailsService.getGameDetails(url).pipe(
-          map((gameDetails: GameDetailsInterface) =>
-            GameDetailsActions.getGameDetailsSuccess({ gameDetails })
+        return this.gameDetailsService.getGame(url).pipe(
+          map((game: GameDetailsInterface) =>
+            GameDetailsActions.GetGameActions.getGameSuccess({ game })
           ),
           catchError((error: BackendErrorResponseInterface) =>
-            of(GameDetailsActions.getGamesDetailsFailure({ error }))
+            of(GameDetailsActions.GetGameActions.getGameFailure({ error }))
           )
         );
       })

@@ -4,41 +4,87 @@ import { GameDetailsActions } from '../actions/game-details.actions';
 import { routerNavigationAction } from '@ngrx/router-store';
 
 const initialState: GameDetailsStateInterface = {
-  isLoading: false,
-  error: null,
-  data: null,
+  game: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
+  gameScreenshots: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
 };
 
 export const gameDetailsReducer = createReducer(
   initialState,
   on(
-    GameDetailsActions.getGameDetails,
+    GameDetailsActions.GetGameActions.getGame,
     (state): GameDetailsStateInterface => ({
       ...state,
-      isLoading: true,
-      data: null,
-      error: null,
+      game: {
+        ...state.game,
+        isLoading: true,
+      },
     })
   ),
   on(
-    GameDetailsActions.getGameDetailsSuccess,
+    GameDetailsActions.GetGameActions.getGameSuccess,
     (state, action): GameDetailsStateInterface => ({
       ...state,
-      isLoading: false,
-      data: action.gameDetails,
+      game: {
+        ...state.game,
+        isLoading: false,
+        data: action.game,
+      },
     })
   ),
   on(
-    GameDetailsActions.getGamesDetailsFailure,
+    GameDetailsActions.GetGameActions.getGameFailure,
     (state, action): GameDetailsStateInterface => ({
       ...state,
-      isLoading: false,
-      error: action.error,
+      game: {
+        ...state.game,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    GameDetailsActions.GetScreenshotsActions.getGameScreenshots,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameScreenshots: {
+        ...state.gameScreenshots,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameDetailsActions.GetScreenshotsActions.getGameScreenshotsSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameScreenshots: {
+        ...state.gameScreenshots,
+        isLoading: false,
+        data: action.getScreenshotsResponse,
+      },
+    })
+  ),
+  on(
+    GameDetailsActions.GetScreenshotsActions.getGameScreenshotsFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameScreenshots: {
+        ...state.gameScreenshots,
+        isLoading: false,
+        error: action.error,
+      },
     })
   ),
   on(routerNavigationAction, (state, action) =>
-    state.data &&
-    action.payload.routerState.url.toString().includes(state.data.slug)
+    state.game.data &&
+    action.payload.routerState.url.toString().includes(state.game.data.slug)
       ? state
       : initialState
   )

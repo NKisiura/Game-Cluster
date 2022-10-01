@@ -13,9 +13,9 @@ import { CreatorsStateModule } from './features/creators/creators.state.module';
 @NgModule({
   imports: [
     CommonModule,
-    PlatformsStateModule,
     GamesStateModule,
     GameDetailsStateModule,
+    PlatformsStateModule,
     GenresStateModule,
     StoresStateModule,
     TagsStateModule,
