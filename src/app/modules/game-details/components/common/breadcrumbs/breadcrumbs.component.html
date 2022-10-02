@@ -1,0 +1,21 @@
+<div class="flex gap-1.5 mb-4">
+  <ng-container *ngFor="let breadcrumbItem of breadcrumbs; let last = last"
+                [ngTemplateOutlet]="breadcrumbItemTemplate"
+                [ngTemplateOutletContext]="{url: breadcrumbItem.url, name: breadcrumbItem.name, last: last}"
+  ></ng-container>
+</div>
+
+<ng-template #breadcrumbItemTemplate let-url="url" let-name="name" let-last="last">
+  <a [routerLink]="url"
+     [routerLinkActive]="'active'"
+     [routerLinkActiveOptions]="{exact: true}"
+     class="uppercase text-xs font-light text-grey-300 tracking-[2px] transition-colors duration-200 hover:text-white"
+  >
+    {{name}}
+  </a>
+  <ng-container *ngIf="!last" [ngTemplateOutlet]="breadcrumbsSeparatorTemplate"></ng-container>
+</ng-template>
+
+<ng-template #breadcrumbsSeparatorTemplate>
+  <span class="text-xs font-light text-grey-300">/</span>
+</ng-template>
