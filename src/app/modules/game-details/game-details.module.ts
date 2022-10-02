@@ -13,6 +13,7 @@ import { GameDetailsHeaderComponent } from './components/common/game-details-hea
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
 import { GameGalleryComponent } from './components/game-details-main/game-section-media/game-gallery/game-gallery.component';
+import { GameStoresComponent } from './components/game-details-main/game-section-media/game-stores/game-stores.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { GameGalleryComponent } from './components/game-details-main/game-sectio
     GameSectionInfoComponent,
     GameSectionMediaComponent,
     GameGalleryComponent,
+    GameStoresComponent,
     GamePartitionScreenshotsComponent,
   ],
   imports: [

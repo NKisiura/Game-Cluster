@@ -1,4 +1,7 @@
-<app-game-gallery [game-clip]="game.clip"
-                  [game-screenshots]="gameScreenshots | async"
-></app-game-gallery>
+<div class="flex flex-col gap-6">
+  <app-game-gallery [game-clip]="game.clip"
+                    [game-screenshots]="gameScreenshots | async"
+  ></app-game-gallery>
+  <app-game-stores [game-stores]="game.stores"></app-game-stores>
+</div>
 

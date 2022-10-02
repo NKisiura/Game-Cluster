@@ -1,0 +1,13 @@
+<div *ngIf="gameStores">
+  <div class="text-lg text-grey-500 mb-3">Where to buy</div>
+  <div class="grid grid-cols-2 gap-4">
+    <a *ngFor="let store of gameStores"
+       [href]="store.url"
+       target="_blank"
+       class="flex items-center justify-center h-10 text-sm font-light text-grey-300 rounded-md bg-grey-700 shadow-sm transition-colors duration-300 hover:bg-white hover:text-grey-800"
+    >
+      <span class="mr-2">{{store.store.name}}</span>
+      <fa-icon [icon]="getStoreIcon(store.store.slug)" class="text-xl"></fa-icon>
+    </a>
+  </div>
+</div>
