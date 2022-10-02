@@ -15,7 +15,7 @@ export interface GameInterface extends Entity {
   readonly stores: GameStore[];
   readonly clip: GameClip | null;
   readonly tags: TagInterface[];
-  readonly esrb_rating: GameEsrbRating;
+  readonly esrb_rating: GameEsrbRating | null;
   readonly short_screenshots: GameShortScreenshot[];
 }
 
@@ -36,6 +36,7 @@ export interface GameParentPlatform {
 
 export interface GameStore {
   readonly id: number;
+  readonly url: string;
   readonly store: StoreInterface;
 }
 
