@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-3">
+  <div *ngIf="gameClip" class="relative">
+    <video class="rounded-lg w-full h-auto object-cover" [src]="gameClip.clip" preload="metadata" autoplay loop [muted]="true" [poster]="gameClip.preview"></video>
+    <a [href]="youtubeVideoBaseUrl + gameClip.video" data-fancybox class="flex items-center text-xs font-light text-white py-1 px-2 border border-transparent rounded-md absolute bottom-2 right-2 bg-black bg-opacity-50 transition duration-200 hover:border-grey-300">
+      <fa-icon class="text-sm mr-1.5" [icon]="getYoutubeIcon()"></fa-icon>Play full video
+    </a>
+  </div>
+  <div *ngIf="gameScreenshots" class="grid grid-cols-2 gap-3">
+    <ng-container *ngFor="let screenshot of getFirstFourGameScreenshots(gameScreenshots); let last = last">
+      <a *ngIf="!last"
+         [href]="screenshot.image"
+         data-fancybox="screenshots-preview"
+      >
+        <img [src]="getCroppedImage(screenshot.image)" alt="screenshot" class="rounded-md">
+      </a>
+      <a *ngIf="last"
+         [routerLink]="gameScreenshotsPartitionRouterLink"
+         class="group relative rounded-md before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-grey-800 before:bg-opacity-90 before:rounded-md before:transition-colors before:duration-300 before:hover:bg-grey-300 before:hover:bg-opacity-90"
+      >
+        <div class="flex flex-col items-center text-xs absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-grey-300 transition-colors duration-300 group-hover:text-grey-800">
+          <fa-icon [icon]="getEllipsisIcon()" class="text-lg leading-3"></fa-icon>
+          <span>View All</span>
+        </div>
+        <img [src]="getCroppedImage(screenshot.image)" alt="screenshot" class="rounded-md">
+      </a>
+    </ng-container>
+  </div>
+</div>
+

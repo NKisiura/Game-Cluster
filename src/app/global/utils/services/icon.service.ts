@@ -22,6 +22,7 @@ import {
   faCode,
   faDiceFive,
   faDownload,
+  faEllipsis,
   faGamepad,
   faGhost,
   faHashtag,
@@ -67,6 +68,8 @@ export class IconService {
   public arrowRightIcon = faChevronRight;
   public arrowDownIcon = faChevronDown;
   public arrowLeftIcon = faChevronLeft;
+
+  public ellipsisIcon = faEllipsis;
 
   public youtubeIcon = faYoutube;
 
