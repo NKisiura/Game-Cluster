@@ -4,5 +4,5 @@ export interface GetGameScreenshotsResponseInterface {
   readonly count: number;
   readonly next: string | null;
   readonly previous: string | null;
-  readonly result: GameScreenshotInterface[] | null;
+  readonly results: GameScreenshotInterface[] | null;
 }

@@ -18,7 +18,7 @@ export namespace GameScreenshotsSelectors {
   export const gameScreenshotsSelector = createSelector(
     gameDetailsFeatureSelector,
     (gameDetailsState: GameDetailsStateInterface) =>
-      gameDetailsState.gameScreenshots.data?.result || null
+      gameDetailsState.gameScreenshots.data?.results || null
   );
 
   export const gameScreenshotsNextPageSelector = createSelector(
