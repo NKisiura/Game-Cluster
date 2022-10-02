@@ -1,0 +1,8 @@
+<div *ngIf="gameDetails$ | async as game" class="flex gap-8">
+  <div class="w-3/5">
+    <app-game-section-info [game]="game"></app-game-section-info>
+  </div>
+  <div class="w-2/5">
+    <app-game-section-media [game]="game"></app-game-section-media>
+  </div>
+</div>

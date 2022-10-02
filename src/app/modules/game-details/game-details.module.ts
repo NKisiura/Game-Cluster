@@ -1,17 +1,37 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameDetailsComponent } from './components/game-details/game-details.component';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: 'game/:slug',
-    component: GameDetailsComponent,
-  },
-];
+import { GameDetailsComponent } from './game-details.component';
+import { GameDetailsMainComponent } from './components/game-details-main/game-details-main.component';
+import { BreadcrumbsComponent } from './components/common/breadcrumbs/breadcrumbs.component';
+import { GameDetailsRoutingModule } from './game-details-routing.module';
+import { GamePartitionScreenshotsComponent } from './components/game-details-partitions/game-details-partition-screenshots/game-partition-screenshots.component';
+import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-error-message/backend-error-message.module';
+import { LoadingSpinnerModule } from '../../global/modules/layouts/loading-spinner/loading-spinner.module';
+import { GameSectionInfoComponent } from './components/game-details-main/game-section-info/game-section-info.component';
+import { GameSectionMediaComponent } from './components/game-details-main/game-section-media/game-section-media.component';
+import { GameDetailsHeaderComponent } from './components/common/game-details-header/game-details-header.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
+import { GameGalleryComponent } from './components/game-details-main/game-section-media/game-gallery/game-gallery.component';
 
 @NgModule({
-  declarations: [GameDetailsComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [
+    GameDetailsComponent,
+    GameDetailsMainComponent,
+    BreadcrumbsComponent,
+    GameDetailsHeaderComponent,
+    GameSectionInfoComponent,
+    GameSectionMediaComponent,
+    GameGalleryComponent,
+    GamePartitionScreenshotsComponent,
+  ],
+  imports: [
+    CommonModule,
+    GameDetailsRoutingModule,
+    FontAwesomeModule,
+    BackendErrorMessageModule,
+    LoadingSpinnerModule,
+    PageTitleModule,
+  ],
 })
 export class GameDetailsModule {}

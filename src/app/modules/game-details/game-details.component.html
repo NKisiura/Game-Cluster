@@ -1,0 +1,10 @@
+<app-backend-error-message *ngIf="gameDetailsError$ | async as gameError" [error]="gameError"></app-backend-error-message>
+<app-loading-spinner *ngIf="gameDetailsLoading$ | async"></app-loading-spinner>
+
+<ng-container *ngIf="gameDetails$ | async as game">
+  <div class="lg:px-8 xl:px-16 2xl:px-52">
+    <app-breadcrumbs [game]="game"></app-breadcrumbs>
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>
+

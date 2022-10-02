@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../state/types/app-state.interface';
-import { GameDetailsActions } from '../../../../state/features/game-details/actions/game-details.actions';
-import { API_GAMES_URL } from '../../../../global/constants/api-constants';
 import { ActivatedRoute } from '@angular/router';
+import { GameDetailsActions } from '../../state/features/game-details/actions/game-details.actions';
+import { BackendErrorResponseInterface } from '../../state/types/backend-error-response.interface';
+import { AppStateInterface } from '../../state/types/app-state.interface';
+import { select, Store } from '@ngrx/store';
+import { GameDetailsInterface } from '../../global/types/entities/games/game-details.interface';
+import { GameDetailsSelectors } from '../../state/features/game-details/selectors/game-details.selectors';
 import { Observable } from 'rxjs';
-import { GameDetailsInterface } from '../../../../global/types/entities/games/game-details.interface';
-import { GameDetailsSelectors } from '../../../../state/features/game-details/selectors/game-details.selectors';
-import { BackendErrorResponseInterface } from '../../../../state/types/backend-error-response.interface';
+import { API_GAMES_URL } from '../../global/constants/api-constants';
 
 @Component({
   selector: 'app-game-details',
@@ -31,22 +31,22 @@ export class GameDetailsComponent implements OnInit {
 
   private initValues(): void {
     this.gameDetails$ = this.store$.pipe(
-      select(GameDetailsSelectors.gameDetailsSelector)
+      select(GameDetailsSelectors.gameSelector)
     );
     this.gameDetailsLoading$ = this.store$.pipe(
-      select(GameDetailsSelectors.gameDetailsLoadingSelector)
+      select(GameDetailsSelectors.gameLoadingSelector)
     );
     this.gameDetailsError$ = this.store$.pipe(
-      select(GameDetailsSelectors.gameDetailsErrorSelector)
+      select(GameDetailsSelectors.gameErrorSelector)
     );
   }
 
   private initActions(): void {
     const url = `${API_GAMES_URL}/${this.getCurrentGameSlug()}`;
-    this.store$.dispatch(GameDetailsActions.getGameDetails({ url }));
+    this.store$.dispatch(GameDetailsActions.getGame({ url }));
   }
 
   private getCurrentGameSlug(): string {
-    return this.activatedRoute.snapshot.params['slug'];
+    return this.activatedRoute.snapshot.params['game-slug'];
   }
 }
