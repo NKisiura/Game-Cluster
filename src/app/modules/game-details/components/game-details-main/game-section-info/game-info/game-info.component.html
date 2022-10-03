@@ -29,6 +29,10 @@
                   [ngTemplateOutletContext]="{active: false, title: 'Age Rating', text: game.esrb_rating.name}"
     ></ng-container>
   </div>
+  <ng-container *ngIf="gameSeries?.length"
+                [ngTemplateOutlet]="infoRelatedGamesTemplate"
+                [ngTemplateOutletContext]="{title: 'Other games in the series', gameList: gameSeries}"
+  ></ng-container>
   <ng-container *ngIf="game.tags?.length"
                 [ngTemplateOutlet]="infoItemTemplate"
                 [ngTemplateOutletContext]="{active: true, title: 'Tags', entityType: 'tags', entityList: game.tags}"
@@ -36,10 +40,6 @@
   <ng-container *ngIf="game.website"
                 [ngTemplateOutlet]="infoWebsiteTemplate"
                 [ngTemplateOutletContext]="{title: 'Website', link: game.website}"
-  ></ng-container>
-  <ng-container *ngIf="gameSeries?.length"
-                [ngTemplateOutlet]="infoRelatedGamesTemplate"
-                [ngTemplateOutletContext]="{title: 'Other games in the series', gameList: gameSeries}"
   ></ng-container>
 </div>
 
