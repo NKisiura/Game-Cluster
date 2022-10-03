@@ -5,6 +5,7 @@ import { routerNavigationAction } from '@ngrx/router-store';
 import { GameScreenshotsActions } from '../actions/game-screenshots.actions';
 import { GameAchievementsActions } from '../actions/game-achievements.actions';
 import { GameSeriesActions } from '../actions/game-series.actions';
+import { GameAdditionsActions } from '../actions/game-additions.actions';
 
 const initialState: GameDetailsStateInterface = {
   game: {
@@ -23,6 +24,11 @@ const initialState: GameDetailsStateInterface = {
     data: null,
   },
   gameSeries: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
+  gameAdditions: {
     isLoading: false,
     error: null,
     data: null,
@@ -159,12 +165,49 @@ export const gameDetailsReducer = createReducer(
       },
     })
   ),
-  on(routerNavigationAction, (state, action) =>
-    state.game.data &&
-    action.payload.routerState.url.toString().includes(state.game.data.slug)
-      ? state
-      : initialState
-  )
+  on(
+    GameAdditionsActions.getGameAdditions,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameAdditions: {
+        ...state.gameAdditions,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameAdditionsActions.getGameAdditionsSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameAdditions: {
+        ...state.gameAdditions,
+        isLoading: false,
+        data: action.getGamesResponse,
+      },
+    })
+  ),
+  on(
+    GameAdditionsActions.getGameAdditionsFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameAdditions: {
+        ...state.gameAdditions,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(routerNavigationAction, (state, action) => {
+    if (
+      state.game.data &&
+      action.payload.routerState.root.firstChild?.params['game-slug'] ===
+        state.game.data.slug
+    ) {
+      return state;
+    } else {
+      return initialState;
+    }
+  })
 );
 
 export function gameDetailsReducers(

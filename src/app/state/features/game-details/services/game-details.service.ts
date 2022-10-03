@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {
   API_BASE_URL,
   API_GAME_ACHIEVEMENTS_URL,
+  API_GAME_ADDITIONS_URL,
   API_GAME_SCREENSHOTS_URL,
   API_GAME_SERIES_URL,
   API_GAMES_URL,
@@ -40,6 +41,14 @@ export class GameDetailsService {
   public getGameSeries(gameId: number): Observable<GetGamesResponseInterface> {
     return this.http.get<GetGamesResponseInterface>(
       `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_GAME_SERIES_URL}`
+    );
+  }
+
+  public getGameAdditions(
+    gameId: number
+  ): Observable<GetGamesResponseInterface> {
+    return this.http.get<GetGamesResponseInterface>(
+      `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_GAME_ADDITIONS_URL}`
     );
   }
 }

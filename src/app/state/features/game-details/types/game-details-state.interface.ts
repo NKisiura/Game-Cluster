@@ -25,4 +25,9 @@ export interface GameDetailsStateInterface {
     error: BackendErrorResponseInterface | null;
     data: GetGamesResponseInterface | null;
   };
+  readonly gameAdditions: {
+    isLoading: boolean;
+    error: BackendErrorResponseInterface | null;
+    data: GetGamesResponseInterface | null;
+  };
 }

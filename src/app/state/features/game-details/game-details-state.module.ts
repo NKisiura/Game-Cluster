@@ -9,6 +9,7 @@ import { GameDetailsEffect } from './effects/game-details.effect';
 import { GameScreenshotsEffect } from './effects/game-screenshots.effect';
 import { GameAchievementsEffect } from './effects/game-achievements.effect';
 import { GameSeriesEffect } from './effects/game-series.effect';
+import { GameAdditionsEffect } from './effects/game-additions.effect';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { GameSeriesEffect } from './effects/game-series.effect';
       GameScreenshotsEffect,
       GameAchievementsEffect,
       GameSeriesEffect,
+      GameAdditionsEffect,
     ]),
   ],
   providers: [GameDetailsService],
