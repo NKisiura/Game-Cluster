@@ -12,7 +12,7 @@ import { GameScreenshotsSelectors } from '../../../../../state/features/game-det
 })
 export class GameSectionMediaComponent implements OnInit {
   @Input('game') public game!: GameDetailsInterface;
-  public gameScreenshots = new Observable<GameScreenshotInterface[] | null>();
+  public gameScreenshots$ = new Observable<GameScreenshotInterface[] | null>();
 
   constructor(private readonly store$: Store<AppStateInterface>) {}
 
@@ -21,7 +21,7 @@ export class GameSectionMediaComponent implements OnInit {
   }
 
   private initValues(): void {
-    this.gameScreenshots = this.store$.pipe(
+    this.gameScreenshots$ = this.store$.pipe(
       select(GameScreenshotsSelectors.gameScreenshotsSelector)
     );
   }
