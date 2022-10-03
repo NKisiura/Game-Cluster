@@ -1,0 +1,12 @@
+h3 {
+  font-min-size: 22px;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
