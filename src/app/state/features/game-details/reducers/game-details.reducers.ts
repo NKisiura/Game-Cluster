@@ -4,6 +4,7 @@ import { GameDetailsActions } from '../actions/game-details.actions';
 import { routerNavigationAction } from '@ngrx/router-store';
 import { GameScreenshotsActions } from '../actions/game-screenshots.actions';
 import { GameAchievementsActions } from '../actions/game-achievements.actions';
+import { GameSeriesActions } from '../actions/game-series.actions';
 
 const initialState: GameDetailsStateInterface = {
   game: {
@@ -17,6 +18,11 @@ const initialState: GameDetailsStateInterface = {
     data: null,
   },
   gameAchievements: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
+  gameSeries: {
     isLoading: false,
     error: null,
     data: null,
@@ -116,6 +122,38 @@ export const gameDetailsReducer = createReducer(
       ...state,
       gameAchievements: {
         ...state.gameAchievements,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    GameSeriesActions.getGameSeries,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameSeries: {
+        ...state.gameSeries,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameSeriesActions.getGameSeriesSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameSeries: {
+        ...state.gameSeries,
+        isLoading: false,
+        data: action.getGamesResponse,
+      },
+    })
+  ),
+  on(
+    GameSeriesActions.getGameSeriesFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameSeries: {
+        ...state.gameSeries,
         isLoading: false,
         error: action.error,
       },

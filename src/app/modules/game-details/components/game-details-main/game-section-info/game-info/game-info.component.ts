@@ -5,7 +5,10 @@ import { NotGamesEntityTypes } from '../../../../../../global/types/entities/ent
 import { Entity } from '../../../../../../global/types/entities/entity';
 import { Params } from '@angular/router';
 import { RouterLinks } from '../../../../../../global/constants/router-links';
-import { GamePlatform } from '../../../../../../global/types/entities/games/game.interface';
+import {
+  GameInterface,
+  GamePlatform,
+} from '../../../../../../global/types/entities/games/game.interface';
 import { PlatformInterface } from '../../../../../../global/types/entities/platforms/platform.interface';
 
 @Component({
@@ -14,7 +17,9 @@ import { PlatformInterface } from '../../../../../../global/types/entities/platf
 })
 export class GameInfoComponent {
   @Input('game') public game!: GameDetailsInterface;
+  @Input('game-series') public gameSeries!: GameInterface[] | null;
   public gamesRouterLink: string = RouterLinks.GAMES_ROUTER_LINK;
+  public gameRouterLink: string = RouterLinks.GAME_ROUTER_LINK;
 
   constructor(private readonly dateService: DateService) {}
 

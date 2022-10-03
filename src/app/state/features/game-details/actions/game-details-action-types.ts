@@ -10,4 +10,8 @@ export enum GameDetailsActionTypes {
   GET_GAME_ACHIEVEMENTS = '[Game Details] Get Game Achievements',
   GET_GAME_ACHIEVEMENTS_SUCCESS = '[Game Details] Get Game Achievements Success',
   GET_GAME_ACHIEVEMENTS_FAILURE = '[Game Details] Get Game Achievements Failure',
+
+  GET_GAME_SERIES = '[Game Details] Get Game Series',
+  GET_GAME_SERIES_SUCCESS = '[Game Details] Get Game Series Success',
+  GET_GAME_SERIES_FAILURE = '[Game Details] Get Game Series Failure',
 }

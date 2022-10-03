@@ -37,6 +37,10 @@
                 [ngTemplateOutlet]="infoWebsiteTemplate"
                 [ngTemplateOutletContext]="{title: 'Website', link: game.website}"
   ></ng-container>
+  <ng-container *ngIf="gameSeries?.length"
+                [ngTemplateOutlet]="infoRelatedGamesTemplate"
+                [ngTemplateOutletContext]="{title: 'Other games in the series', gameList: gameSeries}"
+  ></ng-container>
 </div>
 
 <ng-template #infoItemTemplate
@@ -68,7 +72,7 @@
 <ng-template #infoMetascoreTemplate let-title="title" let-score="score">
   <div class="flex flex-col items-start">
     <ng-container [ngTemplateOutlet]="infoItemTitleTemplate" [ngTemplateOutletContext]="{title: title}"></ng-container>
-    <div class="flex justify-center items-center min-w-[32px] text-[#6dc849] font-bold rounded-[4px] py-[2px] border border-[rgba(109,200,73,0.4)]">{{score}}</div>
+    <div class="flex justify-center items-center min-w-[32px] text-[#6dc849] font-semibold rounded-[4px] py-[2px] border border-[rgba(109,200,73,0.4)]">{{score}}</div>
   </div>
 </ng-template>
 
@@ -78,6 +82,18 @@
     <a [href]="link" target="_blank" class="text-white font-light hover:text-grey-300 underline underline-offset-1 decoration-grey-300 transition-colors duration-200"
     >
       {{link}}
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #infoRelatedGamesTemplate let-title="title" let-gameList=gameList>
+  <div>
+    <ng-container [ngTemplateOutlet]="infoItemTitleTemplate" [ngTemplateOutletContext]="{title: title}"></ng-container>
+    <a *ngFor="let game of gameList; let last = last"
+       [routerLink]="[gameRouterLink, game['slug']]"
+       class="text-white font-light hover:text-grey-300 transition-colors duration-200"
+    >
+      <span class="underline underline-offset-1 decoration-grey-300">{{game['name']}}</span><span *ngIf="!last" class="text-white">, </span>
     </a>
   </div>
 </ng-template>

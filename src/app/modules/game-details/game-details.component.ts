@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { GameDetailsActions } from '../../state/features/game-details/actions/game-details.actions';
 import { BackendErrorResponseInterface } from '../../state/types/backend-error-response.interface';
 import { AppStateInterface } from '../../state/types/app-state.interface';
 import { select, Store } from '@ngrx/store';
 import { GameDetailsInterface } from '../../global/types/entities/games/game-details.interface';
 import { GameDetailsSelectors } from '../../state/features/game-details/selectors/game-details.selectors';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { API_GAMES_URL } from '../../global/constants/api-constants';
 
 @Component({
@@ -14,6 +14,8 @@ import { API_GAMES_URL } from '../../global/constants/api-constants';
   templateUrl: './game-details.component.html',
 })
 export class GameDetailsComponent implements OnInit {
+  private unsubscribe$: Subject<void> = new Subject<void>();
+
   public gameDetails$ = new Observable<GameDetailsInterface | null>();
   public gameDetailsLoading$ = new Observable<boolean>();
   public gameDetailsError$ =
@@ -25,8 +27,14 @@ export class GameDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initActions();
+    this.initListeners();
     this.initValues();
+  }
+
+  private initListeners(): void {
+    this.activatedRoute.params
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params: Params) => this.getCurrentGame(params));
   }
 
   private initValues(): void {
@@ -41,12 +49,8 @@ export class GameDetailsComponent implements OnInit {
     );
   }
 
-  private initActions(): void {
-    const url = `${API_GAMES_URL}/${this.getCurrentGameSlug()}`;
+  private getCurrentGame(params: Params): void {
+    const url = `${API_GAMES_URL}/${params['game-slug']}`;
     this.store$.dispatch(GameDetailsActions.getGame({ url }));
-  }
-
-  private getCurrentGameSlug(): string {
-    return this.activatedRoute.snapshot.params['game-slug'];
   }
 }

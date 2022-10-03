@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { GameDetailsEffect } from './effects/game-details.effect';
 import { GameScreenshotsEffect } from './effects/game-screenshots.effect';
 import { GameAchievementsEffect } from './effects/game-achievements.effect';
+import { GameSeriesEffect } from './effects/game-series.effect';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { GameAchievementsEffect } from './effects/game-achievements.effect';
       GameDetailsEffect,
       GameScreenshotsEffect,
       GameAchievementsEffect,
+      GameSeriesEffect,
     ]),
   ],
   providers: [GameDetailsService],

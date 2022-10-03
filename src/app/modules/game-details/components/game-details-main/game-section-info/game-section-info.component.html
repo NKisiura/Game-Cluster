@@ -7,5 +7,5 @@
   <app-game-description [description]="game.description"
                         [description-raw]="game.description_raw"
   ></app-game-description>
-  <app-game-info [game]="game"></app-game-info>
+  <app-game-info [game]="game" [game-series]="gameSeries$ | async"></app-game-info>
 </div>

@@ -2,6 +2,7 @@ import { GameDetailsInterface } from '../../../../global/types/entities/games/ga
 import { BackendErrorResponseInterface } from '../../../types/backend-error-response.interface';
 import { GetGameScreenshotsResponseInterface } from './get-game-screenshots-response.interface';
 import { GetGameAchievementsResponseInterface } from './get-game-achievements-response.interface';
+import { GetGamesResponseInterface } from '../../games/types/get-games-response.interface';
 
 export interface GameDetailsStateInterface {
   readonly game: {
@@ -18,5 +19,10 @@ export interface GameDetailsStateInterface {
     isLoading: boolean;
     error: BackendErrorResponseInterface | null;
     data: GetGameAchievementsResponseInterface | null;
+  };
+  readonly gameSeries: {
+    isLoading: boolean;
+    error: BackendErrorResponseInterface | null;
+    data: GetGamesResponseInterface | null;
   };
 }
