@@ -3,6 +3,9 @@
                          [platforms]="game.parent_platforms"
 ></app-game-details-header>
 <app-page-title [title]="game.name"></app-page-title>
-<app-game-description [description]="game.description"
-                      [description-raw]="game.description_raw"
-></app-game-description>
+<div class="flex flex-col gap-5">
+  <app-game-description [description]="game.description"
+                        [description-raw]="game.description_raw"
+  ></app-game-description>
+  <app-game-info [game]="game"></app-game-info>
+</div>

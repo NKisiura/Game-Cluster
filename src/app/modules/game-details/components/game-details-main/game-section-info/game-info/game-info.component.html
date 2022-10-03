@@ -1,0 +1,83 @@
+<div class="flex flex-col gap-4">
+  <div class="grid grid-cols-2 gap-4">
+    <ng-container *ngIf="game.platforms?.length"
+                  [ngTemplateOutlet]="infoItemTemplate"
+                  [ngTemplateOutletContext]="{active: true, title: 'Platforms', entityType: 'platforms', entityList: getGamePlatforms(game.platforms)}"
+    ></ng-container>
+    <ng-container *ngIf="game.metacritic"
+                  [ngTemplateOutlet]="infoMetascoreTemplate"
+                  [ngTemplateOutletContext]="{title: 'Metascore', score: game.metacritic}"
+    ></ng-container>
+    <ng-container *ngIf="game.genres?.length"
+                  [ngTemplateOutlet]="infoItemTemplate"
+                  [ngTemplateOutletContext]="{active: true, title: 'Genre', entityType: 'genres', entityList: game.genres}"
+    ></ng-container>
+    <ng-container *ngIf="game.released"
+                  [ngTemplateOutlet]="infoItemTemplate"
+                  [ngTemplateOutletContext]="{active: false, title: 'Release date', text: getFormattedReleaseDate(game.released)}"
+    ></ng-container>
+    <ng-container *ngIf="game.developers?.length"
+                  [ngTemplateOutlet]="infoItemTemplate"
+                  [ngTemplateOutletContext]="{active: true, title: 'Developers', entityType: 'developers', entityList: game.developers}"
+    ></ng-container>
+    <ng-container *ngIf="game.publishers?.length"
+                  [ngTemplateOutlet]="infoItemTemplate"
+                  [ngTemplateOutletContext]="{active: true, title: 'Publishers', entityType: 'publishers', entityList: game.publishers}"
+    ></ng-container>
+    <ng-container *ngIf="game.esrb_rating"
+                  [ngTemplateOutlet]="infoItemTemplate"
+                  [ngTemplateOutletContext]="{active: false, title: 'Age Rating', text: game.esrb_rating.name}"
+    ></ng-container>
+  </div>
+  <ng-container *ngIf="game.tags?.length"
+                [ngTemplateOutlet]="infoItemTemplate"
+                [ngTemplateOutletContext]="{active: true, title: 'Tags', entityType: 'tags', entityList: game.tags}"
+  ></ng-container>
+  <ng-container *ngIf="game.website"
+                [ngTemplateOutlet]="infoWebsiteTemplate"
+                [ngTemplateOutletContext]="{title: 'Website', link: game.website}"
+  ></ng-container>
+</div>
+
+<ng-template #infoItemTemplate
+             let-active="active"
+             let-title="title"
+             let-text="text"
+             let-entityType="entityType"
+             let-entityList="entityList"
+>
+  <div>
+    <ng-container [ngTemplateOutlet]="infoItemTitleTemplate" [ngTemplateOutletContext]="{title: title}"></ng-container>
+    <div *ngIf="!active" class="text-white font-light">{{text}}</div>
+    <div *ngIf="active" class="text-white font-light">
+      <a *ngFor="let entity of entityList; let last = last"
+         [routerLink]="gamesRouterLink"
+         [queryParams]="setQueryParams(entityType, entity)"
+         class="hover:text-grey-300 transition-colors duration-200"
+      >
+        <span class="underline underline-offset-1 decoration-grey-300">{{entity['name']}}</span><span *ngIf="!last" class="text-white">, </span>
+      </a>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #infoItemTitleTemplate let-title="title">
+  <div class="text-sm text-grey-500 font-medium mb-2">{{title}}</div>
+</ng-template>
+
+<ng-template #infoMetascoreTemplate let-title="title" let-score="score">
+  <div class="flex flex-col items-start">
+    <ng-container [ngTemplateOutlet]="infoItemTitleTemplate" [ngTemplateOutletContext]="{title: title}"></ng-container>
+    <div class="flex justify-center items-center min-w-[32px] text-[#6dc849] font-bold rounded-[4px] py-[2px] border border-[rgba(109,200,73,0.4)]">{{score}}</div>
+  </div>
+</ng-template>
+
+<ng-template #infoWebsiteTemplate let-title="title" let-link="link">
+  <div class="flex flex-col items-start">
+    <ng-container [ngTemplateOutlet]="infoItemTitleTemplate" [ngTemplateOutletContext]="{title: title}"></ng-container>
+    <a [href]="link" target="_blank" class="text-white font-light hover:text-grey-300 underline underline-offset-1 decoration-grey-300 transition-colors duration-200"
+    >
+      {{link}}
+    </a>
+  </div>
+</ng-template>

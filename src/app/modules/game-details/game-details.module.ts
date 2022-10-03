@@ -15,6 +15,7 @@ import { PageTitleModule } from '../../global/modules/layouts/page-title/page-ti
 import { GameGalleryComponent } from './components/game-details-main/game-section-media/game-gallery/game-gallery.component';
 import { GameStoresComponent } from './components/game-details-main/game-section-media/game-stores/game-stores.component';
 import { GameDescriptionComponent } from './components/game-details-main/game-section-info/game-description/game-description.component';
+import { GameInfoComponent } from './components/game-details-main/game-section-info/game-info/game-info.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { GameDescriptionComponent } from './components/game-details-main/game-se
     GameGalleryComponent,
     GameStoresComponent,
     GameDescriptionComponent,
+    GameInfoComponent,
     GamePartitionScreenshotsComponent,
   ],
   imports: [

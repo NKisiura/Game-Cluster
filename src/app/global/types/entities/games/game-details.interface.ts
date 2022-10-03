@@ -17,6 +17,7 @@ export interface GameDetailsInterface extends Entity {
   readonly description_raw: string;
   readonly released: string;
   readonly updated: string;
+  readonly metacritic: number;
   readonly background_image: string;
   readonly background_image_additional: string;
   readonly website: string;
