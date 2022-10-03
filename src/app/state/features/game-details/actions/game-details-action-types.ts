@@ -18,4 +18,8 @@ export enum GameDetailsActionTypes {
   GET_GAME_ADDITIONS = '[Game Details] Get Game Additions',
   GET_GAME_ADDITIONS_SUCCESS = '[Game Details] Get Game Additions Success',
   GET_GAME_ADDITIONS_FAILURE = '[Game Details] Get Game Additions Failure',
+
+  GET_ADDITION_PARENT_GAMES = '[Game Details] Get Addition Paren Games',
+  GET_ADDITION_PARENT_GAMES_SUCCESS = '[Game Details] Get Addition Paren Games Success',
+  GET_ADDITION_PARENT_GAMES_FAILURE = '[Game Details] Get Addition Paren Games Failure',
 }

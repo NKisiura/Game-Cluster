@@ -6,6 +6,7 @@ import { GameScreenshotsActions } from '../actions/game-screenshots.actions';
 import { GameAchievementsActions } from '../actions/game-achievements.actions';
 import { GameSeriesActions } from '../actions/game-series.actions';
 import { GameAdditionsActions } from '../actions/game-additions.actions';
+import { AdditionParentGamesActions } from '../actions/addition-parent-games.actions';
 
 const initialState: GameDetailsStateInterface = {
   game: {
@@ -29,6 +30,11 @@ const initialState: GameDetailsStateInterface = {
     data: null,
   },
   gameAdditions: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
+  additionParentGames: {
     isLoading: false,
     error: null,
     data: null,
@@ -192,6 +198,38 @@ export const gameDetailsReducer = createReducer(
       ...state,
       gameAdditions: {
         ...state.gameAdditions,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    AdditionParentGamesActions.getAdditionParentGames,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      additionParentGames: {
+        ...state.additionParentGames,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    AdditionParentGamesActions.getAdditionParentGamesSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      additionParentGames: {
+        ...state.additionParentGames,
+        isLoading: false,
+        data: action.getGamesResponse,
+      },
+    })
+  ),
+  on(
+    AdditionParentGamesActions.getAdditionParentGamesFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      additionParentGames: {
+        ...state.additionParentGames,
         isLoading: false,
         error: action.error,
       },

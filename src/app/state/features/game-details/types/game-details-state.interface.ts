@@ -30,4 +30,9 @@ export interface GameDetailsStateInterface {
     error: BackendErrorResponseInterface | null;
     data: GetGamesResponseInterface | null;
   };
+  readonly additionParentGames: {
+    isLoading: boolean;
+    error: BackendErrorResponseInterface | null;
+    data: GetGamesResponseInterface | null;
+  };
 }

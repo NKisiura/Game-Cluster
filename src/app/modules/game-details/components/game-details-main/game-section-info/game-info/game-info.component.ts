@@ -19,6 +19,9 @@ export class GameInfoComponent {
   @Input('game') public game!: GameDetailsInterface;
   @Input('game-series') public gameSeries!: GameInterface[] | null;
   @Input('game-additions') public gameAdditions!: GameInterface[] | null;
+  @Input('addition-paren-games') public additionParentGames!:
+    | GameInterface[]
+    | null;
   public gamesRouterLink: string = RouterLinks.GAMES_ROUTER_LINK;
   public gameRouterLink: string = RouterLinks.GAME_ROUTER_LINK;
 

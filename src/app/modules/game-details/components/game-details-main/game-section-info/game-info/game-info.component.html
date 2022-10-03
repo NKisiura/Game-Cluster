@@ -37,6 +37,10 @@
                 [ngTemplateOutlet]="infoRelatedGamesTemplate"
                 [ngTemplateOutletContext]="{title: 'DLC\'s and editions', gameList: gameAdditions}"
   ></ng-container>
+  <ng-container *ngIf="additionParentGames?.length"
+                [ngTemplateOutlet]="infoRelatedGamesTemplate"
+                [ngTemplateOutletContext]="{title: 'Parent game', gameList: additionParentGames}"
+  ></ng-container>
   <ng-container *ngIf="game.tags?.length"
                 [ngTemplateOutlet]="infoItemTemplate"
                 [ngTemplateOutletContext]="{active: true, title: 'Tags', entityType: 'tags', entityList: game.tags}"

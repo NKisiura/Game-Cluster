@@ -6,6 +6,7 @@ import { select, Store } from '@ngrx/store';
 import { AppStateInterface } from '../../../../../state/types/app-state.interface';
 import { GameSeriesSelectors } from '../../../../../state/features/game-details/selectors/game-series.selectors';
 import { GameAdditionsSelector } from '../../../../../state/features/game-details/selectors/game-additions.selector';
+import { AdditionParentGamesSelectors } from '../../../../../state/features/game-details/selectors/addition-parent-games.selectors';
 
 @Component({
   selector: 'app-game-section-info',
@@ -15,6 +16,7 @@ export class GameSectionInfoComponent {
   @Input('game') public game!: GameDetailsInterface;
   public gameSeries$ = new Observable<GameInterface[] | null>();
   public gameAdditions$ = new Observable<GameInterface[] | null>();
+  public additionParentGames$ = new Observable<GameInterface[] | null>();
 
   constructor(private readonly store$: Store<AppStateInterface>) {}
 
@@ -28,6 +30,9 @@ export class GameSectionInfoComponent {
     );
     this.gameAdditions$ = this.store$.pipe(
       select(GameAdditionsSelector.gameAdditionsSelector)
+    );
+    this.additionParentGames$ = this.store$.pipe(
+      select(AdditionParentGamesSelectors.additionParentGamesSelector)
     );
   }
 }

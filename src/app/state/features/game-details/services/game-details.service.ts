@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
+  API_ADDITION_PARENT_GAMES_URL,
   API_BASE_URL,
   API_GAME_ACHIEVEMENTS_URL,
   API_GAME_ADDITIONS_URL,
@@ -49,6 +50,14 @@ export class GameDetailsService {
   ): Observable<GetGamesResponseInterface> {
     return this.http.get<GetGamesResponseInterface>(
       `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_GAME_ADDITIONS_URL}`
+    );
+  }
+
+  public getAdditionParentGames(
+    gameId: number
+  ): Observable<GetGamesResponseInterface> {
+    return this.http.get<GetGamesResponseInterface>(
+      `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_ADDITION_PARENT_GAMES_URL}`
     );
   }
 }
