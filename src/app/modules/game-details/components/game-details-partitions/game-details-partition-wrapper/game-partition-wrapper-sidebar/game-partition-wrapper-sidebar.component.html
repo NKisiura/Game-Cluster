@@ -4,12 +4,14 @@
   >
     About
   </a>
-  <a *ngFor="let partition of getAvailableGamePartitions()"
-     [routerLink]="[gameRouterLink, game.slug, partition]"
-     [routerLinkActive]="'sidebar-link-active'"
-     [routerLinkActiveOptions]="{exact: true}"
-     class="text-grey-300 font-light underline underline-offset-2 decoration-grey-300 decoration-1 hover:text-white transition-colors duration-200"
-  >
-    <span class="capitalize">{{getGamePartitionLabel(partition)}}</span>
-  </a>
+  <div *ngFor="let partition of getAvailableGamePartitions()" class="flex">
+    <a [routerLink]="[gameRouterLink, game.slug, partition]"
+       [routerLinkActive]="'sidebar-link-active'"
+       [routerLinkActiveOptions]="{exact: true}"
+       class="text-grey-300 font-light underline underline-offset-2 decoration-grey-300 decoration-1 hover:text-white transition-colors duration-200"
+    >
+      <span class="capitalize">{{getGamePartitionLabel(partition)}}</span>
+    </a>
+    <span class="text-grey-500 font-light ml-1.5 items-count">{{getPartitionItemsCount(partition)}}</span>
+  </div>
 </div>

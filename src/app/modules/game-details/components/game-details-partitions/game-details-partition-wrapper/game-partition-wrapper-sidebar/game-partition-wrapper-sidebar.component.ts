@@ -28,11 +28,22 @@ export class GamePartitionWrapperSidebarComponent {
 
   public getGamePartitionLabel(gamePartition: GameDetailsPartitions): string {
     switch (gamePartition) {
+      case GameDetailsPartitions.SCREENSHOTS: {
+        return 'screenshots';
+      }
       case GameDetailsPartitions.ACHIEVEMENTS: {
         return 'achievements';
       }
+    }
+  }
+
+  public getPartitionItemsCount(gamePartition: GameDetailsPartitions): number {
+    switch (gamePartition) {
       case GameDetailsPartitions.SCREENSHOTS: {
-        return 'screenshots';
+        return this.game.screenshots_count;
+      }
+      case GameDetailsPartitions.ACHIEVEMENTS: {
+        return this.game.achievements_count;
       }
     }
   }
