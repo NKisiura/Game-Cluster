@@ -21,6 +21,8 @@ import { GameAchievementComponent } from './components/common/game-achievement/g
 import { GamePartitionAchievementsComponent } from './components/game-details-partitions/game-details-partition-achievements/game-partition-achievements.component';
 import { GamePartitionWrapperComponent } from './components/game-details-partitions/game-details-partition-wrapper/game-partition-wrapper.component';
 import { GamePartitionWrapperSidebarComponent } from './components/game-details-partitions/game-details-partition-wrapper/game-partition-wrapper-sidebar/game-partition-wrapper-sidebar.component';
+import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-down-emitter/scroll-down-emitter.module';
+import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-button/load-more-button.module';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { GamePartitionWrapperSidebarComponent } from './components/game-details-
     FontAwesomeModule,
     BackendErrorMessageModule,
     LoadingSpinnerModule,
+    ScrollDownEmitterModule,
+    LoadMoreButtonModule,
     PageTitleModule,
   ],
 })

@@ -1,3 +1,17 @@
-<app-game-partition-wrapper>
-  game partition screenshot
-</app-game-partition-wrapper>
+<ng-container *ngIf="gameScreenshots$ | async as gameScreenshots">
+  <app-game-partition-wrapper>
+    <app-scroll-down-emitter (scroll-down)="loadMoreScreenshotsOnScrollDown()"></app-scroll-down-emitter>
+    <div class="grid grid-cols-3 gap-4 mb-4">
+      <a *ngFor="let screenshot of gameScreenshots" [href]="screenshot.image" data-fancybox="game-screenshots">
+        <img [src]="getCroppedImage(screenshot.image)" alt="screenshot" class="rounded-md w-full h-full object-cover">
+      </a>
+    </div>
+    <ng-container *ngIf="!(gameScreenshotsLoading$ | async) && (gameScreenshotsNextPage$ | async)">
+      <app-load-more-button *ngIf="gameScreenshotsNextPage$ | async as nextPage"
+                            #loadMoreButton
+                            (load-more-button-clicked)="loadMoreScreenshots(nextPage)"
+      ></app-load-more-button>
+    </ng-container>
+    <app-loading-spinner *ngIf="gameScreenshotsLoading$ | async"></app-loading-spinner>
+  </app-game-partition-wrapper>
+</ng-container>
