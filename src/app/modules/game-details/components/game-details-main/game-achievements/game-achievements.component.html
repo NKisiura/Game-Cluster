@@ -1,0 +1,36 @@
+<div *ngIf="gameAchievements$ | async as gameAchievements">
+  <div class="flex justify-between items-end mb-3">
+    <a [routerLink]="gameAchievementsPartitionRouterLink"
+       class="text-2xl text-white font-semibold underline underline-offset-4 decoration-grey-300 decoration-1 hover:text-grey-300 transition-colors duration-200"
+    >
+      {{game.name}} achievements
+    </a>
+    <a [routerLink]="gameAchievementsPartitionRouterLink"
+    class="text-sm text-grey-300 font-light underline underline-offset-2 decoration-grey-300 decoration-1 hover:text-white transition-colors duration-200"
+    >
+      {{gameAchievementsCount$ | async}} achievements
+    </a>
+  </div>
+  <div class="grid gap-x-4 grid-cols-3">
+    <div *ngFor="let achievement of getFirstFiveGameAchievements(gameAchievements)"
+         class="border-b border-grey-300 border-opacity-30 game-achievement-wrapper"
+    >
+      <app-game-achievement [achievement]="achievement"></app-game-achievement>
+    </div>
+    <ng-container *ngTemplateOutlet="viewAllAchievementsTemplate"></ng-container>
+  </div>
+</div>
+
+<ng-template #viewAllAchievementsTemplate>
+  <a [routerLink]="gameAchievementsPartitionRouterLink"
+     class="group flex gap-4 py-4"
+  >
+    <div class="flex justify-center items-center w-[55px] h-[55px] bg-grey-800 rounded-md text-2xl text-grey-300 group-hover:bg-white group-hover:text-grey-800 transition-colors duration-200">
+      <fa-icon [icon]="getEllipsisIcon()"></fa-icon>
+    </div>
+    <div>
+      <div class="text-white font-semibold group-hover:text-grey-300 transition-colors duration-200">View all achievements</div>
+      <div class="text-xs text-grey-300 font-light">{{gameAchievementsCount$ | async}} items</div>
+    </div>
+  </a>
+</ng-template>

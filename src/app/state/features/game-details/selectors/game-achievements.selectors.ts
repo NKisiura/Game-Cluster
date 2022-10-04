@@ -21,6 +21,12 @@ export namespace GameAchievementsSelectors {
       gameDetailsState.gameAchievements.data?.results || null
   );
 
+  export const gameAchievementsCountSelector = createSelector(
+    gameDetailsFeatureSelector,
+    (gameDetailsState: GameDetailsStateInterface) =>
+      gameDetailsState.gameAchievements.data?.count || null
+  );
+
   export const gameAchievementsNextPageSelector = createSelector(
     gameDetailsFeatureSelector,
     (gameDetailsState: GameDetailsStateInterface) =>

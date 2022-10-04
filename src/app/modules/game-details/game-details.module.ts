@@ -16,6 +16,8 @@ import { GameGalleryComponent } from './components/game-details-main/game-sectio
 import { GameStoresComponent } from './components/game-details-main/game-section-media/game-stores/game-stores.component';
 import { GameDescriptionComponent } from './components/game-details-main/game-section-info/game-description/game-description.component';
 import { GameInfoComponent } from './components/game-details-main/game-section-info/game-info/game-info.component';
+import { GameAchievementsComponent } from './components/game-details-main/game-achievements/game-achievements.component';
+import { GameAchievementComponent } from './components/common/game-achievement/game-achievement.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { GameInfoComponent } from './components/game-details-main/game-section-i
     GameDetailsMainComponent,
     BreadcrumbsComponent,
     GameDetailsHeaderComponent,
+    GameAchievementComponent,
     GameSectionInfoComponent,
     GameSectionMediaComponent,
     GameGalleryComponent,
     GameStoresComponent,
     GameDescriptionComponent,
     GameInfoComponent,
+    GameAchievementsComponent,
     GamePartitionScreenshotsComponent,
   ],
   imports: [
