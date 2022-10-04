@@ -18,6 +18,8 @@ import { GameDescriptionComponent } from './components/game-details-main/game-se
 import { GameInfoComponent } from './components/game-details-main/game-section-info/game-info/game-info.component';
 import { GameAchievementsComponent } from './components/game-details-main/game-achievements/game-achievements.component';
 import { GameAchievementComponent } from './components/common/game-achievement/game-achievement.component';
+import { GamePartitionAchievementsComponent } from './components/game-details-partitions/game-details-partition-achievements/game-partition-achievements.component';
+import { GamePartitionWrapperComponent } from './components/game-details-partitions/game-details-partition-wrapper/game-partition-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { GameAchievementComponent } from './components/common/game-achievement/g
     GameDescriptionComponent,
     GameInfoComponent,
     GameAchievementsComponent,
+    GamePartitionWrapperComponent,
     GamePartitionScreenshotsComponent,
+    GamePartitionAchievementsComponent,
   ],
   imports: [
     CommonModule,

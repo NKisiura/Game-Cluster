@@ -1,0 +1,22 @@
+<div *ngIf="gameDetails$ | async as game">
+  <app-game-details-header [release-date]="game.released"
+                           [play-time]="game.playtime"
+                           [platforms]="game.parent_platforms"
+  ></app-game-details-header>
+  <div class="relative">
+    <app-page-title [title]="game.name"></app-page-title>
+    <a [routerLink]="[gameRouterLink, game.slug]"
+       class="absolute -left-12 top-1/2 -translate-y-1/2 text-white text-3xl"
+    >
+      <fa-icon [icon]="getLongArrowLeftIcon()"></fa-icon>
+    </a>
+  </div>
+  <div class="flex gap-8">
+    <div class="w-3/5">
+      <ng-content></ng-content>
+    </div>
+    <div class="w-2/5">
+
+    </div>
+  </div>
+</div>

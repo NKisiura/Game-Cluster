@@ -5,6 +5,7 @@ import { GameDetailsMainComponent } from './components/game-details-main/game-de
 import { GameDetailsComponent } from './game-details.component';
 import { GameDetailsPartitions } from './types/game-details-partitions.enum';
 import { GamePartitionScreenshotsComponent } from './components/game-details-partitions/game-details-partition-screenshots/game-partition-screenshots.component';
+import { GamePartitionAchievementsComponent } from './components/game-details-partitions/game-details-partition-achievements/game-partition-achievements.component';
 
 const gameDetailsChildRoutes: Routes = [
   {
@@ -17,6 +18,13 @@ const gameDetailsChildRoutes: Routes = [
       breadcrumbs: GameDetailsPartitions.SCREENSHOTS,
     },
     component: GamePartitionScreenshotsComponent,
+  },
+  {
+    path: GameDetailsPartitions.ACHIEVEMENTS,
+    data: {
+      breadcrumbs: GameDetailsPartitions.ACHIEVEMENTS,
+    },
+    component: GamePartitionAchievementsComponent,
   },
 ];
 

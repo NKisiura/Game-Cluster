@@ -13,6 +13,10 @@ import {
   IconDefinition,
 } from '@fortawesome/free-brands-svg-icons';
 import {
+  faArrowDownLong,
+  faArrowLeftLong,
+  faArrowRightLong,
+  faArrowUpLong,
   faBookOpen,
   faChevronDown,
   faChevronLeft,
@@ -69,6 +73,11 @@ export class IconService {
   public arrowDownIcon = faChevronDown;
   public arrowLeftIcon = faChevronLeft;
 
+  public longArrowUpIcon = faArrowUpLong;
+  public longArrowRightIcon = faArrowRightLong;
+  public longArrowDownIcon = faArrowDownLong;
+  public longArrowLeftIcon = faArrowLeftLong;
+
   public ellipsisIcon = faEllipsis;
 
   public youtubeIcon = faYoutube;
@@ -95,6 +104,15 @@ export class IconService {
       right: this.arrowRightIcon,
       left: this.arrowLeftIcon,
       down: this.arrowDownIcon,
+    };
+  }
+
+  public getLongArrowIcons(): ArrowIconsKit {
+    return {
+      up: this.longArrowUpIcon,
+      right: this.longArrowRightIcon,
+      left: this.longArrowLeftIcon,
+      down: this.longArrowDownIcon,
     };
   }
 
