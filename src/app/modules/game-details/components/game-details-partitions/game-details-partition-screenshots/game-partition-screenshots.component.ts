@@ -44,13 +44,13 @@ export class GamePartitionScreenshotsComponent implements OnInit {
     return this.imageService.getCroppedImage600x400(imageUrl);
   }
 
-  public loadMoreScreenshots(url: string) {
+  public loadMoreScreenshots(url: string): void {
     this.store$.dispatch(
       GameScreenshotsActions.getGameScreenshotsNextPage({ url })
     );
   }
 
-  public loadMoreScreenshotsOnScrollDown() {
+  public loadMoreScreenshotsOnScrollDown(): void {
     if (this.loadMoreButtonElement) this.loadMoreButtonElement.click();
   }
 }
