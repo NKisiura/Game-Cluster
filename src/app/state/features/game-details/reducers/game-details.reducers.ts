@@ -108,6 +108,44 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
+    GameScreenshotsActions.getGameScreenshotsNextPage,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameScreenshots: {
+        ...state.gameScreenshots,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameScreenshotsActions.getGameScreenshotsNextPageSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameScreenshots: {
+        ...state.gameScreenshots,
+        isLoading: false,
+        data: {
+          ...action.getScreenshotsResponse,
+          results: [
+            ...(state.gameScreenshots.data?.results || []),
+            ...(action.getScreenshotsResponse.results || []),
+          ],
+        },
+      },
+    })
+  ),
+  on(
+    GameScreenshotsActions.getGameScreenshotsNextPageFailure,
+    (state, action) => ({
+      ...state,
+      gameScreenshots: {
+        ...state.gameScreenshots,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
     GameAchievementsActions.getGameAchievements,
     (state): GameDetailsStateInterface => ({
       ...state,

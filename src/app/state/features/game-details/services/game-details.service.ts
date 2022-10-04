@@ -31,6 +31,12 @@ export class GameDetailsService {
     );
   }
 
+  public getGameScreenshotsNextPage(
+    url: string
+  ): Observable<GetGameScreenshotsResponseInterface> {
+    return this.http.get<GetGameScreenshotsResponseInterface>(url);
+  }
+
   public getGameAchievements(
     gameId: number
   ): Observable<GetGameAchievementsResponseInterface> {

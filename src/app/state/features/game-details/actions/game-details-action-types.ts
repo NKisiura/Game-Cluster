@@ -6,6 +6,9 @@ export enum GameDetailsActionTypes {
   GET_GAME_SCREENSHOTS = '[Game Details] Get Game Screenshots',
   GET_GAME_SCREENSHOTS_SUCCESS = '[Game Details] Get Game Screenshots Success',
   GET_GAME_SCREENSHOTS_FAILURE = '[Game Details] Get Game Screenshots Failure',
+  GET_GAME_SCREENSHOTS_NEXT_PAGE = '[Game Details] Get Game Screenshots Next Page',
+  GET_GAME_SCREENSHOTS_NEXT_PAGE_SUCCESS = '[Game Details] Get Game Screenshots Next Page Success',
+  GET_GAME_SCREENSHOTS_NEXT_PAGE_FAILURE = '[Game Details] Get Game Screenshots Next Page Failure',
 
   GET_GAME_ACHIEVEMENTS = '[Game Details] Get Game Achievements',
   GET_GAME_ACHIEVEMENTS_SUCCESS = '[Game Details] Get Game Achievements Success',

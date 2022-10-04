@@ -6,6 +6,7 @@ import { GameScreenshotInterface } from '../../../../../global/types/entities/ga
 import { GameScreenshotsSelectors } from '../../../../../state/features/game-details/selectors/game-screenshots.selectors';
 import { LoadMoreButtonComponent } from '../../../../../global/modules/layouts/load-more-button/components/load-more-button/load-more-button.component';
 import { ImageService } from '../../../../../global/utils/services/image.service';
+import { GameScreenshotsActions } from '../../../../../state/features/game-details/actions/game-screenshots.actions';
 
 @Component({
   selector: 'app-game-partition-screenshots',
@@ -44,7 +45,9 @@ export class GamePartitionScreenshotsComponent implements OnInit {
   }
 
   public loadMoreScreenshots(url: string) {
-    console.log(url);
+    this.store$.dispatch(
+      GameScreenshotsActions.getGameScreenshotsNextPage({ url })
+    );
   }
 
   public loadMoreScreenshotsOnScrollDown() {

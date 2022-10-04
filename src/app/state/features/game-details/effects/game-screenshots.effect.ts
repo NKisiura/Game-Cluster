@@ -46,6 +46,28 @@ export class GameScreenshotsEffect {
     )
   );
 
+  public getGameScreenshotsNextPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(GameScreenshotsActions.getGameScreenshotsNextPage),
+      switchMap(({ url }) => {
+        return this.gameDetailsService.getGameScreenshotsNextPage(url).pipe(
+          map((getScreenshotsResponse: GetGameScreenshotsResponseInterface) =>
+            GameScreenshotsActions.getGameScreenshotsNextPageSuccess({
+              getScreenshotsResponse,
+            })
+          ),
+          catchError((error: BackendErrorResponseInterface) =>
+            of(
+              GameScreenshotsActions.getGameScreenshotsNextPageFailure({
+                error,
+              })
+            )
+          )
+        );
+      })
+    )
+  );
+
   constructor(
     private store$: Store<AppStateInterface>,
     private actions$: Actions,

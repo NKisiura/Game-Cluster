@@ -18,4 +18,19 @@ export namespace GameScreenshotsActions {
     GameDetailsActionTypes.GET_GAME_SCREENSHOTS_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getGameScreenshotsNextPage = createAction(
+    GameDetailsActionTypes.GET_GAME_SCREENSHOTS_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getGameScreenshotsNextPageSuccess = createAction(
+    GameDetailsActionTypes.GET_GAME_SCREENSHOTS_NEXT_PAGE_SUCCESS,
+    props<{ getScreenshotsResponse: GetGameScreenshotsResponseInterface }>()
+  );
+
+  export const getGameScreenshotsNextPageFailure = createAction(
+    GameDetailsActionTypes.GET_GAME_SCREENSHOTS_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }
