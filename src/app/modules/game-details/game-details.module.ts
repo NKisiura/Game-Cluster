@@ -20,6 +20,7 @@ import { GameAchievementsComponent } from './components/game-details-main/game-a
 import { GameAchievementComponent } from './components/common/game-achievement/game-achievement.component';
 import { GamePartitionAchievementsComponent } from './components/game-details-partitions/game-details-partition-achievements/game-partition-achievements.component';
 import { GamePartitionWrapperComponent } from './components/game-details-partitions/game-details-partition-wrapper/game-partition-wrapper.component';
+import { GamePartitionWrapperSidebarComponent } from './components/game-details-partitions/game-details-partition-wrapper/game-partition-wrapper-sidebar/game-partition-wrapper-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { GamePartitionWrapperComponent } from './components/game-details-partiti
     GameInfoComponent,
     GameAchievementsComponent,
     GamePartitionWrapperComponent,
+    GamePartitionWrapperSidebarComponent,
     GamePartitionScreenshotsComponent,
     GamePartitionAchievementsComponent,
   ],

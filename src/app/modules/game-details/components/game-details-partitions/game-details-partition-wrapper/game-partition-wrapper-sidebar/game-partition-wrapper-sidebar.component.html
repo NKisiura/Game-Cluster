@@ -1,0 +1,15 @@
+<div *ngIf="game" class="flex flex-col items-start gap-3">
+  <a [routerLink]="[gameRouterLink, game.slug]"
+     class="text-grey-300 font-light underline underline-offset-2 decoration-grey-300 decoration-1 hover:text-white transition-colors duration-200"
+  >
+    About
+  </a>
+  <a *ngFor="let partition of getAvailableGamePartitions()"
+     [routerLink]="[gameRouterLink, game.slug, partition]"
+     [routerLinkActive]="'sidebar-link-active'"
+     [routerLinkActiveOptions]="{exact: true}"
+     class="text-grey-300 font-light underline underline-offset-2 decoration-grey-300 decoration-1 hover:text-white transition-colors duration-200"
+  >
+    <span class="capitalize">{{getGamePartitionLabel(partition)}}</span>
+  </a>
+</div>
