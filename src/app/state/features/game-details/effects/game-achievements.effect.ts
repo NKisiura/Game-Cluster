@@ -16,7 +16,7 @@ export class GameAchievementsEffect {
       this.actions$.pipe(
         ofType(GameDetailsActions.getGameSuccess),
         tap(({ game }) => {
-          if (game.achievements_count > 0) {
+          if (game.parent_achievements_count > 0) {
             this.store$.dispatch(
               GameAchievementsActions.getGameAchievements({
                 gameId: game.id,
@@ -40,6 +40,28 @@ export class GameAchievementsEffect {
           ),
           catchError((error: BackendErrorResponseInterface) =>
             of(GameAchievementsActions.getGameAchievementsFailure({ error }))
+          )
+        );
+      })
+    )
+  );
+
+  public getGameAchievementsNextPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(GameAchievementsActions.getGameAchievementsNextPage),
+      switchMap(({ url }) => {
+        return this.gameDetailsService.getGameAchievementsNextPage(url).pipe(
+          map((getAchievementsResponse: GetGameAchievementsResponseInterface) =>
+            GameAchievementsActions.getGameAchievementsNextPageSuccess({
+              getAchievementsResponse,
+            })
+          ),
+          catchError((error: BackendErrorResponseInterface) =>
+            of(
+              GameAchievementsActions.getGameAchievementsNextPageFailure({
+                error,
+              })
+            )
           )
         );
       })

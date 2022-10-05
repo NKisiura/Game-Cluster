@@ -20,7 +20,7 @@ export class GamePartitionWrapperSidebarComponent {
           return this.game.screenshots_count > 0;
         }
         case GameDetailsPartitions.ACHIEVEMENTS: {
-          return this.game.achievements_count > 0;
+          return this.game.parent_achievements_count > 0;
         }
       }
     });
@@ -43,7 +43,7 @@ export class GamePartitionWrapperSidebarComponent {
         return this.game.screenshots_count;
       }
       case GameDetailsPartitions.ACHIEVEMENTS: {
-        return this.game.achievements_count;
+        return this.game.parent_achievements_count;
       }
     }
   }

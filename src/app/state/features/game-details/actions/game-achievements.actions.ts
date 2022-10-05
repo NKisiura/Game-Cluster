@@ -18,4 +18,19 @@ export namespace GameAchievementsActions {
     GameDetailsActionTypes.GET_GAME_ACHIEVEMENTS_FAILURE,
     props<{ error: BackendErrorResponseInterface }>()
   );
+
+  export const getGameAchievementsNextPage = createAction(
+    GameDetailsActionTypes.GET_GAME_ACHIEVEMENTS_NEXT_PAGE,
+    props<{ url: string }>()
+  );
+
+  export const getGameAchievementsNextPageSuccess = createAction(
+    GameDetailsActionTypes.GET_GAME_ACHIEVEMENTS_NEXT_PAGE_SUCCESS,
+    props<{ getAchievementsResponse: GetGameAchievementsResponseInterface }>()
+  );
+
+  export const getGameAchievementsNextPageFailure = createAction(
+    GameDetailsActionTypes.GET_GAME_ACHIEVEMENTS_NEXT_PAGE_FAILURE,
+    props<{ error: BackendErrorResponseInterface }>()
+  );
 }

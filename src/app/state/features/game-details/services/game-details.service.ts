@@ -45,6 +45,12 @@ export class GameDetailsService {
     );
   }
 
+  public getGameAchievementsNextPage(
+    url: string
+  ): Observable<GetGameAchievementsResponseInterface> {
+    return this.http.get<GetGameAchievementsResponseInterface>(url);
+  }
+
   public getGameSeries(gameId: number): Observable<GetGamesResponseInterface> {
     return this.http.get<GetGamesResponseInterface>(
       `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_GAME_SERIES_URL}`

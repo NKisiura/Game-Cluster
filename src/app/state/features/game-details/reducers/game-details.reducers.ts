@@ -178,6 +178,44 @@ export const gameDetailsReducer = createReducer(
     })
   ),
   on(
+    GameAchievementsActions.getGameAchievementsNextPage,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameAchievements: {
+        ...state.gameAchievements,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameAchievementsActions.getGameAchievementsNextPageSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameAchievements: {
+        ...state.gameAchievements,
+        isLoading: false,
+        data: {
+          ...action.getAchievementsResponse,
+          results: [
+            ...(state.gameAchievements.data?.results || []),
+            ...(action.getAchievementsResponse.results || []),
+          ],
+        },
+      },
+    })
+  ),
+  on(
+    GameAchievementsActions.getGameAchievementsNextPageFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameAchievements: {
+        ...state.gameAchievements,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
     GameSeriesActions.getGameSeries,
     (state): GameDetailsStateInterface => ({
       ...state,

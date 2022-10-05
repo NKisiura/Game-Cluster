@@ -1,3 +1,15 @@
-<app-game-partition-wrapper>
-  partition achievements
-</app-game-partition-wrapper>
+<ng-container *ngIf="gameAchievements$ | async as gameAchievements">
+  <app-game-partition-wrapper>
+    <app-scroll-down-emitter (scroll-down)="loadMoreAchievementsOnScrollDown()"></app-scroll-down-emitter>
+    <div *ngFor="let achievement of gameAchievements" class="border-b border-grey-300 border-opacity-30 last-of-type:border-transparent">
+      <app-game-achievement [achievement]="achievement"></app-game-achievement>
+    </div>
+    <ng-container *ngIf="!(gameAchievementsLoading$ | async) && (gameAchievementsNextPage$ | async)">
+      <app-load-more-button *ngIf="gameAchievementsNextPage$ | async as nextPage"
+                            #loadMoreButton
+                            (load-more-button-clicked)="loadMoreAchievements(nextPage)"
+      ></app-load-more-button>
+    </ng-container>
+    <app-loading-spinner *ngIf="gameAchievementsLoading$ | async"></app-loading-spinner>
+  </app-game-partition-wrapper>
+</ng-container>
