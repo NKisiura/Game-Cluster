@@ -1,0 +1,15 @@
+<ng-container *ngIf="gameSuggestions$ | async as gameSuggestions">
+  <app-game-partition-wrapper>
+    <app-scroll-down-emitter (scroll-down)="loadMoreGameSuggestionsOnScrollDown()"></app-scroll-down-emitter>
+    <div class="grid grid-cols-3 gap-4 mb-4">
+      <app-game-card *ngFor="let game of gameSuggestions" [game]="game"></app-game-card>
+    </div>
+    <ng-container *ngIf="!(gameSuggestionsLoading$ | async) && (gameSuggestionsNextPage$ | async)">
+      <app-load-more-button *ngIf="gameSuggestionsNextPage$ | async as nextPage"
+                            #loadMoreButton
+                            (load-more-button-clicked)="loadMoreGameSuggestions(nextPage)"
+      ></app-load-more-button>
+    </ng-container>
+    <app-loading-spinner *ngIf="gameSuggestionsLoading$ | async"></app-loading-spinner>
+  </app-game-partition-wrapper>
+</ng-container>

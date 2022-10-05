@@ -25,6 +25,7 @@ import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-do
 import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-button/load-more-button.module';
 import { GameSuggestionsComponent } from './components/game-details-main/game-suggestions/game-suggestions.component';
 import { GameListModule } from '../game-list/game-list.module';
+import { GamePartitionSuggestionsComponent } from './components/game-details-partitions/game-details-partition-suggestions/game-partition-suggestions.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { GameListModule } from '../game-list/game-list.module';
     GamePartitionWrapperSidebarComponent,
     GamePartitionScreenshotsComponent,
     GamePartitionAchievementsComponent,
+    GamePartitionSuggestionsComponent,
   ],
   imports: [
     CommonModule,
