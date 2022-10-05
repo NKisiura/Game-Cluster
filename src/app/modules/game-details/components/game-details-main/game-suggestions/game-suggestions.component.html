@@ -1,0 +1,22 @@
+<div *ngIf="gameSuggestions$ | async as gameSuggestions">
+  <div class="text-center mb-4">
+    <a [routerLink]="gameSuggestionsPartitionRouterLink"
+       class="text-2xl text-white font-semibold underline underline-offset-4 decoration-grey-300 decoration-1 hover:text-grey-300 transition-colors duration-200"
+    >
+      Games like {{game.name}}
+    </a>
+  </div>
+  <div class="grid grid-cols-4 gap-4">
+    <app-game-card *ngFor="let game of getFirstEightGameSuggestions(gameSuggestions)"
+                   [game]="game"
+    ></app-game-card>
+  </div>
+  <div class="text-center mt-4">
+    <button type="button"
+            class="inline-flex bg-grey-800 text-grey-300 font-light rounded-md shadow-sm py-2 px-10 transition-color duration-200 hover:bg-white hover:text-grey-800"
+            [routerLink]="gameSuggestionsPartitionRouterLink"
+    >
+      View all {{game.suggestions_count}} similar games
+    </button>
+  </div>
+</div>

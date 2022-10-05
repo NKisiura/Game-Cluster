@@ -21,6 +21,13 @@ export enum GameDetailsActionTypes {
   GET_GAME_SERIES_SUCCESS = '[Game Details] Get Game Series Success',
   GET_GAME_SERIES_FAILURE = '[Game Details] Get Game Series Failure',
 
+  GET_GAME_SUGGESTIONS = '[Game Details] Get Game Suggestions',
+  GET_GAME_SUGGESTIONS_SUCCESS = '[Game Details] Get Game Suggestions Success',
+  GET_GAME_SUGGESTIONS_FAILURE = '[Game Details] Get Game Suggestions Failure',
+  GET_GAME_SUGGESTIONS_NEXT_PAGE = '[Game Details] Get Game Suggestions Next Page',
+  GET_GAME_SUGGESTIONS_NEXT_PAGE_SUCCESS = '[Game Details] Get Game Suggestions Next Page Success',
+  GET_GAME_SUGGESTIONS_NEXT_PAGE_FAILURE = '[Game Details] Get Game Suggestions Next Page Failure',
+
   GET_GAME_ADDITIONS = '[Game Details] Get Game Additions',
   GET_GAME_ADDITIONS_SUCCESS = '[Game Details] Get Game Additions Success',
   GET_GAME_ADDITIONS_FAILURE = '[Game Details] Get Game Additions Failure',

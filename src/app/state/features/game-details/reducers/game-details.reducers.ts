@@ -7,6 +7,7 @@ import { GameAchievementsActions } from '../actions/game-achievements.actions';
 import { GameSeriesActions } from '../actions/game-series.actions';
 import { GameAdditionsActions } from '../actions/game-additions.actions';
 import { AdditionParentGamesActions } from '../actions/addition-parent-games.actions';
+import { GameSuggestionsActions } from '../actions/game-suggestions.actions';
 
 const initialState: GameDetailsStateInterface = {
   game: {
@@ -25,6 +26,11 @@ const initialState: GameDetailsStateInterface = {
     data: null,
   },
   gameSeries: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
+  gameSuggestions: {
     isLoading: false,
     error: null,
     data: null,
@@ -242,6 +248,76 @@ export const gameDetailsReducer = createReducer(
       ...state,
       gameSeries: {
         ...state.gameSeries,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    GameSuggestionsActions.getGameSuggestions,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameSuggestions: {
+        ...state.gameSuggestions,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameSuggestionsActions.getGameSuggestionsSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameSuggestions: {
+        ...state.gameSuggestions,
+        isLoading: false,
+        data: action.getGamesResponse,
+      },
+    })
+  ),
+  on(
+    GameSuggestionsActions.getGameSuggestionsFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameSuggestions: {
+        ...state.gameSuggestions,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    GameSuggestionsActions.getGameSuggestionsNextPage,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameSuggestions: {
+        ...state.gameSuggestions,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameSuggestionsActions.getGameSuggestionsNextPageSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameSuggestions: {
+        ...state.gameSuggestions,
+        isLoading: false,
+        data: {
+          ...action.getGamesResponse,
+          results: [
+            ...(state.gameSuggestions.data?.results || []),
+            ...(action.getGamesResponse.results || []),
+          ],
+        },
+      },
+    })
+  ),
+  on(
+    GameSuggestionsActions.getGameSuggestionsNextPageFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameSuggestions: {
+        ...state.gameSuggestions,
         isLoading: false,
         error: action.error,
       },

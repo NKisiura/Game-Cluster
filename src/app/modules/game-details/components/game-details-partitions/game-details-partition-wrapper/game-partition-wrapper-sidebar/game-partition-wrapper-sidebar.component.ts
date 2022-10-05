@@ -22,6 +22,9 @@ export class GamePartitionWrapperSidebarComponent {
         case GameDetailsPartitions.ACHIEVEMENTS: {
           return this.game.parent_achievements_count > 0;
         }
+        case GameDetailsPartitions.SUGGESTIONS: {
+          return this.game.suggestions_count > 0;
+        }
       }
     });
   }
@@ -34,6 +37,9 @@ export class GamePartitionWrapperSidebarComponent {
       case GameDetailsPartitions.ACHIEVEMENTS: {
         return 'achievements';
       }
+      case GameDetailsPartitions.SUGGESTIONS: {
+        return 'games like';
+      }
     }
   }
 
@@ -44,6 +50,9 @@ export class GamePartitionWrapperSidebarComponent {
       }
       case GameDetailsPartitions.ACHIEVEMENTS: {
         return this.game.parent_achievements_count;
+      }
+      case GameDetailsPartitions.SUGGESTIONS: {
+        return this.game.suggestions_count;
       }
     }
   }

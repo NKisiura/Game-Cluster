@@ -7,6 +7,7 @@ import {
   API_GAME_ADDITIONS_URL,
   API_GAME_SCREENSHOTS_URL,
   API_GAME_SERIES_URL,
+  API_GAME_SUGGESTIONS_URL,
   API_GAMES_URL,
 } from '../../../../global/constants/api-constants';
 import { GameDetailsInterface } from '../../../../global/types/entities/games/game-details.interface';
@@ -55,6 +56,20 @@ export class GameDetailsService {
     return this.http.get<GetGamesResponseInterface>(
       `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_GAME_SERIES_URL}`
     );
+  }
+
+  public getGameSuggestions(
+    gameId: number
+  ): Observable<GetGamesResponseInterface> {
+    return this.http.get<GetGamesResponseInterface>(
+      `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_GAME_SUGGESTIONS_URL}`
+    );
+  }
+
+  public getGameSuggestionsNextPage(
+    url: string
+  ): Observable<GetGamesResponseInterface> {
+    return this.http.get<GetGamesResponseInterface>(url);
   }
 
   public getGameAdditions(

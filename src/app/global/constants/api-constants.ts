@@ -12,6 +12,7 @@ export const API_CREATORS_URL = 'creators';
 export const API_GAME_SCREENSHOTS_URL = 'screenshots';
 export const API_GAME_ACHIEVEMENTS_URL = 'achievements';
 export const API_GAME_SERIES_URL = 'game-series';
+export const API_GAME_SUGGESTIONS_URL = 'suggested';
 export const API_GAME_ADDITIONS_URL = 'additions';
 export const API_ADDITION_PARENT_GAMES_URL = 'parent-games';
 

@@ -51,5 +51,6 @@ const routes: Routes = [
     LoadMoreButtonModule,
     BackendErrorMessageModule,
   ],
+  exports: [GameCardComponent],
 })
 export class GameListModule {}

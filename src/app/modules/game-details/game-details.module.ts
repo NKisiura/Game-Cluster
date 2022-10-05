@@ -23,6 +23,8 @@ import { GamePartitionWrapperComponent } from './components/game-details-partiti
 import { GamePartitionWrapperSidebarComponent } from './components/game-details-partitions/game-details-partition-wrapper/game-partition-wrapper-sidebar/game-partition-wrapper-sidebar.component';
 import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-down-emitter/scroll-down-emitter.module';
 import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-button/load-more-button.module';
+import { GameSuggestionsComponent } from './components/game-details-main/game-suggestions/game-suggestions.component';
+import { GameListModule } from '../game-list/game-list.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-but
     GameDescriptionComponent,
     GameInfoComponent,
     GameAchievementsComponent,
+    GameSuggestionsComponent,
     GamePartitionWrapperComponent,
     GamePartitionWrapperSidebarComponent,
     GamePartitionScreenshotsComponent,
@@ -52,6 +55,7 @@ import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-but
     ScrollDownEmitterModule,
     LoadMoreButtonModule,
     PageTitleModule,
+    GameListModule,
   ],
 })
 export class GameDetailsModule {}
