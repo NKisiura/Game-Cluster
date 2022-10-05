@@ -1,0 +1,15 @@
+<ng-container *ngIf="gameVideos$ | async as gameVideos">
+  <app-game-partition-wrapper>
+    <app-scroll-down-emitter (scroll-down)="loadMoreGameVideosOnScrollDown()"></app-scroll-down-emitter>
+    <div *ngFor="let video of gameVideos" class="border-b border-grey-300 border-opacity-30 last-of-type:border-transparent">
+      <app-game-video [game-video]="video"></app-game-video>
+    </div>
+    <ng-container *ngIf="!(gameVideosLoading$ | async) && (gameVideosNextPage$ | async)">
+      <app-load-more-button *ngIf="gameVideosNextPage$ | async as nextPage"
+                            #loadMoreButton
+                            (load-more-button-clicked)="loadMoreGameVideos(nextPage)"
+      ></app-load-more-button>
+    </ng-container>
+    <app-loading-spinner *ngIf="gameVideosLoading$ | async"></app-loading-spinner>
+  </app-game-partition-wrapper>
+</ng-container>

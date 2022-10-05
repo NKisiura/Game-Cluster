@@ -12,6 +12,7 @@ import { GameSeriesEffect } from './effects/game-series.effect';
 import { GameAdditionsEffect } from './effects/game-additions.effect';
 import { AdditionParentGamesEffect } from './effects/addition-parent-games.effect';
 import { GameSuggestionsEffect } from './effects/game-suggestions.effect';
+import { GameVideosEffect } from './effects/game-videos.effect';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { GameSuggestionsEffect } from './effects/game-suggestions.effect';
       GameAchievementsEffect,
       GameSeriesEffect,
       GameSuggestionsEffect,
+      GameVideosEffect,
       GameAdditionsEffect,
       AdditionParentGamesEffect,
     ]),

@@ -28,6 +28,13 @@ export enum GameDetailsActionTypes {
   GET_GAME_SUGGESTIONS_NEXT_PAGE_SUCCESS = '[Game Details] Get Game Suggestions Next Page Success',
   GET_GAME_SUGGESTIONS_NEXT_PAGE_FAILURE = '[Game Details] Get Game Suggestions Next Page Failure',
 
+  GET_GAME_VIDEOS = '[Game Details] Get Game Videos',
+  GET_GAME_VIDEOS_SUCCESS = '[Game Details] Get Game Videos Success',
+  GET_GAME_VIDEOS_FAILURE = '[Game Details] Get Game Videos Failure',
+  GET_GAME_VIDEOS_NEXT_PAGE = '[Game Details] Get Game Videos Next Page',
+  GET_GAME_VIDEOS_NEXT_PAGE_SUCCESS = '[Game Details] Get Game Videos Next Page Success',
+  GET_GAME_VIDEOS_NEXT_PAGE_FAILURE = '[Game Details] Get Game Videos Next Page Failure',
+
   GET_GAME_ADDITIONS = '[Game Details] Get Game Additions',
   GET_GAME_ADDITIONS_SUCCESS = '[Game Details] Get Game Additions Success',
   GET_GAME_ADDITIONS_FAILURE = '[Game Details] Get Game Additions Failure',

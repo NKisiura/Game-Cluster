@@ -8,6 +8,7 @@ import {
   API_GAME_SCREENSHOTS_URL,
   API_GAME_SERIES_URL,
   API_GAME_SUGGESTIONS_URL,
+  API_GAME_YOUTUBE_VIDEOS_URL,
   API_GAMES_URL,
 } from '../../../../global/constants/api-constants';
 import { GameDetailsInterface } from '../../../../global/types/entities/games/game-details.interface';
@@ -15,6 +16,7 @@ import { Observable } from 'rxjs';
 import { GetGameScreenshotsResponseInterface } from '../types/get-game-screenshots-response.interface';
 import { GetGameAchievementsResponseInterface } from '../types/get-game-achievements-response.interface';
 import { GetGamesResponseInterface } from '../../games/types/get-games-response.interface';
+import { GetGameVideosResponseInterface } from '../types/get-game-videos-response.interface';
 
 @Injectable()
 export class GameDetailsService {
@@ -70,6 +72,20 @@ export class GameDetailsService {
     url: string
   ): Observable<GetGamesResponseInterface> {
     return this.http.get<GetGamesResponseInterface>(url);
+  }
+
+  public getGameVideos(
+    gameId: number
+  ): Observable<GetGameVideosResponseInterface> {
+    return this.http.get<GetGameVideosResponseInterface>(
+      `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_GAME_YOUTUBE_VIDEOS_URL}`
+    );
+  }
+
+  public getGameVideosNextPage(
+    url: string
+  ): Observable<GetGameVideosResponseInterface> {
+    return this.http.get<GetGameVideosResponseInterface>(url);
   }
 
   public getGameAdditions(

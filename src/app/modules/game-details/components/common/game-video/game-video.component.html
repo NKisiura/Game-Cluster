@@ -1,0 +1,17 @@
+<a [href]="youtubeBaseUrl + gameVideo.external_id" data-fancybox class="group flex gap-4 py-4">
+  <div class="relative w-[120px] h-[70px]" style="min-width: 120px">
+    <img [src]="gameVideo.thumbnails.medium.url"
+         [alt]="'game video preview'"
+         class="w-full h-[70px] object-cover rounded-md"
+    >
+    <div class="flex justify-center items-center w-8 h-8 text-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full bg-black bg-opacity-50 group-hover:scale-110 transition-transform duration-200">
+      <fa-icon [icon]="getPlayIcon()" style="margin-left: 2px"></fa-icon>
+    </div>
+  </div>
+  <div>
+    <div [innerHTML]="isNeedToSliceVideoName ? getSlicedVideoName(gameVideo.name) : gameVideo.name"
+         class="text-white font-semibold group-hover:text-grey-300 transition-colors duration-200"
+    ></div>
+    <div class="text-grey-300 text-sm font-light">{{getFormattedReleaseDate(gameVideo.created)}}</div>
+  </div>
+</a>

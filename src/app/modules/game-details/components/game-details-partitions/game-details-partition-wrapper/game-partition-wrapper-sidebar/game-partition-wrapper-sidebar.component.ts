@@ -25,6 +25,9 @@ export class GamePartitionWrapperSidebarComponent {
         case GameDetailsPartitions.SUGGESTIONS: {
           return this.game.suggestions_count > 0;
         }
+        case GameDetailsPartitions.VIDEOS: {
+          return this.game.youtube_count > 0;
+        }
       }
     });
   }
@@ -40,6 +43,9 @@ export class GamePartitionWrapperSidebarComponent {
       case GameDetailsPartitions.SUGGESTIONS: {
         return 'games like';
       }
+      case GameDetailsPartitions.VIDEOS: {
+        return 'videos';
+      }
     }
   }
 
@@ -53,6 +59,10 @@ export class GamePartitionWrapperSidebarComponent {
       }
       case GameDetailsPartitions.SUGGESTIONS: {
         return this.game.suggestions_count;
+      }
+      case GameDetailsPartitions.VIDEOS: {
+        //hardcore because backend lag, but it's always === 50
+        return 50;
       }
     }
   }

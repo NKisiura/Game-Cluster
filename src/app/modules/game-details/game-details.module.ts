@@ -26,6 +26,9 @@ import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-but
 import { GameSuggestionsComponent } from './components/game-details-main/game-suggestions/game-suggestions.component';
 import { GameListModule } from '../game-list/game-list.module';
 import { GamePartitionSuggestionsComponent } from './components/game-details-partitions/game-details-partition-suggestions/game-partition-suggestions.component';
+import { GameVideosComponent } from './components/game-details-main/game-videos/game-videos.component';
+import { GameVideoComponent } from './components/common/game-video/game-video.component';
+import { GamePartitionVideosComponent } from './components/game-details-partitions/game-details-partition-videos/game-partition-videos.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { GamePartitionSuggestionsComponent } from './components/game-details-par
     BreadcrumbsComponent,
     GameDetailsHeaderComponent,
     GameAchievementComponent,
+    GameVideoComponent,
     GameSectionInfoComponent,
     GameSectionMediaComponent,
     GameGalleryComponent,
@@ -42,11 +46,13 @@ import { GamePartitionSuggestionsComponent } from './components/game-details-par
     GameInfoComponent,
     GameAchievementsComponent,
     GameSuggestionsComponent,
+    GameVideosComponent,
     GamePartitionWrapperComponent,
     GamePartitionWrapperSidebarComponent,
     GamePartitionScreenshotsComponent,
     GamePartitionAchievementsComponent,
     GamePartitionSuggestionsComponent,
+    GamePartitionVideosComponent,
   ],
   imports: [
     CommonModule,

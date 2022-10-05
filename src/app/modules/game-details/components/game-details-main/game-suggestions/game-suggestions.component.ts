@@ -14,8 +14,6 @@ import { GameDetailsPartitions } from '../../../types/game-details-partitions.en
 export class GameSuggestionsComponent implements OnInit {
   @Input('game') public game!: GameDetailsInterface;
   public gameSuggestions$ = new Observable<GameInterface[] | null>();
-  public gameSuggestionsLoading$ = new Observable<boolean>();
-  public gameSuggestionsNextPage$ = new Observable<string | null>();
   public gameSuggestionsPartitionRouterLink = GameDetailsPartitions.SUGGESTIONS;
 
   constructor(private readonly store$: Store<AppStateInterface>) {}
@@ -27,12 +25,6 @@ export class GameSuggestionsComponent implements OnInit {
   private initValues(): void {
     this.gameSuggestions$ = this.store$.pipe(
       select(GameSuggestionsSelectors.gameSuggestionsSelector)
-    );
-    this.gameSuggestionsLoading$ = this.store$.pipe(
-      select(GameSuggestionsSelectors.gameSuggestionsLoadingSelector)
-    );
-    this.gameSuggestionsNextPage$ = this.store$.pipe(
-      select(GameSuggestionsSelectors.gameSuggestionsNextPageSelector)
     );
   }
 

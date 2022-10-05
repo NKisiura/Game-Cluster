@@ -3,6 +3,7 @@ import { BackendErrorResponseInterface } from '../../../types/backend-error-resp
 import { GetGameScreenshotsResponseInterface } from './get-game-screenshots-response.interface';
 import { GetGameAchievementsResponseInterface } from './get-game-achievements-response.interface';
 import { GetGamesResponseInterface } from '../../games/types/get-games-response.interface';
+import { GetGameVideosResponseInterface } from './get-game-videos-response.interface';
 
 export interface GameDetailsStateInterface {
   readonly game: {
@@ -29,6 +30,11 @@ export interface GameDetailsStateInterface {
     isLoading: boolean;
     error: BackendErrorResponseInterface | null;
     data: GetGamesResponseInterface | null;
+  };
+  readonly gameVideos: {
+    isLoading: boolean;
+    error: BackendErrorResponseInterface | null;
+    data: GetGameVideosResponseInterface | null;
   };
   readonly gameAdditions: {
     isLoading: boolean;

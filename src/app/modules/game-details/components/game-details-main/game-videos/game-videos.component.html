@@ -1,0 +1,36 @@
+<div *ngIf="gameVideos$ | async as gameVideos">
+  <div class="flex justify-between items-end mb-3">
+    <a [routerLink]="gameVideosPartitionRouterLink"
+       class="text-2xl text-white font-semibold underline underline-offset-4 decoration-grey-300 decoration-1 hover:text-grey-300 transition-colors duration-200"
+    >
+      {{game.name}} videos
+    </a>
+    <a [routerLink]="gameVideosPartitionRouterLink"
+       class="text-sm text-grey-300 font-light underline underline-offset-2 decoration-grey-300 decoration-1 hover:text-white transition-colors duration-200"
+    >
+      {{gameVideosCount$ | async}} videos
+    </a>
+  </div>
+  <div class="grid gap-x-4 grid-cols-3">
+    <div *ngFor="let video of getFirstFiveGameVideos(gameVideos)"
+         class="border-b border-grey-300 border-opacity-30 game-video-wrapper"
+    >
+      <app-game-video [game-video]="video" [slice-video-name]="true"></app-game-video>
+    </div>
+    <ng-container *ngTemplateOutlet="viewAllVideosTemplate"></ng-container>
+  </div>
+</div>
+
+<ng-template #viewAllVideosTemplate>
+  <a [routerLink]="gameVideosPartitionRouterLink"
+     class="group flex gap-4 py-4"
+  >
+    <div class="flex justify-center items-center w-[120px] h-[70px] bg-grey-800 rounded-md text-2xl text-grey-300 group-hover:bg-white group-hover:text-grey-800 transition-colors duration-200">
+      <fa-icon [icon]="getEllipsisIcon()"></fa-icon>
+    </div>
+    <div>
+      <div class="text-white font-semibold group-hover:text-grey-300 transition-colors duration-200">View all videos</div>
+      <div class="text-xs text-grey-300 font-light">{{gameVideosCount$ | async}} items</div>
+    </div>
+  </a>
+</ng-template>

@@ -8,6 +8,7 @@ import { GameSeriesActions } from '../actions/game-series.actions';
 import { GameAdditionsActions } from '../actions/game-additions.actions';
 import { AdditionParentGamesActions } from '../actions/addition-parent-games.actions';
 import { GameSuggestionsActions } from '../actions/game-suggestions.actions';
+import { GameVideosActions } from '../actions/game-videos.actions';
 
 const initialState: GameDetailsStateInterface = {
   game: {
@@ -31,6 +32,11 @@ const initialState: GameDetailsStateInterface = {
     data: null,
   },
   gameSuggestions: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
+  gameVideos: {
     isLoading: false,
     error: null,
     data: null,
@@ -323,6 +329,73 @@ export const gameDetailsReducer = createReducer(
       },
     })
   ),
+  on(
+    GameVideosActions.getGameVideos,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameVideos: {
+        ...state.gameVideos,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameVideosActions.getGameVideosSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameVideos: {
+        ...state.gameVideos,
+        isLoading: false,
+        data: action.getVideosResponse,
+      },
+    })
+  ),
+  on(
+    GameVideosActions.getGameVideosFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameVideos: {
+        ...state.gameVideos,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    GameVideosActions.getGameVideosNextPage,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gameVideos: {
+        ...state.gameVideos,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GameVideosActions.getGameVideosNextPageSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameVideos: {
+        ...state.gameVideos,
+        isLoading: false,
+        data: {
+          ...action.getVideosResponse,
+          results: [
+            ...(state.gameVideos.data?.results || []),
+            ...(action.getVideosResponse.results || []),
+          ],
+        },
+      },
+    })
+  ),
+  on(GameVideosActions.getGameVideosFailure, (state, action) => ({
+    ...state,
+    gameVideos: {
+      ...state.gameVideos,
+      isLoading: false,
+      error: action.error,
+    },
+  })),
   on(
     GameAdditionsActions.getGameAdditions,
     (state): GameDetailsStateInterface => ({

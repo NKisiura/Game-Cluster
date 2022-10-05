@@ -1,0 +1,10 @@
+.game-video-wrapper {
+
+  &:last-of-type {
+    border-color: transparent;
+  }
+
+  &:nth-of-type(4) {
+    border-color: transparent;
+  }
+}
