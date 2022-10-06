@@ -1,0 +1,36 @@
+<div *ngIf="gamePosts$ | async as gamePosts">
+  <div class="flex justify-between items-end mb-3">
+    <a [routerLink]="gamePostsPartitionRouterLink"
+       class="text-2xl text-white font-semibold underline underline-offset-4 decoration-grey-300 decoration-1 hover:text-grey-300 transition-colors duration-200"
+    >
+      {{game.name}} posts
+    </a>
+    <a [routerLink]="gamePostsPartitionRouterLink"
+       class="text-sm text-grey-300 font-light underline underline-offset-2 decoration-grey-300 decoration-1 hover:text-white transition-colors duration-200"
+    >
+      {{game.reddit_count}} posts
+    </a>
+  </div>
+  <div class="grid gap-x-4 grid-cols-3">
+    <div *ngFor="let post of getFirstFiveGamePosts(gamePosts)"
+         class="border-b border-grey-300 border-opacity-30 game-posts-wrapper"
+    >
+      <app-game-post [game-post]="post" [slice-post-name]="true"></app-game-post>
+    </div>
+    <ng-container *ngTemplateOutlet="viewAllPostsTemplate"></ng-container>
+  </div>
+</div>
+
+<ng-template #viewAllPostsTemplate>
+  <a [routerLink]="gamePostsPartitionRouterLink"
+     class="group flex gap-4 py-4"
+  >
+    <div class="flex justify-center items-center w-[120px] h-[70px] bg-grey-800 rounded-md text-2xl text-grey-300 group-hover:bg-white group-hover:text-grey-800 transition-colors duration-200">
+      <fa-icon [icon]="getEllipsisIcon()"></fa-icon>
+    </div>
+    <div>
+      <div class="text-white font-semibold group-hover:text-grey-300 transition-colors duration-200">View all posts</div>
+      <div class="text-xs text-grey-300 font-light">{{game.reddit_count}} items</div>
+    </div>
+  </a>
+</ng-template>

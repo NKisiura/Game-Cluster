@@ -29,6 +29,9 @@ import { GamePartitionSuggestionsComponent } from './components/game-details-par
 import { GameVideosComponent } from './components/game-details-main/game-videos/game-videos.component';
 import { GameVideoComponent } from './components/common/game-video/game-video.component';
 import { GamePartitionVideosComponent } from './components/game-details-partitions/game-details-partition-videos/game-partition-videos.component';
+import { GamePostsComponent } from './components/game-details-main/game-posts/game-posts.component';
+import { GamePostComponent } from './components/common/game-post/game-post.component';
+import { GamePartitionPostsComponent } from './components/game-details-partitions/game-details-partition-posts/game-partition-posts.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { GamePartitionVideosComponent } from './components/game-details-partitio
     GameDetailsHeaderComponent,
     GameAchievementComponent,
     GameVideoComponent,
+    GamePostComponent,
     GameSectionInfoComponent,
     GameSectionMediaComponent,
     GameGalleryComponent,
@@ -47,12 +51,14 @@ import { GamePartitionVideosComponent } from './components/game-details-partitio
     GameAchievementsComponent,
     GameSuggestionsComponent,
     GameVideosComponent,
+    GamePostsComponent,
     GamePartitionWrapperComponent,
     GamePartitionWrapperSidebarComponent,
     GamePartitionScreenshotsComponent,
     GamePartitionAchievementsComponent,
     GamePartitionSuggestionsComponent,
     GamePartitionVideosComponent,
+    GamePartitionPostsComponent,
   ],
   imports: [
     CommonModule,

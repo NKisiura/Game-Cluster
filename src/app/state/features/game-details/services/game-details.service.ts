@@ -5,6 +5,7 @@ import {
   API_BASE_URL,
   API_GAME_ACHIEVEMENTS_URL,
   API_GAME_ADDITIONS_URL,
+  API_GAME_REDDIT_POSTS_URL,
   API_GAME_SCREENSHOTS_URL,
   API_GAME_SERIES_URL,
   API_GAME_SUGGESTIONS_URL,
@@ -17,6 +18,7 @@ import { GetGameScreenshotsResponseInterface } from '../types/get-game-screensho
 import { GetGameAchievementsResponseInterface } from '../types/get-game-achievements-response.interface';
 import { GetGamesResponseInterface } from '../../games/types/get-games-response.interface';
 import { GetGameVideosResponseInterface } from '../types/get-game-videos-response.interface';
+import { GetGamePostsResponseInterface } from '../types/get-game-posts-response.interface';
 
 @Injectable()
 export class GameDetailsService {
@@ -86,6 +88,20 @@ export class GameDetailsService {
     url: string
   ): Observable<GetGameVideosResponseInterface> {
     return this.http.get<GetGameVideosResponseInterface>(url);
+  }
+
+  public getGamePosts(
+    gameId: number
+  ): Observable<GetGamePostsResponseInterface> {
+    return this.http.get<GetGamePostsResponseInterface>(
+      `${API_BASE_URL}${API_GAMES_URL}/${gameId}/${API_GAME_REDDIT_POSTS_URL}`
+    );
+  }
+
+  public getGamePostsNextPage(
+    url: string
+  ): Observable<GetGamePostsResponseInterface> {
+    return this.http.get<GetGamePostsResponseInterface>(url);
   }
 
   public getGameAdditions(

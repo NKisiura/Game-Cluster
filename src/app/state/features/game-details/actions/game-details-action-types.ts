@@ -35,6 +35,13 @@ export enum GameDetailsActionTypes {
   GET_GAME_VIDEOS_NEXT_PAGE_SUCCESS = '[Game Details] Get Game Videos Next Page Success',
   GET_GAME_VIDEOS_NEXT_PAGE_FAILURE = '[Game Details] Get Game Videos Next Page Failure',
 
+  GET_GAME_POSTS = '[Game Details] Get Game Posts',
+  GET_GAME_POSTS_SUCCESS = '[Game Details] Get Game Posts Success',
+  GET_GAME_POSTS_FAILURE = '[Game Details] Get Game Posts Failure',
+  GET_GAME_POSTS_NEXT_PAGE = '[Game Details] Get Game Posts Next Page',
+  GET_GAME_POSTS_NEXT_PAGE_SUCCESS = '[Game Details] Get Game Posts Next Page Success',
+  GET_GAME_POSTS_NEXT_PAGE_FAILURE = '[Game Details] Get Game Posts Next Page Failure',
+
   GET_GAME_ADDITIONS = '[Game Details] Get Game Additions',
   GET_GAME_ADDITIONS_SUCCESS = '[Game Details] Get Game Additions Success',
   GET_GAME_ADDITIONS_FAILURE = '[Game Details] Get Game Additions Failure',

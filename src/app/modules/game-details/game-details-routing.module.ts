@@ -8,6 +8,7 @@ import { GamePartitionScreenshotsComponent } from './components/game-details-par
 import { GamePartitionAchievementsComponent } from './components/game-details-partitions/game-details-partition-achievements/game-partition-achievements.component';
 import { GamePartitionSuggestionsComponent } from './components/game-details-partitions/game-details-partition-suggestions/game-partition-suggestions.component';
 import { GamePartitionVideosComponent } from './components/game-details-partitions/game-details-partition-videos/game-partition-videos.component';
+import { GamePartitionPostsComponent } from './components/game-details-partitions/game-details-partition-posts/game-partition-posts.component';
 
 const gameDetailsChildRoutes: Routes = [
   {
@@ -41,6 +42,13 @@ const gameDetailsChildRoutes: Routes = [
       breadcrumbs: GameDetailsPartitions.VIDEOS,
     },
     component: GamePartitionVideosComponent,
+  },
+  {
+    path: GameDetailsPartitions.POSTS,
+    data: {
+      breadcrumbs: GameDetailsPartitions.POSTS,
+    },
+    component: GamePartitionPostsComponent,
   },
 ];
 

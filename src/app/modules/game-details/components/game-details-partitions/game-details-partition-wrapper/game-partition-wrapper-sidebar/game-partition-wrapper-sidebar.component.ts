@@ -28,6 +28,9 @@ export class GamePartitionWrapperSidebarComponent {
         case GameDetailsPartitions.VIDEOS: {
           return this.game.youtube_count > 0;
         }
+        case GameDetailsPartitions.POSTS: {
+          return this.game.reddit_count > 0;
+        }
       }
     });
   }
@@ -46,6 +49,9 @@ export class GamePartitionWrapperSidebarComponent {
       case GameDetailsPartitions.VIDEOS: {
         return 'videos';
       }
+      case GameDetailsPartitions.POSTS: {
+        return 'Posts';
+      }
     }
   }
 
@@ -63,6 +69,9 @@ export class GamePartitionWrapperSidebarComponent {
       case GameDetailsPartitions.VIDEOS: {
         //hardcore because backend lag, but it's always === 50
         return 50;
+      }
+      case GameDetailsPartitions.POSTS: {
+        return this.game.reddit_count;
       }
     }
   }

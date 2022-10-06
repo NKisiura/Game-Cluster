@@ -9,6 +9,7 @@ import { GameAdditionsActions } from '../actions/game-additions.actions';
 import { AdditionParentGamesActions } from '../actions/addition-parent-games.actions';
 import { GameSuggestionsActions } from '../actions/game-suggestions.actions';
 import { GameVideosActions } from '../actions/game-videos.actions';
+import { GamePostsActions } from '../actions/game-posts.actions';
 
 const initialState: GameDetailsStateInterface = {
   game: {
@@ -37,6 +38,11 @@ const initialState: GameDetailsStateInterface = {
     data: null,
   },
   gameVideos: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
+  gamePosts: {
     isLoading: false,
     error: null,
     data: null,
@@ -394,6 +400,76 @@ export const gameDetailsReducer = createReducer(
       ...state,
       gameVideos: {
         ...state.gameVideos,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    GamePostsActions.getGamePosts,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gamePosts: {
+        ...state.gamePosts,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GamePostsActions.getGamePostsSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gamePosts: {
+        ...state.gamePosts,
+        isLoading: false,
+        data: action.getPostsResponse,
+      },
+    })
+  ),
+  on(
+    GamePostsActions.getGamePostsFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gamePosts: {
+        ...state.gamePosts,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
+  on(
+    GamePostsActions.getGamePostsNextPage,
+    (state): GameDetailsStateInterface => ({
+      ...state,
+      gamePosts: {
+        ...state.gamePosts,
+        isLoading: true,
+      },
+    })
+  ),
+  on(
+    GamePostsActions.getGamePostsNextPageSuccess,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gamePosts: {
+        ...state.gamePosts,
+        isLoading: false,
+        data: {
+          ...action.getPostsResponse,
+          results: [
+            ...(state.gamePosts.data?.results || []),
+            ...(action.getPostsResponse.results || []),
+          ],
+        },
+      },
+    })
+  ),
+  on(
+    GamePostsActions.getGamePostsNextPageFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gamePosts: {
+        ...state.gamePosts,
         isLoading: false,
         error: action.error,
       },

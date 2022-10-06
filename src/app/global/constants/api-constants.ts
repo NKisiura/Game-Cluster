@@ -16,5 +16,6 @@ export const API_GAME_SUGGESTIONS_URL = 'suggested';
 export const API_GAME_ADDITIONS_URL = 'additions';
 export const API_ADDITION_PARENT_GAMES_URL = 'parent-games';
 export const API_GAME_YOUTUBE_VIDEOS_URL = 'youtube';
+export const API_GAME_REDDIT_POSTS_URL = 'reddit';
 
 export const YOUTUBE_VIDEO_BASE_URL = 'https://www.youtube.com/watch?v=';

@@ -3,4 +3,5 @@ export enum GameDetailsPartitions {
   SUGGESTIONS = 'suggestions',
   ACHIEVEMENTS = 'achievements',
   VIDEOS = 'videos',
+  POSTS = 'posts',
 }
