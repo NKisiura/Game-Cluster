@@ -388,14 +388,17 @@ export const gameDetailsReducer = createReducer(
       },
     })
   ),
-  on(GameVideosActions.getGameVideosFailure, (state, action) => ({
-    ...state,
-    gameVideos: {
-      ...state.gameVideos,
-      isLoading: false,
-      error: action.error,
-    },
-  })),
+  on(
+    GameVideosActions.getGameVideosNextPageFailure,
+    (state, action): GameDetailsStateInterface => ({
+      ...state,
+      gameVideos: {
+        ...state.gameVideos,
+        isLoading: false,
+        error: action.error,
+      },
+    })
+  ),
   on(
     GameAdditionsActions.getGameAdditions,
     (state): GameDetailsStateInterface => ({
