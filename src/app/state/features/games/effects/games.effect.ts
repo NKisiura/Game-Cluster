@@ -40,5 +40,8 @@ export class GamesEffect {
     )
   );
 
-  constructor(private actions$: Actions, private gamesService: GamesService) {}
+  constructor(
+    private readonly actions$: Actions,
+    private readonly gamesService: GamesService
+  ) {}
 }

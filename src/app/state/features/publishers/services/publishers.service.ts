@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../../../../global/constants/api-constants';
 
 @Injectable()
 export class PublishersService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getPublishers(
     url: string

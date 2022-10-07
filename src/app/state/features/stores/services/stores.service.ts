@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../../../../global/constants/api-constants';
 
 @Injectable()
 export class StoresService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getStores(url: string): Observable<GetStoresResponseInterface> {
     return this.http.get<GetStoresResponseInterface>(API_BASE_URL + url);

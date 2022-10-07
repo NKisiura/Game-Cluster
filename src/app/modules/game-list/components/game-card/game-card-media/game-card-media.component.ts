@@ -48,8 +48,8 @@ export class GameCardMediaComponent {
   };
 
   constructor(
-    private imageService: ImageService,
-    private iconService: IconService
+    private readonly imageService: ImageService,
+    private readonly iconService: IconService
   ) {}
 
   public getCroppedImage(imageUrl: string): string {

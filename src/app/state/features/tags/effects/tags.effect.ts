@@ -39,5 +39,8 @@ export class TagsEffect {
       })
     )
   );
-  constructor(private actions$: Actions, private tagsService: TagsService) {}
+  constructor(
+    private readonly actions$: Actions,
+    private readonly tagsService: TagsService
+  ) {}
 }

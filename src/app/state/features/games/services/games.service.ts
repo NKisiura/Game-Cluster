@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../../../../global/constants/api-constants';
 
 @Injectable()
 export class GamesService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getGames(url: string): Observable<GetGamesResponseInterface> {
     return this.http.get<GetGamesResponseInterface>(API_BASE_URL + url);

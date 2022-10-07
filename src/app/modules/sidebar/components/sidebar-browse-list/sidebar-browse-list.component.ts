@@ -13,7 +13,7 @@ export class SidebarBrowseListComponent {
   public browseRouterLink: string = RouterLinks.BROWSE_ROUTER_LINK;
   public entityTypes = Object.values(NotGamesEntityTypes);
 
-  constructor(private iconService: IconService) {}
+  constructor(private readonly iconService: IconService) {}
 
   public getIconBySlug(slug: string): IconDefinition {
     return this.iconService.getEntityTypeIconBySlug(slug);

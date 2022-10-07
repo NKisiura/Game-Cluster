@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../../../../global/constants/api-constants';
 
 @Injectable()
 export class CreatorsService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getCreators(url: string): Observable<GetCreatorsResponseInterface> {
     return this.http.get<GetCreatorsResponseInterface>(API_BASE_URL + url);

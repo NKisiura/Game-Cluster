@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class PlatformsService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getPlatforms(url: string): Observable<GetPlatformsResponseInterface> {
     return this.http.get<GetPlatformsResponseInterface>(API_BASE_URL + url);

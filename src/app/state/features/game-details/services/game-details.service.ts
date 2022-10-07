@@ -22,7 +22,7 @@ import { GetGamePostsResponseInterface } from '../types/get-game-posts-response.
 
 @Injectable()
 export class GameDetailsService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getGame(url: string): Observable<GameDetailsInterface> {
     return this.http.get<GameDetailsInterface>(API_BASE_URL + url);

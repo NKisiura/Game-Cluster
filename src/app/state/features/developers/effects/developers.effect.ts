@@ -43,7 +43,7 @@ export class DevelopersEffect {
   );
 
   constructor(
-    private actions$: Actions,
-    private developersService: DevelopersService
+    private readonly actions$: Actions,
+    private readonly developersService: DevelopersService
   ) {}
 }

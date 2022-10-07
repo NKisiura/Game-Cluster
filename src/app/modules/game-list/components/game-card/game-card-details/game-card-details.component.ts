@@ -21,7 +21,7 @@ export class GameCardDetailsComponent {
   @Input('genres-list') public genresList!: GenreInterface[];
   @Input('tag-list') public tagList!: TagInterface[];
 
-  constructor(private dateService: DateService) {}
+  constructor(private readonly dateService: DateService) {}
 
   public getFormattedReleaseDate(): string {
     return this.dateService.changeDateFormat(this.released, 'll');

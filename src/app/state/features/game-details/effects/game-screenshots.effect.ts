@@ -69,8 +69,8 @@ export class GameScreenshotsEffect {
   );
 
   constructor(
-    private store$: Store<RootStateInterface>,
-    private actions$: Actions,
-    private gameDetailsService: GameDetailsService
+    private readonly store$: Store<RootStateInterface>,
+    private readonly actions$: Actions,
+    private readonly gameDetailsService: GameDetailsService
   ) {}
 }

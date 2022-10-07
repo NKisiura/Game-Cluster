@@ -43,7 +43,7 @@ export class PublishersEffect {
   );
 
   constructor(
-    private actions$: Actions,
-    private publishersService: PublishersService
+    private readonly actions$: Actions,
+    private readonly publishersService: PublishersService
   ) {}
 }

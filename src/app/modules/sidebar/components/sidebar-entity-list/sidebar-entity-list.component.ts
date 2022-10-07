@@ -21,8 +21,8 @@ export class SidebarEntityListComponent implements OnInit {
   public isCurrentEntityGenre!: boolean;
 
   constructor(
-    private iconService: IconService,
-    private imageService: ImageService
+    private readonly iconService: IconService,
+    private readonly imageService: ImageService
   ) {}
 
   ngOnInit(): void {

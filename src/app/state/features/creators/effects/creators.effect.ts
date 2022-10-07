@@ -43,7 +43,7 @@ export class CreatorsEffect {
   );
 
   constructor(
-    private actions$: Actions,
-    private creatorsService: CreatorsService
+    private readonly actions$: Actions,
+    private readonly creatorsService: CreatorsService
   ) {}
 }

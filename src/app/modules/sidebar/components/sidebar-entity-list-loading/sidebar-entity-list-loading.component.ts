@@ -9,7 +9,7 @@ import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 export class SidebarEntityListLoadingComponent {
   @Input('entity-type') public entityType!: string;
 
-  constructor(private iconService: IconService) {}
+  constructor(private readonly iconService: IconService) {}
 
   public getLoadingIcon(): IconDefinition {
     return this.iconService.getLoadingIcon();

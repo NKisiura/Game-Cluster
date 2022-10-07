@@ -41,7 +41,7 @@ export class StoresEffect {
   );
 
   constructor(
-    private actions$: Actions,
-    private storesService: StoresService
+    private readonly actions$: Actions,
+    private readonly storesService: StoresService
   ) {}
 }

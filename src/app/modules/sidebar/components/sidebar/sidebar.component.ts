@@ -35,8 +35,8 @@ export class SidebarComponent implements OnInit {
   public storesList$ = new Observable<StoreInterface[] | null>();
 
   constructor(
-    private store$: Store<RootStateInterface>,
-    private mainEntitiesService: MainEntitiesService
+    private readonly store$: Store<RootStateInterface>,
+    private readonly mainEntitiesService: MainEntitiesService
   ) {}
 
   ngOnInit(): void {

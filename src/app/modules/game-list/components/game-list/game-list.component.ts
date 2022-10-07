@@ -26,8 +26,8 @@ export class GameListComponent implements OnInit, OnDestroy {
   public gamesNextPage$ = new Observable<string | null>();
 
   constructor(
-    private store$: Store<RootStateInterface>,
-    private activatedRoute: ActivatedRoute
+    private readonly store$: Store<RootStateInterface>,
+    private readonly activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {

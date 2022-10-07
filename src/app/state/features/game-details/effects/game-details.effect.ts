@@ -25,7 +25,7 @@ export class GameDetailsEffect {
   );
 
   constructor(
-    private actions$: Actions,
-    private gameDetailsService: GameDetailsService
+    private readonly actions$: Actions,
+    private readonly gameDetailsService: GameDetailsService
   ) {}
 }

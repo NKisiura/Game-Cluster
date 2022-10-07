@@ -41,7 +41,7 @@ export class GenresEffect {
   );
 
   constructor(
-    private actions$: Actions,
-    private genresService: GenresService
+    private readonly actions$: Actions,
+    private readonly genresService: GenresService
   ) {}
 }

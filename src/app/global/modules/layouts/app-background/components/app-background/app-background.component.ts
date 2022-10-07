@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class AppBackgroundComponent implements OnInit {
   public appBackgroundImageUrl$ = new Observable<null | string>();
 
-  constructor(private store$: Store<RootStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.appBackgroundImageUrl$ = this.store$.pipe(

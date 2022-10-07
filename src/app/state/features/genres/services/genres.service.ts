@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../../../../global/constants/api-constants';
 
 @Injectable()
 export class GenresService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public getGenres(url: string): Observable<GetGenresResponseInterface> {
     return this.http.get<GetGenresResponseInterface>(API_BASE_URL + url);

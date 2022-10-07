@@ -11,7 +11,7 @@ export class GameCardPlatformListComponent {
   @Input('parent-platform-list')
   public gameParentPlatformList!: GameParentPlatform[];
 
-  constructor(private iconService: IconService) {}
+  constructor(private readonly iconService: IconService) {}
 
   public getAcceptablePlatformsToView(platforms: GameParentPlatform[]) {
     return this.getGameParentPlatformListWithIcon(platforms);

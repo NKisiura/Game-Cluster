@@ -7,7 +7,7 @@ import { IconService } from '../../../../../global/utils/services/icon.service';
   templateUrl: './game-card-show-more-button.component.html',
 })
 export class GameCardShowMoreButtonComponent {
-  constructor(private iconService: IconService) {}
+  constructor(private readonly iconService: IconService) {}
 
   public getArrowRightIcon(): IconDefinition {
     return this.iconService.getArrowIcons().right;

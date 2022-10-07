@@ -43,7 +43,7 @@ export class PlatformsEffect {
   );
 
   constructor(
-    private actions$: Actions,
-    private platformsService: PlatformsService
+    private readonly actions$: Actions,
+    private readonly platformsService: PlatformsService
   ) {}
 }

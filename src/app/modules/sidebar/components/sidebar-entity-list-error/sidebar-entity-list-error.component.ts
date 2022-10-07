@@ -9,7 +9,7 @@ import { IconService } from '../../../../global/utils/services/icon.service';
 export class SidebarEntityListErrorComponent {
   @Input('entity-type') public entityType!: string;
 
-  constructor(private iconService: IconService) {}
+  constructor(private readonly iconService: IconService) {}
 
   public getWarningIcon(): IconDefinition {
     return this.iconService.getWarningIcon();
