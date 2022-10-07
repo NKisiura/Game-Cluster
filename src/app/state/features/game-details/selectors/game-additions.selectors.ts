@@ -2,7 +2,7 @@ import { createSelector } from '@ngrx/store';
 import { gameDetailsFeatureSelector } from './game-details-feature.selector';
 import { GameDetailsStateInterface } from '../types/game-details-state.interface';
 
-export namespace GameAdditionsSelector {
+export namespace GameAdditionsSelectors {
   export const gameAdditionsLoadingSelector = createSelector(
     gameDetailsFeatureSelector,
     (gameDetailsState: GameDetailsStateInterface) =>

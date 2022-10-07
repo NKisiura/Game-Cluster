@@ -5,7 +5,7 @@ import { GameInterface } from '../../../../../global/types/entities/games/game.i
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { GameSeriesSelectors } from '../../../../../state/features/game-details/selectors/game-series.selectors';
-import { GameAdditionsSelector } from '../../../../../state/features/game-details/selectors/game-additions.selector';
+import { GameAdditionsSelectors } from '../../../../../state/features/game-details/selectors/game-additions.selectors';
 import { AdditionParentGamesSelectors } from '../../../../../state/features/game-details/selectors/addition-parent-games.selectors';
 
 @Component({
@@ -29,7 +29,7 @@ export class GameSectionInfoComponent {
       select(GameSeriesSelectors.gameSeriesSelector)
     );
     this.gameAdditions$ = this.store$.pipe(
-      select(GameAdditionsSelector.gameAdditionsSelector)
+      select(GameAdditionsSelectors.gameAdditionsSelector)
     );
     this.additionParentGames$ = this.store$.pipe(
       select(AdditionParentGamesSelectors.additionParentGamesSelector)
