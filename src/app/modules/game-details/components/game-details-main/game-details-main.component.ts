@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { GameDetailsInterface } from '../../../../global/types/entities/games/game-details.interface';
 import { select, Store } from '@ngrx/store';
 import { GameDetailsSelectors } from '../../../../state/features/game-details/selectors/game-details.selectors';
-import { AppStateInterface } from '../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../state/types/root-state.interface';
 import { GameInterface } from '../../../../global/types/entities/games/game.interface';
 import { GameAchievementInterface } from '../../../../global/types/entities/games/game-achievement.interface';
 import { GameYoutubeVideoInterface } from '../../../../global/types/entities/games/game-youtube-video.interface';
@@ -26,7 +26,7 @@ export class GameDetailsMainComponent implements OnInit {
   public gameVideos$ = new Observable<GameYoutubeVideoInterface[] | null>();
   public gamePosts$ = new Observable<GameRedditPostInterface[] | null>();
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.initValues();

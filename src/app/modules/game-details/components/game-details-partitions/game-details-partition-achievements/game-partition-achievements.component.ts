@@ -3,7 +3,7 @@ import { LoadMoreButtonComponent } from '../../../../../global/modules/layouts/l
 import { Observable } from 'rxjs';
 import { GameAchievementInterface } from '../../../../../global/types/entities/games/game-achievement.interface';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { GameAchievementsSelectors } from '../../../../../state/features/game-details/selectors/game-achievements.selectors';
 import { GameAchievementsActions } from '../../../../../state/features/game-details/actions/game-achievements.actions';
 
@@ -20,7 +20,7 @@ export class GamePartitionAchievementsComponent implements OnInit {
     GameAchievementInterface[] | null
   >();
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.initValues();

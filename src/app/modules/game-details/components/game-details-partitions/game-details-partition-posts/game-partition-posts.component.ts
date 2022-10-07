@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { LoadMoreButtonComponent } from '../../../../../global/modules/layouts/load-more-button/components/load-more-button/load-more-button.component';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { GamePostsActions } from '../../../../../state/features/game-details/actions/game-posts.actions';
 import { Observable } from 'rxjs';
 import { GameRedditPostInterface } from '../../../../../global/types/entities/games/game-reddit-post.interface';
@@ -18,7 +18,7 @@ export class GamePartitionPostsComponent {
   public gamePostsLoading$ = new Observable<boolean>();
   public gamePostsNextPage$ = new Observable<string | null>();
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.initValues();

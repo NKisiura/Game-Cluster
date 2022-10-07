@@ -3,7 +3,7 @@ import { GameDetailsInterface } from '../../../../../global/types/entities/games
 import { Observable } from 'rxjs';
 import { GameDetailsPartitions } from '../../../types/game-details-partitions.enum';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { IconService } from '../../../../../global/utils/services/icon.service';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { GameRedditPostInterface } from '../../../../../global/types/entities/games/game-reddit-post.interface';
@@ -20,7 +20,7 @@ export class GamePostsComponent {
   public gamePostsPartitionRouterLink = GameDetailsPartitions.POSTS;
 
   constructor(
-    private readonly store$: Store<AppStateInterface>,
+    private readonly store$: Store<RootStateInterface>,
     private readonly iconService: IconService
   ) {}
 

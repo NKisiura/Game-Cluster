@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../state/types/root-state.interface';
 import { filter, map, Observable } from 'rxjs';
 import { PlatformInterface } from '../../../../global/types/entities/platforms/platform.interface';
 import { PlatformsSelectors } from '../../../../state/features/platforms/selectors/platforms.selectors';
@@ -35,7 +35,7 @@ export class SidebarComponent implements OnInit {
   public storesList$ = new Observable<StoreInterface[] | null>();
 
   constructor(
-    private store$: Store<AppStateInterface>,
+    private store$: Store<RootStateInterface>,
     private mainEntitiesService: MainEntitiesService
   ) {}
 

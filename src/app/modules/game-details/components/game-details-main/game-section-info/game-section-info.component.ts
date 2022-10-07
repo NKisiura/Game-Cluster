@@ -3,7 +3,7 @@ import { GameDetailsInterface } from '../../../../../global/types/entities/games
 import { Observable } from 'rxjs';
 import { GameInterface } from '../../../../../global/types/entities/games/game.interface';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { GameSeriesSelectors } from '../../../../../state/features/game-details/selectors/game-series.selectors';
 import { GameAdditionsSelector } from '../../../../../state/features/game-details/selectors/game-additions.selector';
 import { AdditionParentGamesSelectors } from '../../../../../state/features/game-details/selectors/addition-parent-games.selectors';
@@ -18,7 +18,7 @@ export class GameSectionInfoComponent {
   public gameAdditions$ = new Observable<GameInterface[] | null>();
   public additionParentGames$ = new Observable<GameInterface[] | null>();
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.initValues();

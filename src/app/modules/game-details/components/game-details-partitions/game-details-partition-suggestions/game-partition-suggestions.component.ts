@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadMoreButtonComponent } from '../../../../../global/modules/layouts/load-more-button/components/load-more-button/load-more-button.component';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { Observable } from 'rxjs';
 import { GameInterface } from '../../../../../global/types/entities/games/game.interface';
 import { GameSuggestionsSelectors } from '../../../../../state/features/game-details/selectors/game-suggestions.selectors';
@@ -18,7 +18,7 @@ export class GamePartitionSuggestionsComponent implements OnInit {
   public gameSuggestionsLoading$ = new Observable<boolean>();
   public gameSuggestionsNextPage$ = new Observable<string | null>();
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.initValues();

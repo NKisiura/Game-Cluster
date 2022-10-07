@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NotGamesEntityTypes } from '../../../global/types/entities/entity-types.enum';
 import { select, Store } from '@ngrx/store';
 import { PlatformsSelectors } from '../../../state/features/platforms/selectors/platforms.selectors';
-import { AppStateInterface } from '../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../state/types/root-state.interface';
 import { GenresSelectors } from '../../../state/features/genres/selectors/genres.selectors';
 import { StoresSelectors } from '../../../state/features/stores/selectors/stores.selectors';
 import { TagsSelectors } from '../../../state/features/tags/selectors/tags.selectors';
@@ -19,7 +19,7 @@ import { CreatorsActions } from '../../../state/features/creators/actions/creato
 
 @Injectable()
 export class BrowseService {
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   public getEntityViewModelByEntityType(entityType: NotGamesEntityTypes) {
     switch (entityType) {

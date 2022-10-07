@@ -3,7 +3,7 @@ import { GameDetailsInterface } from '../../../../../global/types/entities/games
 import { Observable } from 'rxjs';
 import { GameYoutubeVideoInterface } from '../../../../../global/types/entities/games/game-youtube-video.interface';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { GameVideosSelectors } from '../../../../../state/features/game-details/selectors/game-videos.selectors';
 import { GameDetailsPartitions } from '../../../types/game-details-partitions.enum';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
@@ -21,7 +21,7 @@ export class GameVideosComponent implements OnInit {
   public gameVideosPartitionRouterLink = GameDetailsPartitions.VIDEOS;
 
   constructor(
-    private readonly store$: Store<AppStateInterface>,
+    private readonly store$: Store<RootStateInterface>,
     private readonly iconService: IconService
   ) {}
 

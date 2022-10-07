@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { GameDetailsActions } from '../actions/game-details.actions';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../types/app-state.interface';
+import { RootStateInterface } from '../../../types/root-state.interface';
 import { GameDetailsService } from '../services/game-details.service';
 import { GamePostsActions } from '../actions/game-posts.actions';
 import { GetGamePostsResponseInterface } from '../types/get-game-posts-response.interface';
@@ -61,7 +61,7 @@ export class GamePostsEffect {
   );
 
   constructor(
-    private store$: Store<AppStateInterface>,
+    private store$: Store<RootStateInterface>,
     private actions$: Actions,
     private gameDetailsService: GameDetailsService
   ) {}

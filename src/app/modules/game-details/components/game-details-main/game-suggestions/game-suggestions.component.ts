@@ -3,7 +3,7 @@ import { GameDetailsInterface } from '../../../../../global/types/entities/games
 import { Observable } from 'rxjs';
 import { GameInterface } from '../../../../../global/types/entities/games/game.interface';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { GameSuggestionsSelectors } from '../../../../../state/features/game-details/selectors/game-suggestions.selectors';
 import { GameDetailsPartitions } from '../../../types/game-details-partitions.enum';
 
@@ -16,7 +16,7 @@ export class GameSuggestionsComponent implements OnInit {
   public gameSuggestions$ = new Observable<GameInterface[] | null>();
   public gameSuggestionsPartitionRouterLink = GameDetailsPartitions.SUGGESTIONS;
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.initValues();

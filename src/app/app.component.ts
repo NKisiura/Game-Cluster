@@ -14,7 +14,7 @@ import {
 import { GenresActions } from './state/features/genres/actions/genres.actions';
 import { StoresActions } from './state/features/stores/actions/stores.actions';
 import { Store } from '@ngrx/store';
-import { AppStateInterface } from './state/types/app-state.interface';
+import { RootStateInterface } from './state/types/root-state.interface';
 import { TagsActions } from './state/features/tags/actions/tags.actions';
 import { DevelopersActions } from './state/features/developers/actions/developers.actions';
 import { PublishersActions } from './state/features/publishers/actions/publishers.actions';
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public appLoading: boolean = true;
   private appLoadingEnd$: Subject<void> = new Subject<void>();
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.dispatchInitialActions();

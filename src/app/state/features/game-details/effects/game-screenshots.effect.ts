@@ -5,7 +5,7 @@ import { GameDetailsActions } from '../actions/game-details.actions';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { BackendErrorResponseInterface } from '../../../types/backend-error-response.interface';
 import { Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../types/app-state.interface';
+import { RootStateInterface } from '../../../types/root-state.interface';
 import { GameScreenshotsActions } from '../actions/game-screenshots.actions';
 import { GetGameScreenshotsResponseInterface } from '../types/get-game-screenshots-response.interface';
 
@@ -69,7 +69,7 @@ export class GameScreenshotsEffect {
   );
 
   constructor(
-    private store$: Store<AppStateInterface>,
+    private store$: Store<RootStateInterface>,
     private actions$: Actions,
     private gameDetailsService: GameDetailsService
   ) {}

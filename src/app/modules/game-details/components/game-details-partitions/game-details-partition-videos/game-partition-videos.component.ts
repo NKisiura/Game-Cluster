@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadMoreButtonComponent } from '../../../../../global/modules/layouts/load-more-button/components/load-more-button/load-more-button.component';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { GameVideosSelectors } from '../../../../../state/features/game-details/selectors/game-videos.selectors';
 import { Observable } from 'rxjs';
 import { GameYoutubeVideoInterface } from '../../../../../global/types/entities/games/game-youtube-video.interface';
@@ -18,7 +18,7 @@ export class GamePartitionVideosComponent implements OnInit {
   public gameVideosLoading$ = new Observable<boolean>();
   public gameVideosNextPage$ = new Observable<string | null>();
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.initValues();

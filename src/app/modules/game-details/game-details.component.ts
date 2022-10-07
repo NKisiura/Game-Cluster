@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GameDetailsActions } from '../../state/features/game-details/actions/game-details.actions';
 import { BackendErrorResponseInterface } from '../../state/types/backend-error-response.interface';
-import { AppStateInterface } from '../../state/types/app-state.interface';
+import { RootStateInterface } from '../../state/types/root-state.interface';
 import { select, Store } from '@ngrx/store';
 import { GameDetailsInterface } from '../../global/types/entities/games/game-details.interface';
 import { GameDetailsSelectors } from '../../state/features/game-details/selectors/game-details.selectors';
@@ -22,7 +22,7 @@ export class GameDetailsComponent implements OnInit {
     new Observable<BackendErrorResponseInterface | null>();
 
   constructor(
-    private store$: Store<AppStateInterface>,
+    private store$: Store<RootStateInterface>,
     private activatedRoute: ActivatedRoute
   ) {}
 

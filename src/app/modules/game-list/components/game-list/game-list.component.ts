@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../state/types/root-state.interface';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { GameInterface } from '../../../../global/types/entities/games/game.interface';
 import { GamesSelectors } from '../../../../state/features/games/selectors/games.selectors';
@@ -26,7 +26,7 @@ export class GameListComponent implements OnInit, OnDestroy {
   public gamesNextPage$ = new Observable<string | null>();
 
   constructor(
-    private store$: Store<AppStateInterface>,
+    private store$: Store<RootStateInterface>,
     private activatedRoute: ActivatedRoute
   ) {}
 

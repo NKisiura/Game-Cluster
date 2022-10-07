@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../types/app-state.interface';
+import { RootStateInterface } from '../../../types/root-state.interface';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { GameDetailsService } from '../services/game-details.service';
 import { GameDetailsActions } from '../actions/game-details.actions';
@@ -45,7 +45,7 @@ export class GameAdditionsEffect {
   );
 
   constructor(
-    private store$: Store<AppStateInterface>,
+    private store$: Store<RootStateInterface>,
     private actions$: Actions,
     private gameDetailsService: GameDetailsService
   ) {}

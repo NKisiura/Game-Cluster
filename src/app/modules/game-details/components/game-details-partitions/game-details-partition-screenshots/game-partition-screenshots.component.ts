@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { Observable } from 'rxjs';
 import { GameScreenshotInterface } from '../../../../../global/types/entities/games/game-screenshot.interface';
 import { GameScreenshotsSelectors } from '../../../../../state/features/game-details/selectors/game-screenshots.selectors';
@@ -20,7 +20,7 @@ export class GamePartitionScreenshotsComponent implements OnInit {
   public gameScreenshotsNextPage$ = new Observable<string | null>();
 
   constructor(
-    private readonly store$: Store<AppStateInterface>,
+    private readonly store$: Store<RootStateInterface>,
     private readonly imageService: ImageService
   ) {}
 

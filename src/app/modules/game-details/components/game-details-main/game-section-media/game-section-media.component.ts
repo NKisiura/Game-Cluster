@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameDetailsInterface } from '../../../../../global/types/entities/games/game-details.interface';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { Observable } from 'rxjs';
 import { GameScreenshotInterface } from '../../../../../global/types/entities/games/game-screenshot.interface';
 import { GameScreenshotsSelectors } from '../../../../../state/features/game-details/selectors/game-screenshots.selectors';
@@ -14,7 +14,7 @@ export class GameSectionMediaComponent implements OnInit {
   @Input('game') public game!: GameDetailsInterface;
   public gameScreenshots$ = new Observable<GameScreenshotInterface[] | null>();
 
-  constructor(private readonly store$: Store<AppStateInterface>) {}
+  constructor(private readonly store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.initValues();

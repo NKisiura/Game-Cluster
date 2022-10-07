@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameDetailsInterface } from '../../../../../global/types/entities/games/game-details.interface';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { Observable } from 'rxjs';
 import { GameAchievementInterface } from '../../../../../global/types/entities/games/game-achievement.interface';
 import { GameAchievementsSelectors } from '../../../../../state/features/game-details/selectors/game-achievements.selectors';
@@ -24,7 +24,7 @@ export class GameAchievementsComponent implements OnInit {
     GameDetailsPartitions.ACHIEVEMENTS;
 
   constructor(
-    private readonly store$: Store<AppStateInterface>,
+    private readonly store$: Store<RootStateInterface>,
     private readonly iconService: IconService
   ) {}
 

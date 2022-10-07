@@ -7,7 +7,7 @@ import { DevelopersStateInterface } from '../features/developers/types/developer
 import { PublishersStateInterface } from '../features/publishers/types/publishers-state.interface';
 import { CreatorsStateInterface } from '../features/creators/types/creators-state.interface';
 
-export interface AppStateInterface {
+export interface RootStateInterface {
   readonly platforms: PlatformsStateInterface;
   readonly games: GamesStateInterface;
   readonly gameDetails: GameDetailsStateInterface;

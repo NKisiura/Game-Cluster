@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { Observable } from 'rxjs';
 import { GameDetailsInterface } from '../../../../../global/types/entities/games/game-details.interface';
 import { GameDetailsSelectors } from '../../../../../state/features/game-details/selectors/game-details.selectors';
@@ -17,7 +17,7 @@ export class GamePartitionWrapperComponent implements OnInit {
   public gameRouterLink: string = RouterLinks.GAME_ROUTER_LINK;
 
   constructor(
-    private readonly store$: Store<AppStateInterface>,
+    private readonly store$: Store<RootStateInterface>,
     private readonly iconService: IconService
   ) {}
 

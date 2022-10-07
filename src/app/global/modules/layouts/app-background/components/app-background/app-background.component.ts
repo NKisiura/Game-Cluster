@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AppStateInterface } from '../../../../../../state/types/app-state.interface';
+import { RootStateInterface } from '../../../../../../state/types/root-state.interface';
 import { GameDetailsSelectors } from '../../../../../../state/features/game-details/selectors/game-details.selectors';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class AppBackgroundComponent implements OnInit {
   public appBackgroundImageUrl$ = new Observable<null | string>();
 
-  constructor(private store$: Store<AppStateInterface>) {}
+  constructor(private store$: Store<RootStateInterface>) {}
 
   ngOnInit(): void {
     this.appBackgroundImageUrl$ = this.store$.pipe(
