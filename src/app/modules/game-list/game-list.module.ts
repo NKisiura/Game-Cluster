@@ -16,6 +16,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-down-emitter/scroll-down-emitter.module';
 import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-button/load-more-button.module';
 import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-error-message/backend-error-message.module';
+import { EmptyResultMessageModule } from '../../global/modules/layouts/empty-result-message/empty-result-message.module';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
     ScrollDownEmitterModule,
     LoadMoreButtonModule,
     BackendErrorMessageModule,
+    EmptyResultMessageModule,
   ],
   exports: [GameCardComponent],
 })
