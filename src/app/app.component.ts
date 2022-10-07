@@ -28,7 +28,6 @@ import { CreatorsActions } from './state/features/creators/actions/creators.acti
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('progressComponent')
   public progressComponent!: NgProgressComponent;
-  public isFirstInit: boolean = true;
   public appLoading: boolean = true;
   private appLoadingEnd$: Subject<void> = new Subject<void>();
 
@@ -39,16 +38,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (this.isFirstInit) {
-      this.isFirstInit = false;
-      this.progressComponent.state$
-        .pipe(
-          skip(1),
-          map((state) => state.active),
-          takeUntil(this.appLoadingEnd$)
-        )
-        .subscribe((status) => this.endLoading(status));
-    }
+    this.progressComponent.state$
+      .pipe(
+        skip(1),
+        map((state) => state.active),
+        takeUntil(this.appLoadingEnd$)
+      )
+      .subscribe((status) => this.endLoading(status));
   }
 
   private endLoading(loadingStatus: boolean): void {
