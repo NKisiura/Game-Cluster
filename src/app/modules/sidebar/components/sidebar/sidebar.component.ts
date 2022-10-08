@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../state/types/root-state.interface';
 import { PlatformsSelectors } from '../../../../state/features/platforms/selectors/platforms.selectors';
@@ -8,13 +8,19 @@ import { MainEntitiesService } from '../../../../global/utils/services/main-enti
 import { RouterLinks } from '../../../../global/constants/router-links';
 import { NotGamesEntityTypes } from '../../../../global/types/entities/entity-types.enum';
 import { NotGameEntity } from '../../../../global/types/entities/not-game-entity';
+import { fromEvent, Subject, takeUntil } from 'rxjs';
+import { SidebarHeightController } from './sidebar-height-controller';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent {
+export class SidebarComponent implements AfterViewInit {
+  private unsubscribe$: Subject<void> = new Subject<void>();
+
+  @ViewChild('sidebarElement')
+  public sidebarElement!: ElementRef<HTMLDivElement>;
   public gamesRouterLink: string = RouterLinks.GAMES_ROUTER_LINK;
   public browseRouterLink: string = RouterLinks.BROWSE_ROUTER_LINK;
   public sidebarEntities = [
@@ -25,8 +31,22 @@ export class SidebarComponent {
 
   constructor(
     private readonly store$: Store<RootStateInterface>,
-    private readonly mainEntitiesService: MainEntitiesService
+    private readonly mainEntitiesService: MainEntitiesService,
+    private readonly sidebarHeightController: SidebarHeightController
   ) {}
+
+  ngAfterViewInit(): void {
+    fromEvent(window, 'scroll')
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => this.setSidebarHeight());
+  }
+
+  private setSidebarHeight(): void {
+    this.sidebarElement.nativeElement.style.setProperty(
+      'height',
+      this.sidebarHeightController.defineSidebarHeight()
+    );
+  }
 
   public getEntityViewModelByEntityType(entityType: NotGamesEntityTypes) {
     switch (entityType) {

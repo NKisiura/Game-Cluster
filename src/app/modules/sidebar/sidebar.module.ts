@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarBrowseListComponent } from './components/sidebar-browse-list/sidebar-browse-list.component';
+import { SidebarHeightController } from './components/sidebar/sidebar-height-controller';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SidebarBrowseListComponent } from './components/sidebar-browse-list/sid
     FontAwesomeModule,
     BrowserAnimationsModule,
   ],
+  providers: [SidebarHeightController],
   exports: [SidebarComponent],
 })
 export class SidebarModule {}
