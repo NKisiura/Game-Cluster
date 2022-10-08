@@ -1,21 +1,18 @@
 <div class="mr-4 py-4 overflow-y-auto sticky top-0 h-screen w-52 sidebar-scrollbar">
   <a [routerLink]="gamesRouterLink" class="font-bold capitalize text-2xl text-white block mb-3 hover:text-grey-400 transition-colors duration-200">All Games</a>
   <ng-container [ngTemplateOutlet]="browseListTemplate"></ng-container>
-  <ng-container [ngTemplateOutlet]="entityListTemplate"
-                [ngTemplateOutletContext]="{entityType: 'platforms', entityList: platformsList$ | async, loading: platformsLoading$ | async, error: platformsError$ | async}">
-  </ng-container>
-  <ng-container [ngTemplateOutlet]="entityListTemplate"
-                [ngTemplateOutletContext]="{entityType: 'genres', entityList: genresList$ | async, loading: genresLoading$ | async, error: genresError$ | async}">
-  </ng-container>
-  <ng-container [ngTemplateOutlet]="entityListTemplate"
-                [ngTemplateOutletContext]="{entityType: 'stores', entityList: storesList$ | async, loading: storesLoading$ | async, error: storesError$ | async}">
+  <ng-container *ngFor="let entity of sidebarEntities">
+    <ng-container *ngIf="getEntityViewModelByEntityType(entity) | async as viewModel"
+                  [ngTemplateOutlet]="entityListTemplate"
+                  [ngTemplateOutletContext]="{entityType: entity, entityList: viewModel.list, loading: viewModel.isLoading, error: viewModel.error}">
+    </ng-container>
   </ng-container>
 </div>
 
 <ng-template #entityListTemplate let-entityType="entityType" let-entityList="entityList" let-loading="loading" let-error="error">
   <app-sidebar-list-title [entity-list-title]="entityType"></app-sidebar-list-title>
   <app-sidebar-list-wrapper *ngIf="entityList">
-    <app-sidebar-entity-list [entity-list]="entityList"
+    <app-sidebar-entity-list [entity-list]="filterEntityListAccordingToMainEntitiesByEntityType(entityList, entityType)"
                              [entity-type]="entityType">
     </app-sidebar-entity-list>
   </app-sidebar-list-wrapper>
