@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLinks } from '../../../../../constants/router-links';
+import { RouterLinks } from '../../../../global/constants/router-links';
 
 @Component({
   selector: 'app-header-logo',
