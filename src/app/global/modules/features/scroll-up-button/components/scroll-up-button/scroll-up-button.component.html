@@ -1,0 +1,8 @@
+<div *ngIf="showScrollUp" class="fixed z-50 right-10 bottom-8">
+  <button type="button"
+          class="flex items-center justify-center w-12 h-12 text-white text-xl shadow-md rounded-full bg-grey-500 bg-opacity-70 hover:bg-opacity-100 hover:scale-110 transition-all duration-200"
+          (click)="scrollUp()"
+  >
+    <fa-icon [icon]="getArrowUpIcon()"></fa-icon>
+  </button>
+</div>
