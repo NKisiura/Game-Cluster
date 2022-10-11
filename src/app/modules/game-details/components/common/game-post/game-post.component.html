@@ -1,9 +1,13 @@
 <a [href]="gamePost.url" target="_blank" class="group flex gap-4 py-4">
   <div class="w-[120px] h-[70px]" style="min-width: 120px">
-    <img [src]="gamePost.image"
+    <img *ngIf="gamePost.image"
+         [src]="gamePost.image"
          [alt]="'game post preview'"
          class="w-full h-[70px] object-cover rounded-md"
     >
+    <div *ngIf="!gamePost.image" class="w-full h-full flex justify-center items-center rounded-md text-2xl text-grey-300 bg-grey-800 group-hover:bg-white group-hover:text-grey-800 transition-colors duration-200">
+      <fa-icon [icon]="getUndefinedImageIcon()"></fa-icon>
+    </div>
   </div>
   <div>
     <div [innerHTML]="isNeedToSlicePostName ? getSlicedPostName(gamePost.name) : gamePost.name"

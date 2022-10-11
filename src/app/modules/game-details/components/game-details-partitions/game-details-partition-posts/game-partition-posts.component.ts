@@ -43,10 +43,4 @@ export class GamePartitionPostsComponent {
   public loadMoreGamePostsOnScrollDown(): void {
     if (this.loadMoreButtonElement) this.loadMoreButtonElement.click();
   }
-
-  public getPostsWithImages(
-    gamePosts: GameRedditPostInterface[]
-  ): GameRedditPostInterface[] {
-    return gamePosts.filter((post) => post.image);
-  }
 }

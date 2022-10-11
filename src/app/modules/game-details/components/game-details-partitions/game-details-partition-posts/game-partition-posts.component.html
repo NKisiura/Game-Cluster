@@ -1,7 +1,7 @@
 <ng-container *ngIf="gamePosts$ | async as gamePosts">
   <app-game-partition-wrapper>
     <app-scroll-down-emitter (scroll-down)="loadMoreGamePostsOnScrollDown()"></app-scroll-down-emitter>
-    <div *ngFor="let post of getPostsWithImages(gamePosts)" class="border-b border-grey-300 border-opacity-30 last-of-type:border-transparent">
+    <div *ngFor="let post of gamePosts" class="border-b border-grey-300 border-opacity-30 last-of-type:border-transparent">
       <app-game-post [game-post]="post"></app-game-post>
     </div>
     <ng-container *ngIf="!(gamePostsLoading$ | async) && (gamePostsNextPage$ | async)">

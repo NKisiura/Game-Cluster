@@ -37,14 +37,7 @@ export class GamePostsComponent {
   public getFirstFiveGamePosts(
     gamePosts: GameRedditPostInterface[]
   ): GameRedditPostInterface[] {
-    const filteredGamePosts = this.getPostsWithImages(gamePosts);
-    return filteredGamePosts.slice(0, 5);
-  }
-
-  private getPostsWithImages(
-    gamePosts: GameRedditPostInterface[]
-  ): GameRedditPostInterface[] {
-    return gamePosts.filter((post) => post.image);
+    return gamePosts.slice(0, 5);
   }
 
   public getEllipsisIcon(): IconDefinition {

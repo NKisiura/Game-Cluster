@@ -38,6 +38,7 @@ import {
 import { MainEntitiesService } from './main-entities.service';
 import * as _ from 'lodash';
 import { EntityTypes } from '../../types/entities/entity-types.enum';
+import { faImage } from '@fortawesome/free-regular-svg-icons';
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +47,7 @@ export class IconService {
   public undefinedIcon = faCircleQuestion;
   public loadingIcon = faSpinner;
   public warningIcon = faWarning;
+  public undefinedImageIcon = faImage;
 
   public windowsIcon = faWindows;
   public playstationIcon = faPlaystation;
