@@ -13,6 +13,7 @@ import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-do
 import { LoadingSpinnerModule } from '../../global/modules/layouts/loading-spinner/loading-spinner.module';
 import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
 import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-error-message/backend-error-message.module';
+import { ScrollUpButtonModule } from '../../global/modules/features/scroll-up-button/scroll-up-button.module';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
     LoadingSpinnerModule,
     PageTitleModule,
     BackendErrorMessageModule,
+    ScrollUpButtonModule,
   ],
   providers: [BrowseService],
 })

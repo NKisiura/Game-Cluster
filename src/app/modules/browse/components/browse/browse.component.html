@@ -1,4 +1,5 @@
 <app-page-title [title]="'Browse'"></app-page-title>
+<app-scroll-up-button></app-scroll-up-button>
 
 <ng-container *ngFor="let entityType of entityTypesList">
   <ng-container [ngTemplateOutlet]="browseEntityListTemplate"

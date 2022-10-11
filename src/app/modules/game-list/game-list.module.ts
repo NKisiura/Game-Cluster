@@ -17,6 +17,7 @@ import { ScrollDownEmitterModule } from '../../global/modules/features/scroll-do
 import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-button/load-more-button.module';
 import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-error-message/backend-error-message.module';
 import { EmptyResultMessageModule } from '../../global/modules/layouts/empty-result-message/empty-result-message.module';
+import { ScrollUpButtonModule } from '../../global/modules/features/scroll-up-button/scroll-up-button.module';
 
 const routes: Routes = [
   {
@@ -52,6 +53,7 @@ const routes: Routes = [
     LoadMoreButtonModule,
     BackendErrorMessageModule,
     EmptyResultMessageModule,
+    ScrollUpButtonModule,
   ],
   exports: [GameCardComponent],
 })

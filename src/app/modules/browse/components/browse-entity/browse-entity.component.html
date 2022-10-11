@@ -1,8 +1,10 @@
 <app-page-title [title]="entityType"></app-page-title>
+
 <ng-container *ngIf="getEntityViewModelByEntityType(entityType) | async as entityViewModel">
   <app-backend-error-message *ngIf="entityViewModel.error" [error]="entityViewModel.error"></app-backend-error-message>
   <div *ngIf="entityViewModel.list">
     <app-scroll-down-emitter (scroll-down)="loadMoreEntitiesOnScrollDown()"></app-scroll-down-emitter>
+    <app-scroll-up-button></app-scroll-up-button>
     <app-card-list>
       <app-entity-card *ngFor="let entity of entityViewModel.list" [entityType]="entityType" [entity]="entity"></app-entity-card>
     </app-card-list>
