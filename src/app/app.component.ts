@@ -1,5 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { map, skip, Subject, takeUntil } from 'rxjs';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { filter, map, skip, Subject, takeUntil } from 'rxjs';
 import { NgProgressComponent } from 'ngx-progressbar';
 import { PlatformsActions } from './state/features/platforms/actions/platforms.actions';
 import {
@@ -19,21 +25,28 @@ import { TagsActions } from './state/features/tags/actions/tags.actions';
 import { DevelopersActions } from './state/features/developers/actions/developers.actions';
 import { PublishersActions } from './state/features/publishers/actions/publishers.actions';
 import { CreatorsActions } from './state/features/creators/actions/creators.actions';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+  private unsubscribe$: Subject<void> = new Subject<void>();
+
   @ViewChild('progressComponent')
   public progressComponent!: NgProgressComponent;
   public appLoading: boolean = true;
   private appLoadingEnd$: Subject<void> = new Subject<void>();
 
-  constructor(private readonly store$: Store<RootStateInterface>) {}
+  constructor(
+    private readonly store$: Store<RootStateInterface>,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.initRouterNavigationListener();
     this.dispatchInitialActions();
   }
 
@@ -45,6 +58,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         takeUntil(this.appLoadingEnd$)
       )
       .subscribe((status) => this.endLoading(status));
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private endLoading(loadingStatus: boolean): void {
@@ -71,5 +89,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.store$.dispatch(GenresActions.getGenres({ url: API_GENRES_URL }));
     this.store$.dispatch(StoresActions.getStores({ url: API_STORES_URL }));
     this.store$.dispatch(TagsActions.getTags({ url: API_TAGS_URL }));
+  }
+
+  private initRouterNavigationListener(): void {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(() => {
+        window.scroll({ behavior: 'smooth', top: 0 });
+      });
   }
 }
