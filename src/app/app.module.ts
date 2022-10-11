@@ -21,6 +21,8 @@ import { PageNotFoundModule } from './global/modules/layouts/page-not-found/page
 import { BrowseModule } from './modules/browse/browse.module';
 import { AppLoaderModule } from './global/modules/layouts/app-loader/app-loader.module';
 import { AppBackgroundModule } from './global/modules/layouts/app-background/app-background.module';
+import { HttpErrorInterceptor } from './global/interceptors/http-error-interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,9 +47,11 @@ import { AppBackgroundModule } from './global/modules/layouts/app-background/app
     AppLoaderModule,
     AppBackgroundModule,
     PageNotFoundModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
