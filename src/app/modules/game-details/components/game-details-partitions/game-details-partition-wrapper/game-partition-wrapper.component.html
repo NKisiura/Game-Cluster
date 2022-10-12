@@ -1,4 +1,5 @@
 <div *ngIf="gameDetails$ | async as game">
+  <app-scroll-up-button></app-scroll-up-button>
   <app-game-details-header [release-date]="game.released"
                            [play-time]="game.playtime"
                            [platforms]="game.parent_platforms"

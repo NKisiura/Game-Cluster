@@ -32,6 +32,7 @@ import { GamePartitionVideosComponent } from './components/game-details-partitio
 import { GamePostsComponent } from './components/game-details-main/game-posts/game-posts.component';
 import { GamePostComponent } from './components/common/game-post/game-post.component';
 import { GamePartitionPostsComponent } from './components/game-details-partitions/game-details-partition-posts/game-partition-posts.component';
+import { ScrollUpButtonModule } from '../../global/modules/features/scroll-up-button/scroll-up-button.module';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { GamePartitionPostsComponent } from './components/game-details-partition
     LoadMoreButtonModule,
     PageTitleModule,
     GameListModule,
+    ScrollUpButtonModule,
   ],
 })
 export class GameDetailsModule {}
