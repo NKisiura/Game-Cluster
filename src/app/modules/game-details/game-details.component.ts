@@ -8,6 +8,7 @@ import { GameDetailsInterface } from '../../global/types/entities/games/game-det
 import { GameDetailsSelectors } from '../../state/features/game-details/selectors/game-details.selectors';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { API_GAMES_URL } from '../../global/constants/api-constants';
+import { TitleService } from '../../global/utils/services/title.service';
 
 @Component({
   selector: 'app-game-details',
@@ -22,19 +23,30 @@ export class GameDetailsComponent implements OnInit {
     new Observable<BackendErrorResponseInterface | null>();
 
   constructor(
-    private store$: Store<RootStateInterface>,
-    private activatedRoute: ActivatedRoute
+    private readonly store$: Store<RootStateInterface>,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly titleService: TitleService
   ) {}
 
   ngOnInit(): void {
-    this.initListeners();
     this.initValues();
+    this.initListeners();
   }
 
   private initListeners(): void {
     this.activatedRoute.params
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params: Params) => this.getCurrentGame(params));
+
+    this.gameDetails$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((game: GameDetailsInterface | null) => {
+        if (game) {
+          this.titleService.setTitle([game.name]);
+        } else {
+          this.titleService.setBasePageTitle();
+        }
+      });
   }
 
   private initValues(): void {

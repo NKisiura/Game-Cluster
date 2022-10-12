@@ -14,11 +14,13 @@ import { LoadingSpinnerModule } from '../../global/modules/layouts/loading-spinn
 import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
 import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-error-message/backend-error-message.module';
 import { ScrollUpButtonModule } from '../../global/modules/features/scroll-up-button/scroll-up-button.module';
+import { APP_NAME } from '../../global/constants/app-name-constant';
 
 const routes: Routes = [
   {
     path: 'browse',
     component: BrowseComponent,
+    title: `${APP_NAME} • Browse`,
   },
   {
     path: 'browse/:entity',
