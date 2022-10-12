@@ -31,9 +31,11 @@ import {
   faGhost,
   faHashtag,
   faPlay,
+  faSearch,
   faSpinner,
   faUser,
   faWarning,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { MainEntitiesService } from './main-entities.service';
 import * as _ from 'lodash';
@@ -85,6 +87,9 @@ export class IconService {
   public youtubeIcon = faYoutube;
 
   public playIcon = faPlay;
+
+  public searchIcon = faSearch;
+  public xMarkIcon = faXmark;
 
   constructor(private mainEntitiesService: MainEntitiesService) {}
 

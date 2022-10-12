@@ -1,0 +1,7 @@
+.header-search-input {
+  &:hover, &:focus {
+    & ~ * {
+      color: #000;
+    }
+  }
+}

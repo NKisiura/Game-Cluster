@@ -1,1 +1,15 @@
-<input type="text" class="h-9 rounded-full px-4 w-full">
+<div class="relative group">
+  <input type="text"
+         class="h-9 rounded-full pl-9 pr-8 w-full text-grey-200 font-light shadow-md bg-grey-300 bg-opacity-50 group-hover:bg-white focus:bg-white transition-colors duration-200 focus:outline-0 placeholder-grey-200 header-search-input group-hover:text-black focus:text-black"
+         [placeholder]="'Search games'"
+         [(ngModel)]="searchQuery"
+  >
+  <fa-icon [icon]="getSearchIcon()"
+           class="text-sm absolute top-[8px] left-[15px] text-grey-200 transition-colors duration-200 group-hover:text-black"
+  ></fa-icon>
+  <fa-icon *ngIf="searchQuery"
+           [icon]="getXMarkIcon()"
+           class="text-sm absolute top-[8px] right-[15px] text-grey-200 transition-colors duration-200 cursor-pointer group-hover:text-black"
+           (click)="cleanSearchQuery()"
+  ></fa-icon>
+</div>

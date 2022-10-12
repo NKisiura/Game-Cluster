@@ -5,6 +5,8 @@ import { HeaderLogoComponent } from './components/header-logo/header-logo.compon
 import { HeaderSearchComponent } from './components/header-search/header-search.component';
 import { RouterModule } from '@angular/router';
 import { HeaderCreatorComponent } from './components/header-creator/header-creator.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,7 @@ import { HeaderCreatorComponent } from './components/header-creator/header-creat
     HeaderSearchComponent,
     HeaderCreatorComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule, FormsModule],
   exports: [HeaderComponent],
 })
 export class HeaderModule {}
