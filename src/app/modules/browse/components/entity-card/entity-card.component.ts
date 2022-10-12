@@ -40,7 +40,10 @@ export class EntityCardComponent {
     entity: NotGameEntity
   ): CreatorInterface | null {
     const isCreator = entityType === NotGamesEntityTypes.CREATORS;
-    const creatorEntity = entity as CreatorInterface;
-    return isCreator && creatorEntity.image ? creatorEntity : null;
+    return isCreator ? (entity as CreatorInterface) : null;
+  }
+
+  public getCreatorPositionsString(positions: Entity[]): string {
+    return positions.map((position) => position.name).join(', ');
   }
 }
