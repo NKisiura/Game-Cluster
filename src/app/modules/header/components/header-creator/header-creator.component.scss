@@ -1,0 +1,16 @@
+.header-creator {
+  font-family: 'Caveat', cursive;
+
+  &-link {
+
+    svg path {
+      transition-duration: 0.2s;
+    }
+
+    &:hover {
+      svg path {
+        fill: #33c948;
+      }
+    }
+  }
+}
