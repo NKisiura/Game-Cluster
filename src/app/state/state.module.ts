@@ -9,12 +9,14 @@ import { TagsStateModule } from './features/tags/tags-state.module';
 import { DevelopersStateModule } from './features/developers/developers.state.module';
 import { PublishersStateModule } from './features/publishers/publishers-state.module';
 import { CreatorsStateModule } from './features/creators/creators.state.module';
+import { GameSearchStateModule } from './features/game-search/game-search-state.module';
 
 @NgModule({
   imports: [
     CommonModule,
     GamesStateModule,
     GameDetailsStateModule,
+    GameSearchStateModule,
     PlatformsStateModule,
     GenresStateModule,
     StoresStateModule,
