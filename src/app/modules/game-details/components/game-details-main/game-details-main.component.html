@@ -1,5 +1,5 @@
+<app-scroll-up-button></app-scroll-up-button>
 <div *ngIf="gameDetails$ | async as game" class="flex flex-col gap-8">
-  <app-scroll-up-button></app-scroll-up-button>
   <div class="flex gap-8">
     <div class="w-3/5">
       <app-game-section-info [game]="game"></app-game-section-info>
