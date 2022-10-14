@@ -12,4 +12,8 @@ export class ImageService {
   public getCroppedImage420(imageUrl: string): string {
     return _.replace(imageUrl, 'media/', 'media/resize/420/-/');
   }
+
+  public getCroppedImage80(imageUrl: string): string {
+    return _.replace(imageUrl, 'media/', 'media/resize/80/-/');
+  }
 }

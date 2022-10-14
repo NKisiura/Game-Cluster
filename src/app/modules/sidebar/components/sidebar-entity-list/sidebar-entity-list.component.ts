@@ -41,6 +41,6 @@ export class SidebarEntityListComponent implements OnInit {
   }
 
   public getCroppedImage(imageUrl: string) {
-    return this.imageService.getCroppedImage600x400(imageUrl);
+    return this.imageService.getCroppedImage80(imageUrl);
   }
 }
