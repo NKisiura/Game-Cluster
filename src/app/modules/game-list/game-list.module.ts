@@ -18,7 +18,7 @@ import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-but
 import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-error-message/backend-error-message.module';
 import { EmptyResultMessageModule } from '../../global/modules/layouts/empty-result-message/empty-result-message.module';
 import { ScrollUpButtonModule } from '../../global/modules/features/scroll-up-button/scroll-up-button.module';
-import { APP_NAME } from '../../global/constants/app-name-constant';
+import { APP_NAME } from '../../global/constants/app-constant';
 
 const routes: Routes = [
   {

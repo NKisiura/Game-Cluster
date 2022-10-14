@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { APP_GITHUB_LINK } from '../../../../global/constants/app-constant';
 
 @Component({
   selector: 'app-header-creator',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-creator.component.scss'],
 })
 export class HeaderCreatorComponent {
-  public gitHubLink: string = '';
+  public gitHubLink: string = APP_GITHUB_LINK;
 }

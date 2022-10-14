@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLinks } from '../../../../global/constants/router-links';
-import { APP_NAME } from '../../../../global/constants/app-name-constant';
+import { APP_NAME } from '../../../../global/constants/app-constant';
 
 @Component({
   selector: 'app-header-logo',
