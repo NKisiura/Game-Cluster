@@ -1,21 +1,31 @@
 <div class="h-48">
   <div *ngIf="!isCardHovered" [@showHide]="" class="absolute w-full">
-    <img class="rounded-t-2xl w-full h-48 object-cover" [src]="getCroppedImage(backgroundImage)" [alt]="gameName + ' image'" loading="lazy">
-    <div *ngIf="gameClip" class="absolute left-4 bottom-4 flex justify-center items-center w-12 h-12 text-xl rounded-full bg-black bg-opacity-50">
-      <fa-icon [icon]="getPlayIcon()" style="margin-left: 3px"></fa-icon>
-    </div>
+    <ng-container *ngIf="backgroundImage else noImageTemplate">
+      <img class="rounded-t-2xl w-full h-48 object-cover" [src]="getCroppedImage(backgroundImage)" [alt]="gameName + ' image'" loading="lazy">
+      <div *ngIf="gameClip" class="absolute left-4 bottom-4 flex justify-center items-center w-12 h-12 text-xl rounded-full bg-black bg-opacity-50">
+        <fa-icon [icon]="getPlayIcon()" style="margin-left: 3px"></fa-icon>
+      </div>
+    </ng-container>
   </div>
   <div *ngIf="isCardHovered" [@showHide]="" class="absolute w-full">
-    <div *ngIf="gameClip">
-      <video class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" preload="metadata" autoplay loop [muted]="true" [poster]="gameClip.preview"></video>
-      <a [href]="youtubeVideoBaseUrl + gameClip.video" data-fancybox class="flex items-center text-xs font-light py-1 px-2 border border-transparent rounded-md absolute bottom-2 right-2 bg-black bg-opacity-50 transition duration-200 hover:border-grey-300">
-        <fa-icon class="text-sm mr-1.5" [icon]="getYoutubeIcon()"></fa-icon>Play full video
-      </a>
-    </div>
-    <owl-carousel-o *ngIf="!gameClip" [options]="carouselOptions">
-      <ng-template *ngFor="let screenshot of screenshots" carouselSlide>
-        <img class="w-full h-48 object-cover" [src]="getCroppedImage(screenshot.image)" [alt]="gameName + ' image'">
-      </ng-template>
-    </owl-carousel-o>
+    <ng-container *ngIf="gameClip || screenshots.length else noImageTemplate">
+      <div *ngIf="gameClip">
+        <video class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" preload="metadata" autoplay loop [muted]="true" [poster]="gameClip.preview"></video>
+        <a [href]="youtubeVideoBaseUrl + gameClip.video" data-fancybox class="flex items-center text-xs font-light py-1 px-2 border border-transparent rounded-md absolute bottom-2 right-2 bg-black bg-opacity-50 transition duration-200 hover:border-grey-300">
+          <fa-icon class="text-sm mr-1.5" [icon]="getYoutubeIcon()"></fa-icon>Play full video
+        </a>
+      </div>
+      <owl-carousel-o *ngIf="!gameClip" [options]="carouselOptions">
+        <ng-template *ngFor="let screenshot of screenshots" carouselSlide>
+          <img class="w-full h-48 object-cover" [src]="getCroppedImage(screenshot.image)" [alt]="gameName + ' image'">
+        </ng-template>
+      </owl-carousel-o>
+    </ng-container>
   </div>
 </div>
+
+<ng-template #noImageTemplate>
+  <div class="flex justify-center items-center w-full h-48 rounded-t-2xl text-4xl text-grey-300 bg-grey-700">
+    <fa-icon [icon]="getUndefinedImageIcon()"></fa-icon>
+  </div>
+</ng-template>

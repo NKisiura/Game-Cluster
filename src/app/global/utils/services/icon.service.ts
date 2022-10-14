@@ -18,6 +18,7 @@ import {
   faArrowLeftLong,
   faArrowRightLong,
   faArrowUpLong,
+  faBan,
   faBookOpen,
   faChevronDown,
   faChevronLeft,
@@ -92,6 +93,7 @@ export class IconService {
 
   public searchIcon = faSearch;
   public xMarkIcon = faXmark;
+  public banIcon = faBan;
 
   constructor(private mainEntitiesService: MainEntitiesService) {}
 

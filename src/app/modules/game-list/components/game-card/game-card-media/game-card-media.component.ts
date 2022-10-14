@@ -63,4 +63,8 @@ export class GameCardMediaComponent {
   public getYoutubeIcon(): IconDefinition {
     return this.iconService.youtubeIcon;
   }
+
+  public getUndefinedImageIcon(): IconDefinition {
+    return this.iconService.undefinedImageIcon;
+  }
 }
