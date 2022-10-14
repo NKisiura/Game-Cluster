@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   faApple,
   faAppStoreIos,
+  faChrome,
   faGoodreads,
   faGooglePlay,
   faLinux,
@@ -59,6 +60,7 @@ export class IconService {
   public macIcon = faApple;
   public linuxIcon = faLinux;
   public nintendoIcon = faGamepad;
+  public webIcon = faChrome;
 
   public steamIcon = faSteam;
   public gogIcon = faGoodreads;
@@ -200,6 +202,9 @@ export class IconService {
       }
       case 'nintendo': {
         return this.nintendoIcon;
+      }
+      case 'web': {
+        return this.webIcon;
       }
       default: {
         return this.getUndefinedIcon();
