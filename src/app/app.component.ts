@@ -51,6 +51,26 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    this.trackAppLoadingEnd();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  private initRouterNavigationListener(): void {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(() => {
+        window.scroll({ behavior: 'smooth', top: 0 });
+      });
+  }
+
+  private trackAppLoadingEnd(): void {
     this.progressComponent.state$
       .pipe(
         skip(1),
@@ -58,11 +78,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         takeUntil(this.appLoadingEnd$)
       )
       .subscribe((status) => this.endLoading(status));
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 
   private endLoading(loadingStatus: boolean): void {
@@ -89,16 +104,5 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.store$.dispatch(GenresActions.getGenres({ url: API_GENRES_URL }));
     this.store$.dispatch(StoresActions.getStores({ url: API_STORES_URL }));
     this.store$.dispatch(TagsActions.getTags({ url: API_TAGS_URL }));
-  }
-
-  private initRouterNavigationListener(): void {
-    this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-        takeUntil(this.unsubscribe$)
-      )
-      .subscribe(() => {
-        window.scroll({ behavior: 'smooth', top: 0 });
-      });
   }
 }
