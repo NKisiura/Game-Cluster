@@ -3,6 +3,8 @@
          class="h-9 rounded-full pl-9 pr-8 w-full text-grey-200 font-light shadow-md bg-grey-300 bg-opacity-50 group-hover:bg-white focus:bg-white transition-colors duration-200 focus:outline-0 placeholder-grey-200 header-search-input group-hover:text-black focus:text-black"
          [placeholder]="'Search games'"
          [(ngModel)]="searchQuery"
+         (input)="searchInput()"
+         (keyup.enter)="searchGames()"
   >
   <fa-icon [icon]="getSearchIcon()"
            class="text-sm absolute top-[8px] left-[15px] text-grey-200 transition-colors duration-200 group-hover:text-black"
@@ -12,4 +14,5 @@
            class="text-sm absolute top-[8px] right-[15px] text-grey-200 transition-colors duration-200 cursor-pointer group-hover:text-black"
            (click)="cleanSearchQuery()"
   ></fa-icon>
+  <app-header-search-result [visibility]="searchResultVisible" [search-query]="searchQuery"></app-header-search-result>
 </div>
