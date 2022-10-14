@@ -41,7 +41,7 @@ export class GamePartitionScreenshotsComponent implements OnInit {
   }
 
   public getCroppedImage(imageUrl: string): string {
-    return this.imageService.getCroppedImage600x400(imageUrl);
+    return this.imageService.getCroppedImage420(imageUrl);
   }
 
   public loadMoreScreenshots(url: string): void {
