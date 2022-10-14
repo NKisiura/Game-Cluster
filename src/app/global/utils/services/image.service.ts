@@ -8,4 +8,8 @@ export class ImageService {
   public getCroppedImage600x400(imageUrl: string): string {
     return _.replace(imageUrl, 'media/', 'media/crop/600/400/');
   }
+
+  public getCroppedImage420(imageUrl: string): string {
+    return _.replace(imageUrl, 'media/', 'media/resize/420/-/');
+  }
 }
