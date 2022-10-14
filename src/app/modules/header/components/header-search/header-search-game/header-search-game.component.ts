@@ -20,7 +20,7 @@ export class HeaderSearchGameComponent {
   ) {}
 
   public getCroppedImage(imageUrl: string): string {
-    return this.imageService.getCroppedImage420(imageUrl);
+    return this.imageService.getCroppedImage200(imageUrl);
   }
 
   public getUndefinedImageIcon(): IconDefinition {
