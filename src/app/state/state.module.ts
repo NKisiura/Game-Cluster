@@ -10,10 +10,12 @@ import { DevelopersStateModule } from './features/developers/developers.state.mo
 import { PublishersStateModule } from './features/publishers/publishers-state.module';
 import { CreatorsStateModule } from './features/creators/creators.state.module';
 import { GameSearchStateModule } from './features/game-search/game-search-state.module';
+import { AppStateModule } from './features/app/app.state.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    AppStateModule,
     GamesStateModule,
     GameDetailsStateModule,
     GameSearchStateModule,

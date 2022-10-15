@@ -1,7 +1,7 @@
 <div class="relative group">
   <input type="text"
          class="h-9 rounded-full pl-9 pr-8 w-full text-grey-200 font-light shadow-md bg-grey-300 bg-opacity-50 group-hover:bg-white focus:bg-white transition-colors duration-200 focus:outline-0 placeholder-grey-200 header-search-input group-hover:text-black focus:text-black"
-         [placeholder]="'Search games'"
+         [placeholder]="'Search ' + ((totalGamesCount$ | async | number) || '') + ' Games'"
          [(ngModel)]="searchQuery"
          (input)="searchInput()"
          (keyup.enter)="searchGames()"

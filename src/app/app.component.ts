@@ -26,6 +26,7 @@ import { DevelopersActions } from './state/features/developers/actions/developer
 import { PublishersActions } from './state/features/publishers/actions/publishers.actions';
 import { CreatorsActions } from './state/features/creators/actions/creators.actions';
 import { NavigationEnd, Router } from '@angular/router';
+import { TotalGamesCountActions } from './state/features/app/actions/total-games-count.actions';
 
 @Component({
   selector: 'app-root',
@@ -104,5 +105,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this.store$.dispatch(GenresActions.getGenres({ url: API_GENRES_URL }));
     this.store$.dispatch(StoresActions.getStores({ url: API_STORES_URL }));
     this.store$.dispatch(TagsActions.getTags({ url: API_TAGS_URL }));
+    this.store$.dispatch(TotalGamesCountActions.getTotalGamesCount());
   }
 }

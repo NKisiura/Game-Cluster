@@ -7,8 +7,10 @@ import { DevelopersStateInterface } from '../features/developers/types/developer
 import { PublishersStateInterface } from '../features/publishers/types/publishers-state.interface';
 import { CreatorsStateInterface } from '../features/creators/types/creators-state.interface';
 import { GameSearchStateInterface } from '../features/game-search/types/game-search-state.interface';
+import { AppStateInterface } from '../features/app/types/app-state.interface';
 
 export interface RootStateInterface {
+  readonly app: AppStateInterface;
   readonly games: GamesStateInterface;
   readonly gameDetails: GameDetailsStateInterface;
   readonly gameSearch: GameSearchStateInterface;

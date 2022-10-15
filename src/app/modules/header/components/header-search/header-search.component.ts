@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { IconService } from '../../../../global/utils/services/icon.service';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import * as _ from 'lodash';
-import { filter, fromEvent, Subject, takeUntil } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { filter, fromEvent, Observable, Subject, takeUntil } from 'rxjs';
+import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../state/types/root-state.interface';
 import { GameSearchActions } from '../../../../state/features/game-search/actions/game-search.actions';
 import { API_GAMES_URL } from '../../../../global/constants/api-constants';
 import { stringify } from 'query-string';
 import { NavigationEnd, Router } from '@angular/router';
+import { AppSelectors } from '../../../../state/features/app/selectors/app.selectors';
 
 @Component({
   selector: 'app-header-search',
@@ -20,6 +21,7 @@ export class HeaderSearchComponent implements OnInit {
 
   public searchQuery: string = '';
   public searchResultVisible: boolean = false;
+  public totalGamesCount$ = new Observable<number | null>();
   private hideSearchResult$ = new Subject<void>();
 
   constructor(
@@ -30,6 +32,7 @@ export class HeaderSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.initListeners();
+    this.initValues();
   }
 
   private initListeners(): void {
@@ -39,6 +42,12 @@ export class HeaderSearchComponent implements OnInit {
         takeUntil(this.unsubscribe$)
       )
       .subscribe(() => this.cleanSearchQuery());
+  }
+
+  private initValues(): void {
+    this.totalGamesCount$ = this.store$.pipe(
+      select(AppSelectors.totalGamesCount)
+    );
   }
 
   public getSearchIcon(): IconDefinition {
