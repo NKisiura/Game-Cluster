@@ -1,10 +1,13 @@
-<ng-container [ngTemplateOutlet]="detailsItemTemplate"
+<ng-container *ngIf="released"
+              [ngTemplateOutlet]="detailsItemTemplate"
               [ngTemplateOutletContext]="{title: 'Release date', active: false, text: getFormattedReleaseDate()}">
 </ng-container>
-<ng-container [ngTemplateOutlet]="detailsItemTemplate"
+<ng-container *ngIf="genresList?.length"
+              [ngTemplateOutlet]="detailsItemTemplate"
               [ngTemplateOutletContext]="{title: 'Genres', active: true, entityType: 'genres', entityList: genresList, acceptableCountToView: 3}">
 </ng-container>
-<ng-container [ngTemplateOutlet]="detailsItemTemplate"
+<ng-container *ngIf="tagList?.length"
+              [ngTemplateOutlet]="detailsItemTemplate"
               [ngTemplateOutletContext]="{title: 'Tags', active: true, entityType: 'tags', entityList: getOnlyEnglishTagList(), acceptableCountToView: 2}">
 </ng-container>
 
