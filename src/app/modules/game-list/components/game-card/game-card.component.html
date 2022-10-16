@@ -7,8 +7,8 @@
                          [screenshots]="game.short_screenshots">
     </app-game-card-media>
     <div class="p-4">
-      <div class="flex justify-between items-center mb-2">
-        <app-game-card-platform-list [parent-platform-list]="game.parent_platforms"></app-game-card-platform-list>
+      <div *ngIf="game.parent_platforms || game.metacritic" class="flex justify-between items-center mb-2">
+        <app-game-card-platform-list *ngIf="game.parent_platforms" [parent-platform-list]="game.parent_platforms"></app-game-card-platform-list>
         <app-game-card-metacritic-score *ngIf="game.metacritic" [metacritic-score]="game.metacritic"></app-game-card-metacritic-score>
       </div>
       <a [routerLink]="[gameRouterLink, game.slug]" class="text-2xl font-semibold hover:text-grey-300" [ngClass]="{'duration-200': isCardHovered}">{{game.name}}</a>
