@@ -19,6 +19,7 @@ import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-
 import { EmptyResultMessageModule } from '../../global/modules/layouts/empty-result-message/empty-result-message.module';
 import { ScrollUpButtonModule } from '../../global/modules/features/scroll-up-button/scroll-up-button.module';
 import { APP_NAME } from '../../global/constants/app-constant';
+import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
 
 const routes: Routes = [
   {
@@ -56,6 +57,7 @@ const routes: Routes = [
     BackendErrorMessageModule,
     EmptyResultMessageModule,
     ScrollUpButtonModule,
+    PageTitleModule,
   ],
   exports: [GameCardComponent],
 })
