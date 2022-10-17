@@ -1,0 +1,24 @@
+<div *ngIf="tagsList$ | async as tagList" class="flex items-center flex-wrap gap-3 mb-4">
+  <div class="text-grey-300 font-light text-lg -order-1">Related Tags:</div>
+  <a *ngFor="let tag of getTagList(tagList)"
+     [ngClass]="{'active-tag -order-1' : currentTagsInParams.includes(tag.slug)}"
+     (click)="addTagQueryParam(tag.slug)"
+     class="flex items-center gap-1.5 text-grey-300 font-light bg-grey-700 rounded-full px-3 py-1 cursor-pointer"
+  >
+    <span>{{tag.name}}</span>
+    <button type="button"
+            style="width: 24px"
+            class="hidden text-white bg-grey-200 rounded-full -mr-1.5 transition-colors duration-200 hover:text-grey-800"
+            (click)="$event.stopPropagation(); removeTagQueryParam(tag.slug)"
+    >
+      <fa-icon [icon]="getXMarkIcon()"></fa-icon>
+    </button>
+  </a>
+  <button type="button"
+          style="width: 34px"
+          class="self-stretch text-grey-300 bg-grey-700 rounded-full"
+          (click)="slicedTagList = !slicedTagList"
+  >
+    <fa-icon [icon]="slicedTagList ? getEllipsisIcon() : getXMarkIcon()"></fa-icon>
+  </button>
+</div>

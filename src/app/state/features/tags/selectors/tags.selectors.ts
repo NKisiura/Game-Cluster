@@ -18,6 +18,11 @@ export namespace TagsSelectors {
 
   export const tagsListSelector = createSelector(
     tagsFeatureSelector,
+    (tagsState: TagsStateInterface) => tagsState.data?.results || null
+  );
+
+  export const tagsPrevPageSelector = createSelector(
+    tagsFeatureSelector,
     (tagsState: TagsStateInterface) => tagsState.data?.previous || null
   );
 
