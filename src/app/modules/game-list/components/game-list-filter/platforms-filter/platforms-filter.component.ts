@@ -62,7 +62,7 @@ export class PlatformsFilterComponent implements OnInit {
     await this.navigateWithPlatformsParams(platform ? platform.id : null);
   }
 
-  public async navigateWithPlatformsParams(
+  private async navigateWithPlatformsParams(
     platformId: number | null
   ): Promise<void> {
     await this.router.navigate([], {
