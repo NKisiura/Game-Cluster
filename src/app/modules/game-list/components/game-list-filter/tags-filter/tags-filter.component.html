@@ -1,9 +1,9 @@
-<div *ngIf="tagsList$ | async as tagList" class="flex items-center flex-wrap gap-3 mb-4">
+<div *ngIf="tagsList$ | async as tagList" class="flex items-center flex-wrap gap-4 mb-4">
   <div class="text-grey-300 font-light text-lg -order-1">Related Tags:</div>
   <a *ngFor="let tag of getTagList(tagList)"
      [ngClass]="{'active-tag -order-1' : currentTagsInParams.includes(tag.slug)}"
      (click)="addTagQueryParam(tag.slug)"
-     class="flex items-center gap-1.5 text-grey-300 font-light bg-grey-700 rounded-full px-3 py-1 cursor-pointer"
+     class="flex items-center gap-1.5 text-grey-300 font-light bg-grey-700 rounded-full px-3 py-1 cursor-pointer shadow-md"
   >
     <span>{{tag.name}}</span>
     <button type="button"
