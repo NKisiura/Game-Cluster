@@ -26,6 +26,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { PlatformsFilterComponent } from './components/game-list-filter/platforms-filter/platforms-filter.component';
 import { GenresFilterComponent } from './components/game-list-filter/genres-filter/genres-filter.component';
+import { StoresFilterComponent } from './components/game-list-filter/stores-filter/stores-filter.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,7 @@ const routes: Routes = [
     TagsFilterComponent,
     PlatformsFilterComponent,
     GenresFilterComponent,
+    StoresFilterComponent,
     GameCardComponent,
     GameCardMetacriticScoreComponent,
     GameCardPlatformListComponent,

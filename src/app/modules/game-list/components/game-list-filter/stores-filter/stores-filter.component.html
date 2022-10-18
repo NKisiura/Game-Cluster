@@ -1,0 +1,11 @@
+<div *ngIf="storesList$ | async as storesList">
+  <ng-select [items]="storesList"
+             [bindLabel]="'name'"
+             [bindValue]="'id'"
+             [placeholder]="'Stores'"
+             [notFoundText]="'No stores found'"
+             [(ngModel)]="selectedStoreId"
+             (change)="storesFilterChange($event)"
+             class="app-select"
+  ></ng-select>
+</div>
