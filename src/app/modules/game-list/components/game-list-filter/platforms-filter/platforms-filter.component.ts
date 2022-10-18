@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { PlatformInterface } from '../../../../../global/types/entities/platforms/platform.interface';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './platforms-filter.component.html',
 })
 export class PlatformsFilterComponent implements OnInit {
+  private unsubscribe$: Subject<void> = new Subject<void>();
+
   public platformsList$ = new Observable<PlatformInterface[] | null>();
   public selectedPlatformId: number | null = null;
 
@@ -28,9 +30,11 @@ export class PlatformsFilterComponent implements OnInit {
   }
 
   private initListeners(): void {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      this.selectedPlatformId = +params['platforms'] || null;
-    });
+    this.activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params) => {
+        this.selectedPlatformId = +params['platforms'] || null;
+      });
   }
 
   private initValues(): void {
