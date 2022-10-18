@@ -1,0 +1,11 @@
+<div *ngIf="genresList$ | async as genresList">
+  <ng-select [items]="genresList"
+             [bindLabel]="'name'"
+             [bindValue]="'id'"
+             [placeholder]="'Genres'"
+             [notFoundText]="'No genres found'"
+             [(ngModel)]="selectedGenreId"
+             (change)="genresFilterChange($event)"
+             class="app-select"
+  ></ng-select>
+</div>
