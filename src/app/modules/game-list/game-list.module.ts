@@ -22,6 +22,9 @@ import { APP_NAME } from '../../global/constants/app-constant';
 import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
 import { GameListFilterComponent } from './components/game-list-filter/game-list-filter.component';
 import { TagsFilterComponent } from './components/game-list-filter/tags-filter/tags-filter.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+import { PlatformsFilterComponent } from './components/game-list-filter/platforms-filter/platforms-filter.component';
 
 const routes: Routes = [
   {
@@ -41,6 +44,7 @@ const routes: Routes = [
     GameListComponent,
     GameListFilterComponent,
     TagsFilterComponent,
+    PlatformsFilterComponent,
     GameCardComponent,
     GameCardMetacriticScoreComponent,
     GameCardPlatformListComponent,
@@ -62,6 +66,8 @@ const routes: Routes = [
     EmptyResultMessageModule,
     ScrollUpButtonModule,
     PageTitleModule,
+    NgSelectModule,
+    FormsModule,
   ],
   exports: [GameCardComponent],
 })

@@ -1,0 +1,11 @@
+<div *ngIf="platformsList$ | async as platformsList">
+  <ng-select [items]="platformsList"
+             [bindLabel]="'name'"
+             [bindValue]="'id'"
+             [placeholder]="'Platforms'"
+             [notFoundText]="'No platforms found'"
+             [(ngModel)]="selectedPlatformId"
+             (change)="platformsFilterChange($event)"
+             class="app-select"
+  ></ng-select>
+</div>
