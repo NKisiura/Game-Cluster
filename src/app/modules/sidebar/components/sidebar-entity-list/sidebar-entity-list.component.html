@@ -1,6 +1,7 @@
 <div *ngFor="let entity of entityList">
   <a [routerLink]="gamesRouterLink"
      [routerLinkActive]="'active'"
+     [routerLinkActiveOptions]="{exact: true}"
      [queryParams]="setQueryParams(entityType, entity)"
      class="group flex items-center gap-2 mb-2 text-white font-light"
   >
