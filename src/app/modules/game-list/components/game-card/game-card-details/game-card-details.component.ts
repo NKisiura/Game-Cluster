@@ -35,7 +35,7 @@ export class GameCardDetailsComponent {
     entityType: NotGamesEntityTypes,
     entity: Entity
   ): Params {
-    return { [entityType]: entity.slug };
+    return { [entityType]: entity.id };
   }
 
   public getAcceptableCountOfEntitiesToView(

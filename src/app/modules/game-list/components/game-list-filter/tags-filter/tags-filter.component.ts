@@ -6,7 +6,7 @@ import { RootStateInterface } from '../../../../../state/types/root-state.interf
 import { IconService } from '../../../../../global/utils/services/icon.service';
 import { TagsSelectors } from '../../../../../state/features/tags/selectors/tags.selectors';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import * as _ from 'lodash';
 
 @Component({
@@ -19,7 +19,7 @@ export class TagsFilterComponent implements OnInit {
   public slicedTagListLength: number = 5;
 
   public tagsList$ = new Observable<TagInterface[] | null>();
-  public currentTagsInParams: string[] = [];
+  public currentTagsInParams: number[] = [];
 
   constructor(
     private readonly store$: Store<RootStateInterface>,
@@ -34,13 +34,17 @@ export class TagsFilterComponent implements OnInit {
   }
 
   private initListeners(): void {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      this.currentTagsInParams = params['tags']?.split(',') || [];
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.currentTagsInParams = this.getTagIdListFromParams(params);
     });
   }
 
   private initValues(): void {
     this.tagsList$ = this.store$.pipe(select(TagsSelectors.tagsListSelector));
+  }
+
+  private getTagIdListFromParams(params: Params): number[] {
+    return params['tags']?.split(',').map(Number) || [];
   }
 
   public getTagList(tagList: TagInterface[]): TagInterface[] {
@@ -49,18 +53,18 @@ export class TagsFilterComponent implements OnInit {
       : tagList;
   }
 
-  public async addTagQueryParam(tagSlug: string): Promise<void> {
-    const newTagsParams = _.chain([...this.currentTagsInParams, tagSlug])
+  public async addTagQueryParam(tagId: number): Promise<void> {
+    const newTagsParams = _.chain([...this.currentTagsInParams, tagId])
       .uniq()
       .join(',')
       .value();
     await this.navigateWithTagParams(newTagsParams);
   }
 
-  public async removeTagQueryParam(tagSlug: string): Promise<void> {
+  public async removeTagQueryParam(tagId: number): Promise<void> {
     const newTagsParams =
       _.chain(this.currentTagsInParams)
-        .filter((tag) => tag !== tagSlug)
+        .filter((tag) => tag !== tagId)
         .join(',')
         .value() || null;
     await this.navigateWithTagParams(newTagsParams);
