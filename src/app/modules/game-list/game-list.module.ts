@@ -18,7 +18,7 @@ import { LoadMoreButtonModule } from '../../global/modules/layouts/load-more-but
 import { BackendErrorMessageModule } from '../../global/modules/layouts/backend-error-message/backend-error-message.module';
 import { EmptyResultMessageModule } from '../../global/modules/layouts/empty-result-message/empty-result-message.module';
 import { ScrollUpButtonModule } from '../../global/modules/features/scroll-up-button/scroll-up-button.module';
-import { APP_NAME } from '../../global/constants/app-constant';
+import { APP_NAME } from '../../global/constants/app-constants';
 import { PageTitleModule } from '../../global/modules/layouts/page-title/page-title.module';
 import { GameListFilterComponent } from './components/game-list-filter/game-list-filter.component';
 import { TagsFilterComponent } from './components/game-list-filter/tags-filter/tags-filter.component';

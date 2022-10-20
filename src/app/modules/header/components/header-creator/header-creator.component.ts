@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { APP_GITHUB_LINK } from '../../../../global/constants/app-constant';
+import { APP_GITHUB_LINK } from '../../../../global/constants/app-constants';
 
 @Component({
   selector: 'app-header-creator',

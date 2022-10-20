@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { APP_NAME } from '../../constants/app-constant';
+import { APP_NAME } from '../../constants/app-constants';
 import * as _ from 'lodash';
 
 @Injectable({
