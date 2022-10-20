@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarBrowseListComponent } from './components/sidebar-browse-list/sidebar-browse-list.component';
 import { SidebarHeightController } from './components/sidebar/sidebar-height-controller';
+import { SidebarGameCollectionListComponent } from './components/sidebar-game-collection-list/sidebar-game-collection-list.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SidebarHeightController } from './components/sidebar/sidebar-height-con
     SidebarEntityListErrorComponent,
     SidebarListWrapperComponent,
     SidebarBrowseListComponent,
+    SidebarGameCollectionListComponent,
   ],
   imports: [
     CommonModule,

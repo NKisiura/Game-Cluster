@@ -73,6 +73,10 @@ const routes: Routes = [
     NgSelectModule,
     FormsModule,
   ],
-  exports: [GameCardComponent],
+  exports: [
+    GameCardComponent,
+    GameListFilterComponent,
+    PlatformsFilterComponent,
+  ],
 })
 export class GameListModule {}

@@ -18,4 +18,10 @@ export const API_ADDITION_PARENT_GAMES_URL = 'parent-games';
 export const API_GAME_YOUTUBE_VIDEOS_URL = 'youtube';
 export const API_GAME_REDDIT_POSTS_URL = 'reddit';
 
+export const API_GAME_COLLECTIONS_URL = 'lists';
+export const API_GAME_COLLECTION_ALL_TIME_TOP_URL = 'popular';
+export const API_GAME_COLLECTION_BEST_OF_THE_YEAR_URL = 'greatest';
+export const API_GAME_COLLECTION_LAST_30_DAYS_URL = 'recent-games-past';
+export const API_GAME_COLLECTION_NEXT_WEEK_URL = 'recent-games-future';
+
 export const YOUTUBE_VIDEO_BASE_URL = 'https://www.youtube.com/watch?v=';

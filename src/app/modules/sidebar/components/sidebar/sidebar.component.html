@@ -1,5 +1,6 @@
 <div #sidebarElement class="mr-4 py-4 overflow-y-auto sticky top-0 h-[calc(100vh-104px)] w-52 sidebar-scrollbar">
   <a [routerLink]="gamesRouterLink" class="font-bold capitalize text-2xl text-white block mb-3 hover:text-grey-400 transition-colors duration-200">All Games</a>
+  <ng-container [ngTemplateOutlet]="gameCollectionsTemplate"></ng-container>
   <ng-container [ngTemplateOutlet]="browseListTemplate"></ng-container>
   <ng-container *ngFor="let entity of sidebarEntities">
     <ng-container *ngIf="getEntityViewModelByEntityType(entity) | async as viewModel"
@@ -25,4 +26,9 @@
   <app-sidebar-list-wrapper>
     <app-sidebar-browse-list></app-sidebar-browse-list>
   </app-sidebar-list-wrapper>
+</ng-template>
+
+<ng-template #gameCollectionsTemplate>
+  <app-sidebar-list-title [entity-list-title]="'Collections'"></app-sidebar-list-title>
+  <app-game-collection-list></app-game-collection-list>
 </ng-template>

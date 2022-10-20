@@ -26,15 +26,19 @@ import {
   faChevronUp,
   faCircleQuestion,
   faCode,
+  faCrown,
   faDiceFive,
   faDownload,
   faEllipsis,
+  faForwardFast,
   faGamepad,
   faGhost,
   faHashtag,
   faPlay,
   faSearch,
   faSpinner,
+  faStar,
+  faTrophy,
   faUser,
   faWarning,
   faXmark,
@@ -43,6 +47,7 @@ import { MainEntitiesService } from './main-entities.service';
 import * as _ from 'lodash';
 import { EntityTypes } from '../../types/entities/entity-types.enum';
 import { faImage } from '@fortawesome/free-regular-svg-icons';
+import { GameCollection } from '../../../modules/game-collection/types/game-collection.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -74,6 +79,11 @@ export class IconService {
   public hashtagIcon = faHashtag;
   public codeIcon = faCode;
   public bookIcon = faBookOpen;
+
+  public trophyIcon = faTrophy;
+  public crownIcon = faCrown;
+  public starIcon = faStar;
+  public nextIcon = faForwardFast;
 
   public arrowUpIcon = faChevronUp;
   public arrowRightIcon = faChevronRight;
@@ -274,6 +284,25 @@ export class IconService {
       }
       default: {
         return this.getUndefinedIcon();
+      }
+    }
+  }
+
+  public getGameCollectionIconBySlug(
+    gameCollectionSlug: GameCollection
+  ): IconDefinition {
+    switch (gameCollectionSlug) {
+      case GameCollection.LAST_30_DAYS: {
+        return this.starIcon;
+      }
+      case GameCollection.NEXT_WEEK: {
+        return this.nextIcon;
+      }
+      case GameCollection.ALL_TIME_TOP: {
+        return this.crownIcon;
+      }
+      case GameCollection.BEST_OF_THE_YEAR: {
+        return this.trophyIcon;
       }
     }
   }

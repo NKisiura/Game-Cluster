@@ -1,0 +1,20 @@
+<app-scroll-down-emitter (scroll-down)="loadMoreGamesOnScrollDown()"></app-scroll-down-emitter>
+<app-scroll-up-button></app-scroll-up-button>
+<app-backend-error-message *ngIf="gamesError$ | async as gameError" [error]="gameError"></app-backend-error-message>
+
+<app-page-title [title]="gameCollectionTitle"></app-page-title>
+<div class="mb-6">
+  <app-platforms-filter></app-platforms-filter>
+</div>
+<ng-container *ngIf="gamesList$ | async as gameList">
+  <app-empty-result-message *ngIf="gameList.length === 0"></app-empty-result-message>
+  <app-card-list>
+    <app-game-card *ngFor="let game of gameList" [game]="game"></app-game-card>
+  </app-card-list>
+  <ng-container *ngIf="!(gamesLoading$ | async) && (gamesNextPage$ | async)">
+    <app-load-more-button #loadMoreButton *ngIf="gamesNextPage$ | async as nextPageUrl"
+                          (load-more-button-clicked)="loadMoreGames(nextPageUrl)">
+    </app-load-more-button>
+  </ng-container>
+</ng-container>
+<app-loading-spinner *ngIf="gamesLoading$ | async"></app-loading-spinner>

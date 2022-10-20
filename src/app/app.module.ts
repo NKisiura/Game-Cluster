@@ -23,6 +23,7 @@ import { AppLoaderModule } from './global/modules/layouts/app-loader/app-loader.
 import { AppBackgroundModule } from './global/modules/layouts/app-background/app-background.module';
 import { HttpErrorInterceptor } from './global/interceptors/http-error-interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { GameCollectionModule } from './modules/game-collection/game-collection.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,6 +45,7 @@ import { ToastrModule } from 'ngx-toastr';
     NgProgressModule,
     NgProgressHttpModule,
     BrowseModule,
+    GameCollectionModule,
     AppLoaderModule,
     AppBackgroundModule,
     PageNotFoundModule,
