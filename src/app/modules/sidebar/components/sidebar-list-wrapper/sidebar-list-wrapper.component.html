@@ -2,7 +2,7 @@
   <ng-content></ng-content>
 </div>
 <a (click)="handleToggleList()" class="group flex items-center gap-2 mb-2 cursor-pointer">
-  <div class="w-8 h-8 flex items-center justify-center rounded-lg text-grey-400 bg-grey-800 group-hover:text-grey-800 group-hover:bg-grey-400 transition-colors duration-200">
+  <div class="w-8 h-8 flex items-center justify-center rounded-lg text-grey-400 bg-grey-700 group-hover:text-grey-800 group-hover:bg-grey-400 transition-colors duration-200">
     <fa-icon [icon]="isOpen ? arrowUpIcon : arrowDownIcon"></fa-icon>
   </div>
   <div class="text-grey-400 font-light">{{isOpen ? 'Hide': 'Show All'}}</div>
