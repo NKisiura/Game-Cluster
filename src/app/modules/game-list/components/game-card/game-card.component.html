@@ -14,7 +14,7 @@
       <a [routerLink]="[gameRouterLink, game.slug]" class="text-2xl font-semibold hover:text-grey-300" [ngClass]="{'duration-200': isCardHovered}">{{game.name}}</a>
       <div class="hidden group-hover:block">
         <app-game-card-details [release-date]="game.released" [genres-list]="game.genres" [tag-list]="game.tags"></app-game-card-details>
-        <app-game-card-show-more-button (click)="showMoreButtonClicked()"></app-game-card-show-more-button>
+        <app-game-card-show-more-button [game-slug]="game.slug"></app-game-card-show-more-button>
       </div>
     </div>
   </div>

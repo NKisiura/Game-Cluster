@@ -37,8 +37,4 @@ export class GameCardComponent implements AfterViewChecked {
     this.isCardHovered = false;
     this.gameCardElement.nativeElement.style.height = '100%';
   }
-
-  public showMoreButtonClicked(): void {
-    // TODO: Get game list with filter 'game like this'
-  }
 }
