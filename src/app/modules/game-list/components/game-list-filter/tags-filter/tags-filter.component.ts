@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { TagInterface } from '../../../../../global/types/entities/tags/tag.interface';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
@@ -14,7 +14,9 @@ import * as _ from 'lodash';
   templateUrl: './tags-filter.component.html',
   styleUrls: ['./tags-filter.component.scss'],
 })
-export class TagsFilterComponent implements OnInit {
+export class TagsFilterComponent implements OnInit, OnDestroy {
+  private unsubscribe$: Subject<void> = new Subject<void>();
+
   public slicedTagList: boolean = true;
   public slicedTagListLength: number = 5;
   public maxTagListLength: number = 9;
@@ -34,10 +36,17 @@ export class TagsFilterComponent implements OnInit {
     this.initValues();
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
   private initListeners(): void {
-    this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.currentTagsInParams = this.getTagIdListFromParams(params);
-    });
+    this.activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params: Params) => {
+        this.currentTagsInParams = this.getTagIdListFromParams(params);
+      });
   }
 
   private initValues(): void {

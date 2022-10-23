@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { MainEntitiesService } from '../../../../../global/utils/services/main-entities.service';
@@ -11,7 +11,7 @@ import { GenresSelectors } from '../../../../../state/features/genres/selectors/
   selector: 'app-genres-filter',
   templateUrl: './genres-filter.component.html',
 })
-export class GenresFilterComponent implements OnInit {
+export class GenresFilterComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   public genresList: GenreInterface[] = [];
@@ -26,6 +26,11 @@ export class GenresFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initListeners();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private initListeners(): void {

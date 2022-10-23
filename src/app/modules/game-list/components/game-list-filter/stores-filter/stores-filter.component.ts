@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { filter, map, Subject, takeUntil } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
@@ -11,7 +11,7 @@ import { StoresSelectors } from '../../../../../state/features/stores/selectors/
   selector: 'app-stores-filter',
   templateUrl: './stores-filter.component.html',
 })
-export class StoresFilterComponent implements OnInit {
+export class StoresFilterComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   public storesList: StoreInterface[] = [];
@@ -26,6 +26,11 @@ export class StoresFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initListeners();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private initListeners(): void {

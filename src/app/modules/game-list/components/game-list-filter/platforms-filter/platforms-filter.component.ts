@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { filter, map, Subject, takeUntil } from 'rxjs';
 import { PlatformInterface } from '../../../../../global/types/entities/platforms/platform.interface';
 import { select, Store } from '@ngrx/store';
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-platforms-filter',
   templateUrl: './platforms-filter.component.html',
 })
-export class PlatformsFilterComponent implements OnInit {
+export class PlatformsFilterComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   public platformsList: PlatformInterface[] = [];
@@ -26,6 +26,11 @@ export class PlatformsFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initListeners();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private initListeners(): void {
