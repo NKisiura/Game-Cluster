@@ -4,7 +4,7 @@ ___
 ___
 
 ### Run project
-#### Step1: Clone repository: `git clone --------------`
+#### Step1: Clone repository: `git clone https://github.com/NKisiura/Game-Cluster.git`
 #### Step2: Install node packages: `npm install` or `yarn install`
 #### Step3: Run dev server: `ng serve`
 ___
