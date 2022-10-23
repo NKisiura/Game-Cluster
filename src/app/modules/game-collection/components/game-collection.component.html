@@ -1,11 +1,11 @@
 <app-scroll-down-emitter (scroll-down)="loadMoreGamesOnScrollDown()"></app-scroll-down-emitter>
 <app-scroll-up-button></app-scroll-up-button>
-<app-backend-error-message *ngIf="gamesError$ | async as gameError" [error]="gameError"></app-backend-error-message>
 
 <app-page-title [title]="gameCollectionTitle"></app-page-title>
 <div *ngIf="platforms$ | async" class="mb-6">
   <app-platforms-filter></app-platforms-filter>
 </div>
+<app-backend-error-message *ngIf="gamesError$ | async as gameError" [error]="gameError"></app-backend-error-message>
 <ng-container *ngIf="gamesList$ | async as gameList">
   <app-empty-result-message *ngIf="gameList.length === 0"></app-empty-result-message>
   <app-card-list>
