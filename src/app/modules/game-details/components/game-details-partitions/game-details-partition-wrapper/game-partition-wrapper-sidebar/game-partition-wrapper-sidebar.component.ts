@@ -50,7 +50,7 @@ export class GamePartitionWrapperSidebarComponent {
         return 'videos';
       }
       case GameDetailsPartitions.POSTS: {
-        return 'Posts';
+        return 'posts';
       }
     }
   }

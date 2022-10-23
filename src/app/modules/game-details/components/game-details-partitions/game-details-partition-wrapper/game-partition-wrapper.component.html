@@ -5,7 +5,7 @@
                            [platforms]="game.parent_platforms"
   ></app-game-details-header>
   <div class="relative">
-    <app-page-title [title]="game.name"></app-page-title>
+    <app-page-title [title]="game.name + ' ' + currentBreadcrumbs"></app-page-title>
     <a [routerLink]="[gameRouterLink, game.slug]"
        class="absolute -left-12 top-1/2 -translate-y-1/2 text-white text-3xl"
     >
