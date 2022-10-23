@@ -1,6 +1,6 @@
 # Game Cluster
 ___
-### Preview page: [Game Cluster](ghlink)
+### Preview page: [Game Cluster](https://nkisiura.github.io/Game-Cluster/)
 ___
 
 ### Run project
