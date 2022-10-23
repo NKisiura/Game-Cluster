@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable, Subject, takeUntil } from 'rxjs';
+import { filter, map, Subject, takeUntil } from 'rxjs';
 import { PlatformInterface } from '../../../../../global/types/entities/platforms/platform.interface';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PlatformsFilterComponent implements OnInit {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  public platformsList$ = new Observable<PlatformInterface[] | null>();
+  public platformsList: PlatformInterface[] = [];
   public selectedPlatformId: number | null = null;
 
   constructor(
@@ -26,26 +26,35 @@ export class PlatformsFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initListeners();
-    this.initValues();
   }
 
   private initListeners(): void {
+    this.store$
+      .pipe(
+        select(PlatformsSelectors.platformsListSelector),
+        filter(Boolean),
+        map((platforms: PlatformInterface[]) =>
+          this.filterPlatformsListAccordingToMainPlatforms(platforms)
+        ),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe((platforms) => (this.platformsList = platforms));
+
     this.activatedRoute.queryParams
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params) => {
-        this.selectedPlatformId = +params['platforms'] || null;
+        const platformId = +params['platforms'] || null;
+        if (platformId) {
+          const isMainPlatform = this.checkIsPlatformMain(platformId);
+          this.selectedPlatformId = isMainPlatform ? platformId : null;
+        } else {
+          this.selectedPlatformId = null;
+        }
       });
   }
 
-  private initValues(): void {
-    this.platformsList$ = this.store$.pipe(
-      select(PlatformsSelectors.platformsListSelector),
-      map((platforms: PlatformInterface[] | null) => {
-        return platforms
-          ? this.filterPlatformsListAccordingToMainPlatforms(platforms)
-          : platforms;
-      })
-    );
+  private checkIsPlatformMain(platformId: number): boolean {
+    return !!this.platformsList.find((platform) => platform.id === platformId);
   }
 
   private filterPlatformsListAccordingToMainPlatforms(

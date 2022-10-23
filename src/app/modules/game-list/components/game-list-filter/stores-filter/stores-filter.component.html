@@ -1,4 +1,4 @@
-<div *ngIf="storesList$ | async as storesList">
+<div *ngIf="storesList">
   <ng-select [items]="storesList"
              [bindLabel]="'name'"
              [bindValue]="'id'"

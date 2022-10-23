@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { TagInterface } from '../../../../../global/types/entities/tags/tag.interface';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
@@ -17,6 +17,7 @@ import * as _ from 'lodash';
 export class TagsFilterComponent implements OnInit {
   public slicedTagList: boolean = true;
   public slicedTagListLength: number = 5;
+  public maxTagListLength: number = 9;
 
   public tagsList$ = new Observable<TagInterface[] | null>();
   public currentTagsInParams: number[] = [];
@@ -40,7 +41,10 @@ export class TagsFilterComponent implements OnInit {
   }
 
   private initValues(): void {
-    this.tagsList$ = this.store$.pipe(select(TagsSelectors.tagsListSelector));
+    this.tagsList$ = this.store$.pipe(
+      select(TagsSelectors.tagsListSelector),
+      map((tags) => (tags ? tags.slice(0, this.maxTagListLength) : tags))
+    );
   }
 
   private getTagIdListFromParams(params: Params): number[] {

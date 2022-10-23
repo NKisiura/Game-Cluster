@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable, Subject, takeUntil } from 'rxjs';
+import { filter, map, Subject, takeUntil } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { MainEntitiesService } from '../../../../../global/utils/services/main-entities.service';
@@ -14,7 +14,7 @@ import { StoresSelectors } from '../../../../../state/features/stores/selectors/
 export class StoresFilterComponent implements OnInit {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  public storesList$ = new Observable<StoreInterface[] | null>();
+  public storesList: StoreInterface[] = [];
   public selectedStoreId: number | null = null;
 
   constructor(
@@ -26,26 +26,35 @@ export class StoresFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initListeners();
-    this.initValues();
   }
 
   private initListeners(): void {
+    this.store$
+      .pipe(
+        select(StoresSelectors.storesListSelector),
+        filter(Boolean),
+        map((stores: StoreInterface[]) =>
+          this.filterStoresListAccordingToMainStores(stores)
+        ),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe((stores) => (this.storesList = stores));
+
     this.activatedRoute.queryParams
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params) => {
-        this.selectedStoreId = +params['stores'] || null;
+        const storeId = +params['stores'] || null;
+        if (storeId) {
+          const isMainStore = this.checkIsStoreMain(storeId);
+          this.selectedStoreId = isMainStore ? storeId : null;
+        } else {
+          this.selectedStoreId = null;
+        }
       });
   }
 
-  private initValues(): void {
-    this.storesList$ = this.store$.pipe(
-      select(StoresSelectors.storesListSelector),
-      map((stores: StoreInterface[] | null) => {
-        return stores
-          ? this.filterStoresListAccordingToMainStores(stores)
-          : stores;
-      })
-    );
+  private checkIsStoreMain(storeId: number): boolean {
+    return !!this.storesList.find((store) => store.id === storeId);
   }
 
   private filterStoresListAccordingToMainStores(

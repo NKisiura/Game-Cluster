@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../../state/types/root-state.interface';
 import { MainEntitiesService } from '../../../../../global/utils/services/main-entities.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable, Subject, takeUntil } from 'rxjs';
+import { filter, map, Subject, takeUntil } from 'rxjs';
 import { GenreInterface } from '../../../../../global/types/entities/genres/genre.interface';
 import { GenresSelectors } from '../../../../../state/features/genres/selectors/genres.selectors';
 
@@ -14,7 +14,7 @@ import { GenresSelectors } from '../../../../../state/features/genres/selectors/
 export class GenresFilterComponent implements OnInit {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  public genresList$ = new Observable<GenreInterface[] | null>();
+  public genresList: GenreInterface[] = [];
   public selectedGenreId: number | null = null;
 
   constructor(
@@ -26,26 +26,35 @@ export class GenresFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initListeners();
-    this.initValues();
   }
 
   private initListeners(): void {
+    this.store$
+      .pipe(
+        select(GenresSelectors.genresListSelector),
+        filter(Boolean),
+        map((genres: GenreInterface[]) =>
+          this.filterGenresListAccordingToMainGenres(genres)
+        ),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe((genres) => (this.genresList = genres));
+
     this.activatedRoute.queryParams
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params) => {
-        this.selectedGenreId = +params['genres'] || null;
+        const genreId = +params['genres'] || null;
+        if (genreId) {
+          const isMainGenre = this.checkIsGenreMain(genreId);
+          this.selectedGenreId = isMainGenre ? genreId : null;
+        } else {
+          this.selectedGenreId = null;
+        }
       });
   }
 
-  private initValues(): void {
-    this.genresList$ = this.store$.pipe(
-      select(GenresSelectors.genresListSelector),
-      map((genres: GenreInterface[] | null) => {
-        return genres
-          ? this.filterGenresListAccordingToMainGenres(genres)
-          : genres;
-      })
-    );
+  private checkIsGenreMain(genreId: number): boolean {
+    return !!this.genresList.find((genre) => genre.id === genreId);
   }
 
   private filterGenresListAccordingToMainGenres(

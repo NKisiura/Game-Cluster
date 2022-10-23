@@ -3,7 +3,7 @@
 <app-backend-error-message *ngIf="gamesError$ | async as gameError" [error]="gameError"></app-backend-error-message>
 
 <app-page-title [title]="gameCollectionTitle"></app-page-title>
-<div class="mb-6">
+<div *ngIf="platforms$ | async" class="mb-6">
   <app-platforms-filter></app-platforms-filter>
 </div>
 <ng-container *ngIf="gamesList$ | async as gameList">

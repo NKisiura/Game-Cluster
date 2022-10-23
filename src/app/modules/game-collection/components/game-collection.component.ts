@@ -22,6 +22,8 @@ import { GamesSelectors } from '../../../state/features/games/selectors/games.se
 import { LoadMoreButtonComponent } from '../../../global/modules/layouts/load-more-button/components/load-more-button/load-more-button.component';
 import { stringify } from 'query-string';
 import { TitleService } from '../../../global/utils/services/title.service';
+import { PlatformInterface } from '../../../global/types/entities/platforms/platform.interface';
+import { PlatformsSelectors } from '../../../state/features/platforms/selectors/platforms.selectors';
 
 @Component({
   selector: 'app-game-collection',
@@ -37,6 +39,7 @@ export class GameCollectionComponent implements OnInit {
   public gamesError$ = new Observable<BackendErrorResponseInterface | null>();
   public gamesList$ = new Observable<GameInterface[] | null>();
   public gamesNextPage$ = new Observable<string | null>();
+  public platforms$ = new Observable<PlatformInterface[] | null>();
 
   constructor(
     private readonly store$: Store<RootStateInterface>,
@@ -81,6 +84,9 @@ export class GameCollectionComponent implements OnInit {
     );
     this.gamesNextPage$ = this.store$.pipe(
       select(GamesSelectors.gamesNextPageSelector)
+    );
+    this.platforms$ = this.store$.pipe(
+      select(PlatformsSelectors.platformsListSelector)
     );
   }
 

@@ -1,6 +1,6 @@
 <app-tags-filter></app-tags-filter>
 <div class="flex gap-4 mb-6">
-  <app-platforms-filter></app-platforms-filter>
-  <app-genres-filter></app-genres-filter>
-  <app-stores-filter></app-stores-filter>
+  <app-platforms-filter *ngIf="platforms$ | async"></app-platforms-filter>
+  <app-genres-filter *ngIf="genres$ | async"></app-genres-filter>
+  <app-stores-filter *ngIf="stores$ | async"></app-stores-filter>
 </div>

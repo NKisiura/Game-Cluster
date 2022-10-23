@@ -1,4 +1,4 @@
-<div *ngIf="platformsList$ | async as platformsList">
+<div *ngIf="platformsList">
   <ng-select [items]="platformsList"
              [bindLabel]="'name'"
              [bindValue]="'id'"
