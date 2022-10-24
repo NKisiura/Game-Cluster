@@ -1,5 +1,5 @@
-<header id="header" class="py-8">
-  <div class="flex items-center justify-between gap-8">
+<header id="header" class="py-4 lg:py-8">
+  <div class="hidden lg:flex items-center justify-between gap-8">
     <div>
       <app-header-logo></app-header-logo>
     </div>
@@ -8,6 +8,17 @@
     </div>
     <div>
       <app-header-creator></app-header-creator>
+    </div>
+  </div>
+  <div class="flex flex-col gap-4 lg:hidden">
+    <div class="flex items-center gap-8 justify-center sm:justify-between">
+      <app-header-logo></app-header-logo>
+      <div class="hidden pt-1 sm:block">
+        <app-header-creator></app-header-creator>
+      </div>
+    </div>
+    <div class="grow">
+      <app-header-search></app-header-search>
     </div>
   </div>
 </header>
