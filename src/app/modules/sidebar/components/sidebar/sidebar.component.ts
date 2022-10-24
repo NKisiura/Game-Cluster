@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../state/types/root-state.interface';
 import { PlatformsSelectors } from '../../../../state/features/platforms/selectors/platforms.selectors';
@@ -16,7 +22,7 @@ import { SidebarHeightController } from './sidebar-height-controller';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements AfterViewInit {
+export class SidebarComponent implements AfterViewInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   @ViewChild('sidebarElement')
@@ -39,6 +45,11 @@ export class SidebarComponent implements AfterViewInit {
     fromEvent(window, 'scroll')
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => this.setSidebarHeight());
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private setSidebarHeight(): void {

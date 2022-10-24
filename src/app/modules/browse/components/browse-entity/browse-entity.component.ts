@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BrowseService } from '../../services/browse.service';
 import { NotGamesEntityTypes } from '../../../../global/types/entities/entity-types.enum';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -10,7 +10,7 @@ import { TitleService } from '../../../../global/utils/services/title.service';
   selector: 'app-browse-entity',
   templateUrl: './browse-entity.component.html',
 })
-export class BrowseEntityComponent implements OnInit {
+export class BrowseEntityComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   @ViewChild('loadMoreButton')
@@ -25,6 +25,11 @@ export class BrowseEntityComponent implements OnInit {
 
   ngOnInit(): void {
     this.initListeners();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   public getEntityViewModelByEntityType(entityType: NotGamesEntityTypes) {
