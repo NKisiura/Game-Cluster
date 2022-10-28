@@ -55,8 +55,12 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
   private setSidebarHeight(): void {
     this.sidebarElement.nativeElement.style.setProperty(
       'height',
-      this.sidebarHeightController.defineSidebarHeight()
+      this.defineSidebarHeight()
     );
+  }
+
+  public defineSidebarHeight(): string {
+    return this.sidebarHeightController.defineSidebarHeight();
   }
 
   public getEntityViewModelByEntityType(entityType: NotGamesEntityTypes) {
