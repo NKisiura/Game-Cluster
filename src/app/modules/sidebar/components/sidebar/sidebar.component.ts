@@ -16,6 +16,8 @@ import { NotGamesEntityTypes } from '../../../../global/types/entities/entity-ty
 import { NotGameEntity } from '../../../../global/types/entities/not-game-entity';
 import { fromEvent, Subject, takeUntil } from 'rxjs';
 import { SidebarHeightController } from './sidebar-height-controller';
+import { IconService } from '../../../../global/utils/services/icon.service';
+import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
@@ -38,7 +40,8 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
   constructor(
     private readonly store$: Store<RootStateInterface>,
     private readonly mainEntitiesService: MainEntitiesService,
-    private readonly sidebarHeightController: SidebarHeightController
+    private readonly sidebarHeightController: SidebarHeightController,
+    private readonly iconService: IconService
   ) {}
 
   ngAfterViewInit(): void {
@@ -110,5 +113,9 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
         return [];
       }
     }
+  }
+
+  public getSidebarControlButtonIcons(isOpened: boolean): IconDefinition {
+    return isOpened ? this.iconService.xMarkIcon : this.iconService.barsIcon;
   }
 }

@@ -1,4 +1,4 @@
-.sidebar-scrollbar {
+.sidebar {
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -13,5 +13,10 @@
     &::-webkit-scrollbar-thumb {
       background: #333333;
     }
+  }
+
+  &.opened {
+    height: 100vh !important;
+    transform: translateX(0);
   }
 }
