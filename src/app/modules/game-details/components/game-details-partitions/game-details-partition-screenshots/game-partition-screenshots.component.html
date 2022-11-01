@@ -1,7 +1,7 @@
 <ng-container *ngIf="gameScreenshots$ | async as gameScreenshots">
   <app-game-partition-wrapper>
     <app-scroll-down-emitter (scroll-down)="loadMoreScreenshotsOnScrollDown()"></app-scroll-down-emitter>
-    <div class="grid grid-cols-3 gap-4 mb-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
       <a *ngFor="let screenshot of gameScreenshots" [href]="screenshot.image" data-fancybox="game-screenshots">
         <img [src]="getCroppedImage(screenshot.image)" alt="screenshot" class="rounded-md w-full h-full object-cover">
       </a>

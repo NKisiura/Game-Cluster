@@ -7,16 +7,16 @@
   <div class="relative">
     <app-page-title [title]="game.name + ' ' + currentBreadcrumbs"></app-page-title>
     <a [routerLink]="[gameRouterLink, game.slug]"
-       class="absolute -left-12 top-1/2 -translate-y-1/2 text-white text-3xl"
+       class="hidden xl:inline absolute -left-12 top-1/2 -translate-y-1/2 text-white text-3xl"
     >
       <fa-icon [icon]="getLongArrowLeftIcon()"></fa-icon>
     </a>
   </div>
-  <div class="flex gap-8">
-    <div class="w-4/5">
+  <div class="flex flex-col-reverse lg:flex-row gap-4 lg:gap-8">
+    <div class="w-full lg:w-4/5">
       <ng-content></ng-content>
     </div>
-    <div class="w-1/5">
+    <div class="w-full lg:w-1/5">
       <app-game-partition-wrapper-sidebar [game]="game"></app-game-partition-wrapper-sidebar>
     </div>
   </div>
