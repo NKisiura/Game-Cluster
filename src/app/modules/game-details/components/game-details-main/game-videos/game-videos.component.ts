@@ -12,7 +12,6 @@ import { IconService } from '../../../../../global/utils/services/icon.service';
 @Component({
   selector: 'app-game-videos',
   templateUrl: './game-videos.component.html',
-  styleUrls: ['./game-videos.component.scss'],
 })
 export class GameVideosComponent implements OnInit {
   @Input('game') public game!: GameDetailsInterface;

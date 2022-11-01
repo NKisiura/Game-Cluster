@@ -12,7 +12,6 @@ import { GamePostsSelectors } from '../../../../../state/features/game-details/s
 @Component({
   selector: 'app-game-posts',
   templateUrl: './game-posts.component.html',
-  styleUrls: ['./game-posts.component.scss'],
 })
 export class GamePostsComponent {
   @Input('game') public game!: GameDetailsInterface;

@@ -1,4 +1,4 @@
-<div class="flex items-center gap-3 mb-3">
+<div class="flex flex-wrap items-center gap-3 mb-3">
   <div *ngIf="releaseDate" class="bg-white text-black text-xs uppercase tracking-[2px] rounded-[4px] px-[7.5px] py-[2px]">{{getFormattedReleaseDate(releaseDate)}}</div>
   <fa-icon *ngFor="let platform of platforms"
            [icon]="getPlatformIcon(platform.platform.slug)"

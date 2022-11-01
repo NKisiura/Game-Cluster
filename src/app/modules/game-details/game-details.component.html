@@ -2,9 +2,8 @@
 <app-loading-spinner *ngIf="gameDetailsLoading$ | async"></app-loading-spinner>
 
 <ng-container *ngIf="gameDetails$ | async as game">
-  <div class="lg:px-8 xl:px-16 2xl:px-52">
+  <div class="xl:px-8 2xl:px-32">
     <app-breadcrumbs [game]="game"></app-breadcrumbs>
     <router-outlet></router-outlet>
   </div>
 </ng-container>
-
