@@ -7,8 +7,8 @@ h1 {
   text-shadow: .05em .05em 0 rgba(0,0,0,.25);
   white-space: nowrap;
 
-  @media(max-width: 30rem) {
-    font-size: 8.5rem;
+  @media(max-width: 1024px) {
+    font-size: 6rem;
   }
 
   & > span {

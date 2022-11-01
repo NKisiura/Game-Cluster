@@ -7,10 +7,6 @@ h1 {
   text-shadow: .05em .05em 0 rgba(0,0,0,.25);
   white-space: nowrap;
 
-  @media(max-width: 30rem) {
-    font-size: 8.5rem;
-  }
-
   & > span {
     animation: spooky 1.5s alternate infinite linear;
     color: $ghost-color;
