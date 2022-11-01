@@ -115,8 +115,10 @@
 
 .ngx-toastr {
   box-shadow: 0 0 15px 10px rgba(0,0,0,0.75) !important;
-  width: 500px !important;
+  width: 100% !important;
+  max-width: 500px !important;
   border-radius: 10px !important;
+  word-break: break-all !important;
 }
 
 html {
