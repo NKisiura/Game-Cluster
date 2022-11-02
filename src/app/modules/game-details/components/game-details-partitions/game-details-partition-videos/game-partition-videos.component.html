@@ -1,7 +1,7 @@
 <ng-container *ngIf="gameVideos$ | async as gameVideos">
   <app-game-partition-wrapper>
     <app-scroll-down-emitter (scroll-down)="loadMoreGameVideosOnScrollDown()"></app-scroll-down-emitter>
-    <div *ngFor="let video of gameVideos" class="border-b border-grey-300 border-opacity-30 last-of-type:border-transparent">
+    <div *ngFor="let video of gameVideos">
       <app-game-video [game-video]="video"></app-game-video>
     </div>
     <ng-container *ngIf="!(gameVideosLoading$ | async) && (gameVideosNextPage$ | async)">
