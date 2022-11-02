@@ -1,6 +1,6 @@
 <div *ngIf="gameStores && gameStores.length">
   <div class="text-lg text-grey-500 mb-3">Where to buy</div>
-  <div class="grid grid-cols-2 gap-3">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
     <a *ngFor="let store of gameStores"
        [href]="store.url"
        target="_blank"

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IconService } from '../../../../global/utils/services/icon.service';
 import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import * as _ from 'lodash';
@@ -16,7 +16,7 @@ import { AppSelectors } from '../../../../state/features/app/selectors/app.selec
   templateUrl: './header-search.component.html',
   styleUrls: ['./header-search.component.scss'],
 })
-export class HeaderSearchComponent implements OnInit {
+export class HeaderSearchComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   public searchQuery: string = '';
@@ -33,6 +33,11 @@ export class HeaderSearchComponent implements OnInit {
   ngOnInit(): void {
     this.initListeners();
     this.initValues();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private initListeners(): void {

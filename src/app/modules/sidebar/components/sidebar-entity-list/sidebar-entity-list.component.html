@@ -6,7 +6,7 @@
      class="group flex items-center gap-2 mb-2 text-white font-light"
   >
     <ng-container *ngIf="isCurrentEntityGenre">
-      <img [src]="getCroppedImage(entity.image_background!)" [alt]="entity.name" class="w-8 h-8 rounded-lg object-cover">
+      <img [src]="getCroppedImage(entity.image_background!)" [alt]="entity.name" class="w-8 h-8 rounded-lg object-cover opacity-100 transition-opacity duration-200 group-hover:opacity-60">
     </ng-container>
     <ng-container *ngIf="!isCurrentEntityGenre">
       <div class="w-8 h-8 flex items-center justify-center rounded-lg text-white bg-grey-700 group-hover:text-grey-800 group-hover:bg-white transition-colors duration-200">

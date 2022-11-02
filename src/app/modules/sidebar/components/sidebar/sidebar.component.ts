@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../../state/types/root-state.interface';
 import { PlatformsSelectors } from '../../../../state/features/platforms/selectors/platforms.selectors';
@@ -10,13 +16,15 @@ import { NotGamesEntityTypes } from '../../../../global/types/entities/entity-ty
 import { NotGameEntity } from '../../../../global/types/entities/not-game-entity';
 import { fromEvent, Subject, takeUntil } from 'rxjs';
 import { SidebarHeightController } from './sidebar-height-controller';
+import { IconService } from '../../../../global/utils/services/icon.service';
+import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements AfterViewInit {
+export class SidebarComponent implements AfterViewInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   @ViewChild('sidebarElement')
@@ -32,7 +40,8 @@ export class SidebarComponent implements AfterViewInit {
   constructor(
     private readonly store$: Store<RootStateInterface>,
     private readonly mainEntitiesService: MainEntitiesService,
-    private readonly sidebarHeightController: SidebarHeightController
+    private readonly sidebarHeightController: SidebarHeightController,
+    private readonly iconService: IconService
   ) {}
 
   ngAfterViewInit(): void {
@@ -41,11 +50,20 @@ export class SidebarComponent implements AfterViewInit {
       .subscribe(() => this.setSidebarHeight());
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
   private setSidebarHeight(): void {
     this.sidebarElement.nativeElement.style.setProperty(
       'height',
-      this.sidebarHeightController.defineSidebarHeight()
+      this.defineSidebarHeight()
     );
+  }
+
+  public defineSidebarHeight(): string {
+    return this.sidebarHeightController.defineSidebarHeight();
   }
 
   public getEntityViewModelByEntityType(entityType: NotGamesEntityTypes) {
@@ -95,5 +113,9 @@ export class SidebarComponent implements AfterViewInit {
         return [];
       }
     }
+  }
+
+  public getSidebarControlButtonIcons(isOpened: boolean): IconDefinition {
+    return isOpened ? this.iconService.xMarkIcon : this.iconService.barsIcon;
   }
 }

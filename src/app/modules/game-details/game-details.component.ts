@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GameDetailsActions } from '../../state/features/game-details/actions/game-details.actions';
 import { BackendErrorResponseInterface } from '../../state/types/backend-error-response.interface';
@@ -14,7 +14,7 @@ import { TitleService } from '../../global/utils/services/title.service';
   selector: 'app-game-details',
   templateUrl: './game-details.component.html',
 })
-export class GameDetailsComponent implements OnInit {
+export class GameDetailsComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   public gameDetails$ = new Observable<GameDetailsInterface | null>();
@@ -31,6 +31,11 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.initValues();
     this.initListeners();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private initListeners(): void {

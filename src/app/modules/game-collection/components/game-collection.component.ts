@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from '../../../state/types/root-state.interface';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -29,7 +29,7 @@ import { PlatformsSelectors } from '../../../state/features/platforms/selectors/
   selector: 'app-game-collection',
   templateUrl: './game-collection.component.html',
 })
-export class GameCollectionComponent implements OnInit {
+export class GameCollectionComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   public gameCollectionTitle = '';
@@ -50,6 +50,11 @@ export class GameCollectionComponent implements OnInit {
   ngOnInit(): void {
     this.initListeners();
     this.initValues();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private initListeners(): void {

@@ -12,7 +12,6 @@ import { IconService } from '../../../../../global/utils/services/icon.service';
 @Component({
   selector: 'app-game-achievements',
   templateUrl: './game-achievements.component.html',
-  styleUrls: ['./game-achievements.component.scss'],
 })
 export class GameAchievementsComponent implements OnInit {
   @Input('game') public game!: GameDetailsInterface;
