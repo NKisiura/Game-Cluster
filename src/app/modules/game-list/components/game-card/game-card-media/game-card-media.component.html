@@ -10,7 +10,7 @@
   <div *ngIf="isCardHovered" [@showHide]="" class="absolute w-full">
     <ng-container *ngIf="gameClip || screenshots.length else noImageTemplate">
       <div *ngIf="gameClip">
-        <video class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" preload="metadata" autoplay loop [muted]="true" [poster]="gameClip.preview"></video>
+        <video class="rounded-t-2xl w-full h-48 object-cover" [src]="gameClip.clip" preload="metadata" autoplay loop playsinline [muted]="true" [poster]="gameClip.preview"></video>
         <a [href]="youtubeVideoBaseUrl + gameClip.video" data-fancybox class="flex items-center text-xs font-light py-1 px-2 border border-transparent rounded-md absolute bottom-2 right-2 bg-black bg-opacity-50 transition duration-200 hover:border-grey-300">
           <fa-icon class="text-sm mr-1.5" [icon]="getYoutubeIcon()"></fa-icon>Play full video
         </a>
