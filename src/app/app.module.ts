@@ -24,6 +24,8 @@ import { AppBackgroundModule } from './global/modules/layouts/app-background/app
 import { HttpErrorInterceptor } from './global/interceptors/http-error-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { GameCollectionModule } from './modules/game-collection/game-collection.module';
+import { OnlineStatusModule } from 'ngx-online-status';
+import { InternetConnectionErrorInterceptor } from './global/interceptors/internet-connection-error-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -50,10 +52,16 @@ import { GameCollectionModule } from './modules/game-collection/game-collection.
     AppBackgroundModule,
     PageNotFoundModule,
     ToastrModule.forRoot(),
+    OnlineStatusModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiKeyInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InternetConnectionErrorInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
