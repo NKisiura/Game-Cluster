@@ -25,8 +25,9 @@ ___
 - Moment.js
 - Font Awesome
 - Query-string
+- fancybox
 - ng-select
 - ngx-progressbar
 - ngx-owl-carousel-o
 - ngx-toastr
-- fancybox
+- ngx-online-status
