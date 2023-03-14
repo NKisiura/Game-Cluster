@@ -1,12 +1,5 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { filter, map, skip, Subject, takeUntil } from 'rxjs';
-import { NgProgressComponent } from 'ngx-progressbar';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { combineLatest, filter, Subject, takeUntil } from 'rxjs';
 import { PlatformsActions } from './state/features/platforms/actions/platforms.actions';
 import {
   API_CREATORS_URL,
@@ -27,6 +20,15 @@ import { PublishersActions } from './state/features/publishers/actions/publisher
 import { CreatorsActions } from './state/features/creators/actions/creators.actions';
 import { NavigationEnd, Router } from '@angular/router';
 import { TotalGamesCountActions } from './state/features/app/actions/total-games-count.actions';
+import { PlatformsSelectors } from './state/features/platforms/selectors/platforms.selectors';
+import { DevelopersSelectors } from './state/features/developers/selectors/developers.selectors';
+import { PublishersSelectors } from './state/features/publishers/selectors/publishers.selectors';
+import { CreatorsSelectors } from './state/features/creators/selectors/creators.selectors';
+import { GenresSelectors } from './state/features/genres/selectors/genres.selectors';
+import { StoresSelectors } from './state/features/stores/selectors/stores.selectors';
+import { TagsSelectors } from './state/features/tags/selectors/tags.selectors';
+import { AppSelectors } from './state/features/app/selectors/app.selectors';
+import { GamesSelectors } from './state/features/games/selectors/games.selectors';
 
 @Component({
   selector: 'app-root',
@@ -35,11 +37,8 @@ import { TotalGamesCountActions } from './state/features/app/actions/total-games
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
-
-  @ViewChild('progressComponent')
-  public progressComponent!: NgProgressComponent;
-  public appLoading: boolean = true;
   private appLoadingEnd$: Subject<void> = new Subject<void>();
+  public appLoading: boolean = true;
 
   constructor(
     private readonly store$: Store<RootStateInterface>,
@@ -72,21 +71,30 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private trackAppLoadingEnd(): void {
-    this.progressComponent.state$
+    combineLatest([
+      this.store$.select(PlatformsSelectors.platformsLoadingSelector),
+      this.store$.select(DevelopersSelectors.developersLoadingSelector),
+      this.store$.select(PublishersSelectors.publishersLoadingSelector),
+      this.store$.select(CreatorsSelectors.creatorsLoadingSelector),
+      this.store$.select(GenresSelectors.genresLoadingSelector),
+      this.store$.select(StoresSelectors.storesLoadingSelector),
+      this.store$.select(TagsSelectors.tagsLoadingSelector),
+      this.store$.select(AppSelectors.totalGamesCountLoading),
+      this.store$.select(GamesSelectors.gamesLoadingSelector),
+    ])
       .pipe(
-        skip(1),
-        map((state) => state.active),
+        filter(
+          ([...loadingStatuses]: boolean[]) => !loadingStatuses.includes(true)
+        ),
         takeUntil(this.appLoadingEnd$)
       )
-      .subscribe((status) => this.endLoading(status));
+      .subscribe(() => this.completeAppLoading());
   }
 
-  private endLoading(loadingStatus: boolean): void {
-    if (!loadingStatus) {
-      this.appLoading = false;
-      this.appLoadingEnd$.next();
-      this.appLoadingEnd$.complete();
-    }
+  private completeAppLoading(): void {
+    this.appLoading = false;
+    this.appLoadingEnd$.next();
+    this.appLoadingEnd$.complete();
   }
 
   private dispatchInitialActions(): void {

@@ -6,6 +6,11 @@ export const appFeatureSelector =
   createFeatureSelector<AppStateInterface>(appFeatureKey);
 
 export namespace AppSelectors {
+  export const totalGamesCountLoading = createSelector(
+    appFeatureSelector,
+    (appState: AppStateInterface) => appState.totalGamesCount.isLoading
+  );
+
   export const totalGamesCount = createSelector(
     appFeatureSelector,
     (appState: AppStateInterface) => appState.totalGamesCount.data
