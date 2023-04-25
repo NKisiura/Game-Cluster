@@ -12,7 +12,7 @@ import {
 } from './global/constants/api-constants';
 import { GenresActions } from './state/features/genres/actions/genres.actions';
 import { StoresActions } from './state/features/stores/actions/stores.actions';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { RootStateInterface } from './state/types/root-state.interface';
 import { TagsActions } from './state/features/tags/actions/tags.actions';
 import { DevelopersActions } from './state/features/developers/actions/developers.actions';
@@ -72,15 +72,15 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private trackAppLoadingEnd(): void {
     combineLatest([
-      this.store$.select(PlatformsSelectors.platformsLoadingSelector),
-      this.store$.select(DevelopersSelectors.developersLoadingSelector),
-      this.store$.select(PublishersSelectors.publishersLoadingSelector),
-      this.store$.select(CreatorsSelectors.creatorsLoadingSelector),
-      this.store$.select(GenresSelectors.genresLoadingSelector),
-      this.store$.select(StoresSelectors.storesLoadingSelector),
-      this.store$.select(TagsSelectors.tagsLoadingSelector),
-      this.store$.select(AppSelectors.totalGamesCountLoading),
-      this.store$.select(GamesSelectors.gamesLoadingSelector),
+      this.store$.pipe(select(PlatformsSelectors.platformsLoadingSelector)),
+      this.store$.pipe(select(DevelopersSelectors.developersLoadingSelector)),
+      this.store$.pipe(select(PublishersSelectors.publishersLoadingSelector)),
+      this.store$.pipe(select(CreatorsSelectors.creatorsLoadingSelector)),
+      this.store$.pipe(select(GenresSelectors.genresLoadingSelector)),
+      this.store$.pipe(select(StoresSelectors.storesLoadingSelector)),
+      this.store$.pipe(select(TagsSelectors.tagsLoadingSelector)),
+      this.store$.pipe(select(AppSelectors.totalGamesCountLoading)),
+      this.store$.pipe(select(GamesSelectors.gamesLoadingSelector)),
     ])
       .pipe(
         filter(
